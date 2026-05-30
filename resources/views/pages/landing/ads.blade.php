@@ -8,36 +8,41 @@
     {{-- Minimal header for conversion --}}
     <header class="border-b border-slate-200 bg-white">
         <div class="container-narrow flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
-            <a href="/" class="flex items-center gap-2">
-                <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-navy-950 text-xs font-bold text-white">HD</span>
-                <span class="font-display font-semibold text-navy-950">Hire Developer</span>
+            <a href="/" class="flex items-center">
+                <x-brand-logo variant="default" class="h-8 w-auto max-w-[10rem]" />
             </a>
-            <a href="tel:+919876543210" class="text-sm font-semibold text-brand-700">+91 98765 43210</a>
+            <a href="tel:+919876543210" class="text-sm font-semibold text-brand-600 hover:text-brand-700">+91 98765 43210</a>
         </div>
     </header>
 
-    <section class="gradient-hero section-padding">
+    <section class="gradient-hero section-padding relative overflow-hidden">
         <div class="container-narrow">
             <div class="grid gap-12 lg:grid-cols-2 lg:items-center">
-                <div>
-                    <p class="text-sm font-semibold uppercase tracking-wider text-accent-400">Limited onboarding slots this month</p>
+                <div class="reveal-on-scroll relative z-10">
+                    <p class="text-sm font-semibold uppercase tracking-wider text-brand-400">Limited onboarding slots this month</p>
                     <h1 class="mt-4 font-display text-4xl font-semibold text-white sm:text-5xl text-balance">
                         Hire senior developers in 48 hours—not 48 days
                     </h1>
                     <p class="mt-6 text-lg text-slate-300">
                         Laravel, React, Node.js, and Flutter engineers. Hourly from <strong class="text-white">$15/hour</strong>. NDA included. No recruitment fees.
                     </p>
-                    <div class="mt-8 flex flex-wrap gap-4">
-                        @foreach(['ISO-aligned process', '94% client retention', '320+ developers placed'] as $badge)
-                            <span class="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-slate-200">{{ $badge }}</span>
+                    <div class="mt-8 flex flex-wrap gap-3">
+                        @foreach([['shield', 'ISO-aligned process'], ['chart', '94% client retention'], ['users', '320+ developers placed']] as [$icon, $badge])
+                            <span class="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-slate-200">
+                                <x-icon :name="$icon" class="h-4 w-4 text-brand-400" />
+                                {{ $badge }}
+                            </span>
                         @endforeach
                     </div>
                 </div>
-                <div class="rounded-2xl bg-white p-6 shadow-elevated sm:p-8" id="quote-form">
-                    <h2 class="font-display text-xl font-semibold text-navy-950">Get your free quote</h2>
+                <div class="reveal-on-scroll relative z-10" data-reveal-delay="100">
+                    <x-hero-visual class="!hidden xl:block absolute inset-y-0 -left-[50%] right-0 -z-10" />
+                    <div class="relative rounded-2xl bg-white p-6 shadow-elevated sm:p-8" id="quote-form">
+                    <h2 class="font-display text-xl font-semibold text-navy">Get your free quote</h2>
                     <p class="mt-1 text-sm text-slate-500">We respond within one business day.</p>
                     <div class="mt-6">
                         <x-lead-form id="landing-lead-form" :compact="true" submitLabel="Get My Free Quote" />
+                    </div>
                     </div>
                 </div>
             </div>
@@ -55,14 +60,15 @@
     <section class="section-padding bg-slate-50">
         <div class="container-narrow max-w-3xl">
             <x-section-header title="Why founders choose us over job boards" />
-            <div class="mt-10 grid gap-6 sm:grid-cols-3">
+            <div class="mt-10 grid gap-6 sm:grid-cols-3" data-reveal-stagger>
                 @foreach([
-                    ['Vetted in 5 stages', 'Live coding, architecture discussion, and reference checks.'],
-                    ['Start within days', 'Profiles in 48 hours. Onboarding in under a week.'],
-                    ['Swap if not a fit', 'Replacement support during the trial period.'],
-                ] as [$t, $d])
-                    <div class="text-center sm:text-left">
-                        <h3 class="font-semibold text-navy-950">{{ $t }}</h3>
+                    ['Vetted in 5 stages', 'Live coding, architecture discussion, and reference checks.', 'shield'],
+                    ['Start within days', 'Profiles in 48 hours. Onboarding in under a week.', 'clock'],
+                    ['Swap if not a fit', 'Replacement support during the trial period.', 'users'],
+                ] as [$t, $d, $icon])
+                    <div class="card-premium p-6 text-center sm:text-left reveal-on-scroll">
+                        <x-icon-box :icon="$icon" variant="soft" class="mx-auto sm:mx-0" />
+                        <h3 class="mt-4 font-semibold text-navy">{{ $t }}</h3>
                         <p class="mt-2 text-sm text-slate-600">{{ $d }}</p>
                     </div>
                 @endforeach

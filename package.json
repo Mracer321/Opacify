@@ -4,13 +4,17 @@
     "type": "module",
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "icons:tech": "node scripts/generate-tech-logos.mjs"
     },
     "dependencies": {
+        "@tailwindcss/forms": "^0.5.11",
         "alpinejs": "^3.14.8"
     },
     "devDependencies": {
         "autoprefixer": "^10.4.20",
+        "devicon": "^2.17.0",
+        "simple-icons": "^16.21.0",
         "axios": "^1.11.0",
         "laravel-vite-plugin": "^2.0.0",
         "postcss": "^8.4.49",

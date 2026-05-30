@@ -5,7 +5,7 @@
     class="card-premium group flex h-full flex-col p-6 sm:p-8"
 >
     <x-service-icon :name="$service['icon']" size="h-8 w-8" box="h-14 w-14 rounded-2xl" />
-    <h3 class="mt-5 font-display text-xl font-semibold text-navy-950 group-hover:text-brand-700">{{ $service['title'] }}</h3>
+    <h3 class="mt-5 font-display text-xl font-semibold text-navy group-hover:text-brand-700">{{ $service['title'] }}</h3>
     <p class="mt-3 flex-1 text-sm leading-relaxed text-slate-600">{{ $service['summary'] }}</p>
     <span class="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700">
         Learn more

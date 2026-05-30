@@ -24,14 +24,14 @@ $post = $post ?? [
                     <span class="mx-2">/</span>
                     <span class="text-slate-300">{{ $post['category'] }}</span>
                 </nav>
-                <p class="mt-6 text-sm text-accent-400">{{ $post['category'] }} · {{ $post['date'] }} · {{ $post['read'] }}</p>
+                <p class="mt-6 text-sm text-brand-400">{{ $post['category'] }} · {{ $post['date'] }} · {{ $post['read'] }}</p>
                 <h1 class="mt-4 font-display text-3xl font-semibold text-white sm:text-4xl text-balance">{{ $post['title'] }}</h1>
                 <p class="mt-4 text-slate-300">By {{ $post['author'] }}, {{ $post['role'] }}</p>
             </div>
         </header>
 
         <div class="section-padding">
-            <div class="container-narrow max-w-3xl prose prose-slate prose-headings:font-display prose-headings:text-navy-950 prose-a:text-brand-700">
+            <div class="container-narrow max-w-3xl reveal-on-scroll prose prose-slate prose-headings:font-display prose-headings:text-navy prose-a:text-brand-700">
                 <p class="text-lg text-slate-600 leading-relaxed">
                     Hiring Laravel developers should not feel like gambling. Yet many teams rush into job boards, receive hundreds of unvetted applicants, and lose a quarter before the first meaningful commit lands in production.
                 </p>

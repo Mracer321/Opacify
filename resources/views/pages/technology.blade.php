@@ -34,11 +34,11 @@ $tech = $technology ?? [
                     <h1 class="font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl text-balance">{{ $tech['headline'] }}</h1>
                     <p class="mt-6 text-lg leading-relaxed text-slate-300">{{ $tech['description'] }}</p>
                     <p class="mt-6 inline-flex rounded-lg border border-white/10 bg-white/5 px-4 py-2 text-sm text-white">
-                        Typical rates: <span class="ml-2 font-semibold text-accent-400">{{ $tech['rate'] }}</span>
+                        Typical rates: <span class="ml-2 font-semibold text-brand-400">{{ $tech['rate'] }}</span>
                     </p>
                 </div>
                 <div class="rounded-2xl bg-white p-6 shadow-elevated sm:p-8">
-                    <h2 class="font-display text-lg font-semibold text-navy-950">Hire {{ $tech['name'] }} talent</h2>
+                    <h2 class="font-display text-lg font-semibold text-navy">Hire {{ $tech['name'] }} talent</h2>
                     <x-lead-form id="tech-lead-form" :compact="true" />
                 </div>
             </div>
@@ -54,7 +54,7 @@ $tech = $technology ?? [
                         <span class="flex h-8 w-8 items-center justify-center rounded-lg bg-brand-50 text-brand-700">
                             <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
                         </span>
-                        <span class="text-sm font-medium text-navy-950">{{ $skill }}</span>
+                        <span class="text-sm font-medium text-navy">{{ $skill }}</span>
                     </div>
                 @endforeach
             </div>
@@ -66,7 +66,7 @@ $tech = $technology ?? [
             <div class="grid gap-12 lg:grid-cols-3">
                 @foreach($tech['benefits'] as [$title, $text])
                     <article class="card-premium p-8">
-                        <h3 class="font-display text-lg font-semibold text-navy-950">{{ $title }}</h3>
+                        <h3 class="font-display text-lg font-semibold text-navy">{{ $title }}</h3>
                         <p class="mt-3 text-sm text-slate-600">{{ $text }}</p>
                     </article>
                 @endforeach
@@ -84,7 +84,7 @@ $tech = $technology ?? [
                 <p class="mt-4 text-slate-600 leading-relaxed">
                     We start with a technical brief call, then share profiles that match your version requirements, timezone, and budget type. You interview finalists directly. Once selected, your developer joins Slack, Jira, or GitHub within 48 hours with a signed NDA and clear invoicing.
                 </p>
-                <h3 class="mt-10 text-xl font-semibold text-navy-950">Related technologies</h3>
+                <h3 class="mt-10 text-xl font-semibold text-navy">Related technologies</h3>
                 <div class="mt-4 flex flex-wrap gap-2">
                     <a href="/hire-laravel-developers" class="badge-tech hover:bg-brand-100">Laravel</a>
                     <a href="/hire-react-developers" class="badge-tech hover:bg-brand-100">React</a>

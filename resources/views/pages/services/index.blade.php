@@ -44,15 +44,16 @@ $services = array_values($servicesCatalog);
     <section class="section-padding bg-slate-50">
         <div class="container-narrow">
             <x-section-header eyebrow="Delivery methodology" title="How we deliver across every practice" description="Consistent governance whether you hire developers or commission a full project." />
-            <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
                 @foreach([
-                    ['Discover', 'Workshops, scope definition, and risk identification before build.'],
-                    ['Architect', 'Stack decisions, security baseline, and integration mapping.'],
-                    ['Deliver', 'Sprint demos, code review, QA gates, and staging releases.'],
-                    ['Operate', 'Handover runbooks, monitoring, and optional retainers.'],
-                ] as [$title, $desc])
-                    <article class="card-premium p-6">
-                        <h3 class="font-display text-base font-semibold text-navy-950">{{ $title }}</h3>
+                    ['workflow', 'Discover', 'Workshops, scope definition, and risk identification before build.'],
+                    ['layers', 'Architect', 'Stack decisions, security baseline, and integration mapping.'],
+                    ['code', 'Deliver', 'Sprint demos, code review, QA gates, and staging releases.'],
+                    ['server', 'Operate', 'Handover runbooks, monitoring, and optional retainers.'],
+                ] as [$icon, $title, $desc])
+                    <article class="card-premium p-6 reveal-on-scroll">
+                        <x-icon-box :icon="$icon" variant="soft" />
+                        <h3 class="mt-4 font-display text-base font-semibold text-navy">{{ $title }}</h3>
                         <p class="mt-2 text-sm leading-relaxed text-slate-600">{{ $desc }}</p>
                     </article>
                 @endforeach
@@ -85,7 +86,7 @@ $services = array_values($servicesCatalog);
                 ] as [$step, $title, $desc])
                     <li>
                         <span class="font-display text-4xl font-bold text-brand-100">{{ $step }}</span>
-                        <h3 class="mt-2 font-semibold text-navy-950">{{ $title }}</h3>
+                        <h3 class="mt-2 font-semibold text-navy">{{ $title }}</h3>
                         <p class="mt-2 text-sm text-slate-600">{{ $desc }}</p>
                     </li>
                 @endforeach
@@ -107,7 +108,7 @@ $services = array_values($servicesCatalog);
                         <li class="flex gap-4 card-premium p-5">
                             <svg class="mt-0.5 h-5 w-5 shrink-0 text-brand-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
                             <div>
-                                <h3 class="text-sm font-semibold text-navy-950">{{ $title }}</h3>
+                                <h3 class="text-sm font-semibold text-navy">{{ $title }}</h3>
                                 <p class="mt-1 text-sm text-slate-600">{{ $text }}</p>
                             </div>
                         </li>

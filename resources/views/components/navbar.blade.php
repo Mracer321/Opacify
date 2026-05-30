@@ -116,8 +116,7 @@ $techCategoryShort = [
     <div class="nav-shell">
         {{-- LEFT: Logo --}}
         <a href="/" class="nav-brand" aria-label="Hire Developer home">
-            <span class="flex h-9 w-9 items-center justify-center rounded-lg bg-navy-950 text-sm font-bold text-white">HD</span>
-            <span class="hidden font-display text-base font-semibold tracking-tight text-navy-950 sm:block lg:text-lg">Hire Developer</span>
+            <x-brand-logo variant="default" class="h-9 w-auto max-w-[10.5rem] sm:max-w-[11.5rem]" />
         </a>
 
         {{-- CENTER: Desktop navigation --}}
@@ -133,7 +132,7 @@ $techCategoryShort = [
                     <button
                         type="button"
                         class="nav-link"
-                        :class="desktopMega === 'services' ? 'bg-slate-50 text-navy-950' : ''"
+                        :class="desktopMega === 'services' ? 'bg-slate-50 text-navy' : ''"
                         :aria-expanded="desktopMega === 'services'"
                     >
                         Services
@@ -149,7 +148,7 @@ $techCategoryShort = [
                     <button
                         type="button"
                         class="nav-link"
-                        :class="desktopMega === 'technologies' ? 'bg-slate-50 text-navy-950' : ''"
+                        :class="desktopMega === 'technologies' ? 'bg-slate-50 text-navy' : ''"
                         :aria-expanded="desktopMega === 'technologies'"
                     >
                         Technologies
@@ -167,7 +166,7 @@ $techCategoryShort = [
                     <button
                         type="button"
                         class="nav-link"
-                        :class="desktopMega === 'resources' ? 'bg-slate-50 text-navy-950' : ''"
+                        :class="desktopMega === 'resources' ? 'bg-slate-50 text-navy' : ''"
                         :aria-expanded="desktopMega === 'resources'"
                     >
                         Resources
@@ -200,7 +199,7 @@ $techCategoryShort = [
                     <button
                         type="button"
                         class="nav-link"
-                        :class="desktopMega === 'company' ? 'bg-slate-50 text-navy-950' : ''"
+                        :class="desktopMega === 'company' ? 'bg-slate-50 text-navy' : ''"
                         :aria-expanded="desktopMega === 'company'"
                     >
                         Company
@@ -262,7 +261,7 @@ $techCategoryShort = [
             <div class="nav-mega-grid-services">
                 @foreach($servicesMenu as $item)
                     <a href="{{ $item['href'] }}" class="group nav-mega-card">
-                        <span class="block text-sm font-semibold text-navy-950 group-hover:text-brand-700">{{ $item['label'] }}</span>
+                        <span class="block text-sm font-semibold text-navy group-hover:text-brand-700">{{ $item['label'] }}</span>
                         <span class="mt-1 block text-xs leading-relaxed text-slate-500">{{ $item['desc'] }}</span>
                     </a>
                 @endforeach
@@ -292,7 +291,10 @@ $techCategoryShort = [
                         <ul class="space-y-0.5">
                             @foreach($items as [$name, $href])
                                 <li>
-                                    <a href="{{ $href }}" class="block rounded-md px-2 py-2 text-sm text-slate-600 transition-colors hover:bg-brand-50 hover:text-brand-800">{{ $name }}</a>
+                                    <a href="{{ $href }}" class="flex items-center gap-2 rounded-md px-2 py-2 text-sm text-slate-600 transition-colors hover:bg-brand-50 hover:text-brand-800">
+                                        <x-tech-icon :tech="$name" box="h-6 w-6 rounded-md" class="h-3.5 w-3.5" />
+                                        {{ $name }}
+                                    </a>
                                 </li>
                             @endforeach
                         </ul>
@@ -396,7 +398,10 @@ $techCategoryShort = [
                                     x-cloak
                                 >
                                     @foreach($items as [$name, $href])
-                                        <a href="{{ $href }}" class="nav-mobile-tech-item" @click="mobileOpen = false">{{ $name }}</a>
+                                        <a href="{{ $href }}" class="nav-mobile-tech-item flex items-center gap-2" @click="mobileOpen = false">
+                                            <x-tech-icon :tech="$name" box="h-6 w-6 rounded-md" class="h-3.5 w-3.5" />
+                                            {{ $name }}
+                                        </a>
                                     @endforeach
                                 </div>
                             </div>
@@ -432,7 +437,7 @@ $techCategoryShort = [
             </div>
 
             <div class="mt-3 border-t border-slate-100 px-2 pt-4">
-                <a href="/contact" class="flex min-h-[3rem] items-center justify-center rounded-lg bg-brand-700 px-4 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-800" @click="mobileOpen = false">
+                <a href="/contact" class="flex min-h-[3rem] items-center justify-center rounded-lg bg-brand-500 px-4 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-brand-600" @click="mobileOpen = false">
                     Get Free Quote
                 </a>
             </div>
