@@ -28,6 +28,7 @@ class TechLogo
         $normalized = str_replace([' ', '.', '/'], ['', '', ''], $normalized);
 
         $map = [
+            'nextjs' => 'nextdotjs',
             'nodejs' => 'nodedotjs',
             'reactjs' => 'react',
             'reactnative' => 'react',

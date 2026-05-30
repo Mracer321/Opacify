@@ -91,7 +91,7 @@
             @endphp
             {{-- Mobile & tablet: horizontal swipe slider --}}
             <div class="mobile-snap-row mt-8 reveal-on-scroll lg:hidden" data-reveal-delay="200">
-                <div class="mobile-tech-track scrollbar-hide gap-2.5">
+                <div class="mobile-tech-track scrollbar-hide gap-2.5" data-tech-marquee>
                     @foreach($techChips as $badge)
                         <a href="/technologies/{{ strtolower(str_replace([' ', '.'], ['-', ''], $badge)) }}" class="badge-tech-icon mobile-snap-chip">
                             <x-tech-icon :tech="$badge" class="h-4 w-4" box="h-7 w-7 rounded-md" />
@@ -186,16 +186,14 @@
                     ['document', 'Full Project', 'Fixed scope with milestones, QA, and handover documentation.', 'Custom quote', 'Discovery workshop included'],
                 ];
             @endphp
-            {{-- Mobile & tablet: snap carousel --}}
-            <div class="mobile-snap-row mt-12 lg:hidden">
-                <div class="mobile-snap-track scrollbar-hide" data-reveal-stagger>
-                    @foreach($pricingPlans as [$icon, $title, $desc, $price, $note])
-                        <div class="mobile-snap-item reveal-on-scroll">
-                            <x-pricing-card :icon="$icon" :title="$title" :description="$desc" :price="$price" :note="$note" />
-                        </div>
-                    @endforeach
-                </div>
-            </div>
+            {{-- Mobile & tablet: peek carousel with arrows & dots --}}
+            <x-mobile-carousel :count="count($pricingPlans)" label="Pricing plans" :peek="true" class="mt-12">
+                @foreach($pricingPlans as [$icon, $title, $desc, $price, $note])
+                    <div class="mobile-carousel-slide is-peek">
+                        <x-pricing-card :icon="$icon" :title="$title" :description="$desc" :price="$price" :note="$note" />
+                    </div>
+                @endforeach
+            </x-mobile-carousel>
             {{-- Desktop: unchanged grid --}}
             <div class="mt-12 hidden gap-6 lg:grid lg:grid-cols-3" data-reveal-stagger>
                 @foreach($pricingPlans as [$icon, $title, $desc, $price, $note])
@@ -273,7 +271,7 @@
                 @foreach($testimonials as $t)
                     <div class="mobile-carousel-slide">
                         <x-testimonial-card
-                            class="card-equal h-full"
+                            class="h-auto"
                             :quote="$t['quote']"
                             :author="$t['author']"
                             :role="$t['role']"
@@ -287,7 +285,7 @@
             <div class="mt-12 hidden gap-6 lg:grid lg:grid-cols-3" data-reveal-stagger>
                 @foreach($testimonials as $t)
                     <x-testimonial-card
-                        class="reveal-on-scroll card-equal"
+                        class="card-equal reveal-on-scroll"
                         :quote="$t['quote']"
                         :author="$t['author']"
                         :role="$t['role']"

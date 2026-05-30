@@ -333,9 +333,25 @@
 }
 
 /* —— Mobile & tablet only (desktop lg+ unchanged) —— */
+.footer-contact-link {
+  @apply inline-flex items-center gap-3 leading-snug transition-colors;
+}
+
+a.footer-contact-link {
+  @apply hover:text-brand-400;
+}
+
+.footer-contact-icon {
+  @apply flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-slate-700/80 bg-slate-800/60 text-brand-400;
+}
+
+a.footer-contact-link:hover .footer-contact-icon {
+  @apply border-brand-500/40 bg-brand-500/10;
+}
+
 @media (max-width: 1023px) {
-  body.has-mobile-fab {
-    padding-bottom: 6.5rem;
+  .site-footer {
+    padding-bottom: calc(6.75rem + env(safe-area-inset-bottom, 0px));
   }
 
   .fab-stack {
@@ -400,8 +416,61 @@
     -webkit-overflow-scrolling: touch;
   }
 
+  .carousel-swipe-hint {
+    @apply mb-3 flex items-center justify-center gap-2 text-xs font-medium text-slate-500;
+  }
+
+  .mobile-carousel-shell {
+    @apply relative flex items-center gap-1;
+  }
+
+  .mobile-carousel-viewport {
+    @apply min-w-0 flex-1 overflow-x-hidden overflow-y-visible;
+  }
+
+  .mobile-carousel .card-premium {
+    @apply h-auto;
+  }
+
+  .mobile-carousel .card-premium:hover {
+    transform: none;
+  }
+
+  .mobile-carousel-viewport.is-peek {
+    @apply -mx-1 px-1;
+  }
+
+  .mobile-carousel-track {
+    @apply flex transition-transform duration-300 ease-out will-change-transform;
+  }
+
+  .mobile-carousel-track:not(.is-peek) .mobile-carousel-slide {
+    @apply min-w-full shrink-0 px-0.5;
+  }
+
+  .mobile-carousel-track.is-peek {
+    @apply gap-4;
+  }
+
   .mobile-carousel-slide {
-    @apply min-w-full shrink-0 px-1;
+    @apply shrink-0;
+  }
+
+  .mobile-carousel-slide.is-peek {
+    @apply w-[86%] max-w-none;
+    scroll-snap-align: center;
+  }
+
+  .carousel-nav {
+    @apply inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-slate-200 bg-white text-navy shadow-soft transition-all active:scale-95 disabled:pointer-events-none disabled:opacity-30;
+  }
+
+  .carousel-nav:not(:disabled):hover {
+    @apply border-brand-200 bg-brand-50 text-brand-700;
+  }
+
+  .carousel-dots {
+    @apply mt-4 flex items-center justify-center gap-2;
   }
 
   .mobile-carousel-dot {

@@ -1,5 +1,5 @@
-<footer class="border-t border-slate-800 bg-navy text-slate-300">
-    <div class="section-padding pb-12 pt-16">
+<footer class="site-footer border-t border-slate-800 bg-navy text-slate-300">
+    <div class="section-padding pb-12 pt-16 lg:pb-12">
         <div class="container-narrow">
             <div class="grid gap-12 lg:grid-cols-12">
                 <div class="lg:col-span-4">
@@ -66,10 +66,29 @@
             <div class="mt-12 grid gap-6 border-t border-slate-800 pt-8 sm:grid-cols-2 lg:grid-cols-3">
                 <div>
                     <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-500">Contact</h4>
-                    <ul class="mt-3 space-y-2 text-sm">
-                        <li><a href="mailto:hello@hiredeveloper.co.in" class="transition-colors hover:text-brand-400">hello@hiredeveloper.co.in</a></li>
-                        <li><a href="tel:+919876543210" class="transition-colors hover:text-brand-400">+91 98765 43210</a></li>
-                        <li class="text-slate-400">India · Remote-first delivery</li>
+                    <ul class="mt-4 space-y-3.5 text-sm">
+                        <li>
+                            <a href="mailto:hello@hiredeveloper.co.in" class="footer-contact-link group">
+                                <span class="footer-contact-icon" aria-hidden="true">
+                                    <x-tabler-icon name="mail" class="h-[18px] w-[18px]" />
+                                </span>
+                                <span>hello@hiredeveloper.co.in</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="tel:+919876543210" class="footer-contact-link group">
+                                <span class="footer-contact-icon" aria-hidden="true">
+                                    <x-tabler-icon name="phone" class="h-[18px] w-[18px]" />
+                                </span>
+                                <span>+91 98765 43210</span>
+                            </a>
+                        </li>
+                        <li class="footer-contact-link text-slate-400">
+                            <span class="footer-contact-icon" aria-hidden="true">
+                                <x-tabler-icon name="map-pin" class="h-[18px] w-[18px]" />
+                            </span>
+                            <span>India · Remote-first delivery</span>
+                        </li>
                     </ul>
                 </div>
                 <div class="sm:col-span-2 lg:col-span-2">

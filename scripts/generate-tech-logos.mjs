@@ -39,6 +39,7 @@ const deviconMap = {
 };
 
 const simpleIconsMap = {
+    nextdotjs: 'siNextdotjs',
     n8n: 'siN8n',
     googleanalytics: 'siGoogleanalytics',
     powerbi: 'siPowerbi', // may be missing — fallback below
@@ -48,6 +49,8 @@ const aliases = {
     ReactJS: 'react',
     'React Native': 'react',
     React: 'react',
+    'Next.js': 'nextdotjs',
+    Nextjs: 'nextdotjs',
     'Node.js': 'nodedotjs',
     Nodejs: 'nodedotjs',
     'Vue.js': 'vuedotjs',
