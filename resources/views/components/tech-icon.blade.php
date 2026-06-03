@@ -6,7 +6,7 @@
 ])
 
 @php
-    $logo = \App\Support\TechLogo::logoFor($tech);
+    $logo = \App\Support\TechLogo::scopedLogoFor($tech);
     $boxClasses = $boxed
         ? 'tech-logo-box inline-flex shrink-0 items-center justify-center rounded-lg bg-white p-1.5 ring-1 ring-slate-200/80 shadow-sm ' . $box
         : 'inline-flex shrink-0 items-center justify-center ';

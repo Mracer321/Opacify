@@ -256,7 +256,7 @@
   }
 
   .tech-logo {
-    @apply block h-full w-full;
+    @apply block h-auto w-auto max-h-full max-w-full;
   }
 
   .process-step-icon {

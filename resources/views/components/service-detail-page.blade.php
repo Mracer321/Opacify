@@ -24,11 +24,11 @@
         <x-section-header align="left" eyebrow="Capabilities" title="What we deliver" />
         <div class="mt-10 grid gap-4 sm:grid-cols-2">
             @foreach($service['capabilities'] as $i => [$title, $desc])
-                <article class="card-premium p-6 reveal-on-scroll">
-                    <x-icon-box icon="check" variant="soft" class="!h-9 !w-9" />
-                    <h3 class="mt-3 font-semibold text-navy">{{ $title }}</h3>
-                    <p class="mt-2 text-sm leading-relaxed text-slate-600">{{ $desc }}</p>
-                </article>
+            <article class="card-premium p-6 reveal-on-scroll">
+                <x-icon-box icon="check" variant="soft" class="!h-9 !w-9" />
+                <h3 class="mt-3 font-semibold text-navy">{{ $title }}</h3>
+                <p class="mt-2 text-sm leading-relaxed text-slate-600">{{ $desc }}</p>
+            </article>
             @endforeach
         </div>
     </div>
@@ -41,13 +41,13 @@
                 <x-section-header align="left" eyebrow="Process" title="How engagements run" />
                 <ol class="mt-8 space-y-4">
                     @foreach($service['process'] as $i => [$title, $desc])
-                        <li class="flex gap-4">
-                            <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-500 text-xs font-bold text-white">{{ $i + 1 }}</span>
-                            <div>
-                                <h3 class="text-sm font-semibold text-navy">{{ $title }}</h3>
-                                <p class="mt-1 text-sm text-slate-600">{{ $desc }}</p>
-                            </div>
-                        </li>
+                    <li class="flex gap-4">
+                        <span class="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-brand-500 text-xs font-bold text-white">{{ $i + 1 }}</span>
+                        <div>
+                            <h3 class="text-sm font-semibold text-navy">{{ $title }}</h3>
+                            <p class="mt-1 text-sm text-slate-600">{{ $desc }}</p>
+                        </div>
+                    </li>
                     @endforeach
                 </ol>
             </div>
@@ -61,10 +61,10 @@
         <x-section-header eyebrow="Technologies" title="Stacks we work with" />
         <div class="mt-8 flex flex-wrap justify-center gap-3" data-reveal-stagger>
             @foreach($service['technologies'] as $tech)
-                <span class="badge-tech-icon">
-                    <x-tech-icon :tech="$tech" box="h-6 w-6 rounded-md" class="h-3.5 w-3.5" :boxed="true" />
-                    {{ $tech }}
-                </span>
+            <span class="badge-tech-icon">
+                <x-tech-icon :tech="$tech" box="h-6 w-6 rounded-md" class="h-3.5 w-3.5" :boxed="true" />
+                {{ $tech }}
+            </span>
             @endforeach
         </div>
     </div>
@@ -75,12 +75,12 @@
         <x-section-header eyebrow="Engagement" title="Delivery models" />
         <div class="mt-10 grid gap-6 md:grid-cols-3" data-reveal-stagger>
             @foreach($service['delivery'] as $i => [$title, $desc])
-                @php $deliveryIcons = ['clock', 'users', 'briefcase']; @endphp
-                <article class="card-premium p-6 reveal-on-scroll">
-                    <x-icon-box :icon="$deliveryIcons[$i] ?? 'briefcase'" variant="soft" />
-                    <h3 class="mt-4 font-display text-base font-semibold text-navy">{{ $title }}</h3>
-                    <p class="mt-2 text-sm text-slate-600">{{ $desc }}</p>
-                </article>
+            @php $deliveryIcons = ['clock', 'users', 'briefcase']; @endphp
+            <article class="card-premium p-6 reveal-on-scroll">
+                <x-icon-box :icon="$deliveryIcons[$i] ?? 'briefcase'" variant="soft" />
+                <h3 class="mt-4 font-display text-base font-semibold text-navy">{{ $title }}</h3>
+                <p class="mt-2 text-sm text-slate-600">{{ $desc }}</p>
+            </article>
             @endforeach
         </div>
     </div>
@@ -91,7 +91,7 @@
         <x-section-header eyebrow="FAQ" :title="$service['title'] . ' — common questions'" />
         <div class="mt-8">
             @php
-                $faqItems = array_map(fn ($f) => ['question' => $f['question'], 'answer' => $f['answer']], $service['faqs']);
+            $faqItems = array_map(fn ($f) => ['question' => $f['question'], 'answer' => $f['answer']], $service['faqs']);
             @endphp
             <x-faq-accordion :items="$faqItems" :id="'faq-' . $service['slug']" />
         </div>
@@ -107,10 +107,10 @@
                 <p class="mt-4 leading-relaxed text-slate-600">Share requirements and we will respond within one business day with scope guidance and team options.</p>
                 <ul class="mt-6 space-y-3 text-sm text-slate-600">
                     @foreach([['document', 'Structured scope review'], ['users', 'Matched senior engineers'], ['clock', 'Response within one business day']] as [$icon, $text])
-                        <li class="flex items-center gap-3">
-                            <x-icon-box :icon="$icon" variant="soft" class="!h-8 !w-8" />
-                            {{ $text }}
-                        </li>
+                    <li class="flex items-center gap-3">
+                        <x-icon-box :icon="$icon" variant="soft" class="!h-8 !w-8" />
+                        {{ $text }}
+                    </li>
                     @endforeach
                 </ul>
             </div>

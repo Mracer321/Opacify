@@ -36,6 +36,9 @@ const deviconMap = {
     openapiinitiative: 'openapi/openapi-original',
     githubactions: 'githubactions/githubactions-original',
     digitalocean: 'digitalocean/digitalocean-original',
+    graphql: 'graphql/graphql-plain',
+    kubernetes: 'kubernetes/kubernetes-plain',
+    linkedin: 'linkedin/linkedin-original',
 };
 
 const simpleIconsMap = {
@@ -43,6 +46,10 @@ const simpleIconsMap = {
     n8n: 'siN8n',
     googleanalytics: 'siGoogleanalytics',
     powerbi: 'siPowerbi', // may be missing — fallback below
+    zapier: 'siZapier',
+    hotjar: 'siHotjar',
+    googlesearchconsole: 'siGooglesearchconsole',
+    meta: 'siMeta',
 };
 
 const aliases = {
@@ -87,6 +94,16 @@ const aliases = {
     Firebase: 'firebase',
     Jenkins: 'jenkins',
     GitHub: 'github',
+    GraphQL: 'graphql',
+    Kubernetes: 'kubernetes',
+    'Search Console': 'googlesearchconsole',
+    'Meta Ads': 'meta',
+    'LinkedIn Ads': 'linkedin',
+    Zapier: 'zapier',
+    Hotjar: 'hotjar',
+    'OpenAI API': 'openai',
+    OpenAI: 'openai',
+    'Google Analytics': 'googleanalytics',
 };
 
 function uniquifySvgIds(svg, prefix) {
@@ -109,6 +126,25 @@ function readDevicon(relativePath, slug) {
         .replace(/<\/svg>\s*$/i, '')
         .trim();
     inner = uniquifySvgIds(inner, slug);
+
+    // Extract gradient/filter/clipPath definitions and wrap in <defs>
+    const gradients = inner.match(/<(linear|radial)Gradient[^>]*>[\s\S]*?<\/\1Gradient>/g) || [];
+    const filters = inner.match(/<filter[^>]*>[\s\S]*?<\/filter>/g) || [];
+    const clipPaths = inner.match(/<clipPath[^>]*>[\s\S]*?<\/clipPath>/g) || [];
+
+    if (gradients.length > 0 || filters.length > 0 || clipPaths.length > 0) {
+        // Remove definitions from content
+        inner = inner.replace(/<(linear|radial)Gradient[^>]*>[\s\S]*?<\/\1Gradient>/g, '');
+        inner = inner.replace(/<filter[^>]*>[\s\S]*?<\/filter>/g, '');
+        inner = inner.replace(/<clipPath[^>]*>[\s\S]*?<\/clipPath>/g, '');
+
+        // Wrap all definitions in <defs>
+        const defs = `<defs>${gradients.join('')}${filters.join('')}${clipPaths.join('')}</defs>`;
+        inner = defs + inner.trim();
+    }
+
+    inner = inner.replace(/<defs>\s*<\/defs>/g, '');
+
     return { viewBox, svg: inner, source: 'devicon' };
 }
 
@@ -125,6 +161,13 @@ function readSimpleIcon(exportName) {
 }
 
 // Power BI — use embedded Simple Icons path (from simple-icons dataset when available)
+// OpenAI — not in current simple-icons/devicon bundles
+const openaiFallback = {
+    viewBox: '0 0 24 24',
+    svg: '<path fill="#412991" d="M22.282 9.821a5.985 5.985 0 0 0-.516-4.91 6.046 6.046 0 0 0-6.51-2.9A5.985 5.985 0 0 0 4.981 4.18a6.046 6.046 0 0 0-3.998 2.9 5.997 5.997 0 0 0 .743 7.097 5.975 5.975 0 0 0 .51 4.911 6.051 6.051 0 0 0 6.514 2.9 5.985 5.985 0 0 0 4.276 1.78 6.056 6.056 0 0 0 5.772-4.206 5.99 5.99 0 0 0 3.997-2.9 5.997 5.997 0 0 0-.743-7.037zm-9.269 12.378a4.476 4.476 0 0 1-2.876-1.039l.036-.02-1.231-.711a3.376 3.376 0 0 1-1.655-2.939l.001-.072.02-1.36a3.375 3.375 0 0 1 1.655-2.93l1.231-.711.036-.02a4.485 4.485 0 0 1 4.33 0l.036.02 1.231.711a3.375 3.375 0 0 1 1.655 2.93l-.02 1.36.001.072a3.376 3.376 0 0 1-1.655 2.939l-1.231.711-.036.02a4.476 4.476 0 0 1-2.876 1.039z"/>',
+    source: 'simple-icons',
+};
+
 const powerBiFallback = {
     viewBox: '0 0 24 24',
     svg: '<path fill="#F2C811" d="M5.371 2.026A1.07 1.07 0 0 0 4.582 2.823L.104 20.777a1.07 1.07 0 0 0 1.047 1.29h3.891a1.07 1.07 0 0 0 1.051-.877l.882-4.414h3.408l.882 4.414a1.07 1.07 0 0 0 1.051.877h3.891a1.07 1.07 0 0 0 1.047-1.29L19.418 2.823a1.07 1.07 0 0 0-.905-.783L12 2.094l-4.629.932zm1.127 5.654h2.916l1.167 5.842H5.331l1.167-5.842z"/>',
@@ -182,6 +225,8 @@ function phpExport(value, depth = 0) {
     }
     return String(value);
 }
+
+logos.openai = openaiFallback;
 
 const php = `<?php
 

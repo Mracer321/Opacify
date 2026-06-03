@@ -6,6 +6,8 @@ class TechLogo
 {
     private static ?array $config = null;
 
+    private static int $instanceCounter = 0;
+
     public static function config(): array
     {
         if (self::$config === null) {
@@ -43,6 +45,8 @@ class TechLogo
             'vpsclouddeployment' => 'digitalocean',
             'dataanalytics' => 'googleanalytics',
             'powerbi' => 'powerbi',
+            'openaiapi' => 'openai',
+            'googleanalytics' => 'googleanalytics',
         ];
 
         $slug = $map[$normalized] ?? $normalized;
@@ -59,5 +63,48 @@ class TechLogo
         }
 
         return self::config()['logos'][$slug] ?? null;
+    }
+
+    /**
+     * Logo SVG with gradient/clip IDs scoped to this render instance.
+     * Prevents duplicate id collisions when many tech icons appear on one page.
+     */
+    public static function scopedLogoFor(string $name): ?array
+    {
+        $logo = self::logoFor($name);
+
+        if ($logo === null) {
+            return null;
+        }
+
+        self::$instanceCounter++;
+        $prefix = 'ti' . self::$instanceCounter;
+
+        return [
+            'viewBox' => $logo['viewBox'],
+            'svg' => self::scopeSvgIds($logo['svg'], $prefix),
+            'source' => $logo['source'],
+        ];
+    }
+
+    private static function scopeSvgIds(string $svg, string $prefix): string
+    {
+        $scoped = preg_replace_callback(
+            '/\bid="([^"]+)"/',
+            static fn (array $matches): string => 'id="' . $prefix . '-' . $matches[1] . '"',
+            $svg
+        );
+
+        $scoped = preg_replace_callback(
+            '/url\(#([^)]+)\)/',
+            static fn (array $matches): string => 'url(#' . $prefix . '-' . $matches[1] . ')',
+            $scoped ?? $svg
+        );
+
+        return preg_replace_callback(
+            '/href="#([^"]+)"/',
+            static fn (array $matches): string => 'href="#' . $prefix . '-' . $matches[1] . '"',
+            $scoped ?? $svg
+        ) ?? $svg;
     }
 }
