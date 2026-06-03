@@ -21,13 +21,13 @@
                 </p>
                 <dl class="mt-8 flex flex-wrap gap-6 border-t border-white/10 pt-6">
                     @foreach([['48hr', 'Profile delivery', 'clock'], ['NDA', 'Day-one signing', 'lock'], ['94%', 'Client retention', 'chart']] as [$val, $label, $icon])
-                        <div class="flex items-center gap-3">
-                            <x-icon-box :icon="$icon" variant="soft" class="!h-9 !w-9 bg-white/10 text-white ring-white/10" />
-                            <div>
-                                <dd class="font-display text-lg font-semibold text-white">{{ $val }}</dd>
-                                <dt class="text-xs text-slate-400">{{ $label }}</dt>
-                            </div>
+                    <div class="flex items-center gap-3">
+                        <x-icon-box :icon="$icon" variant="soft" class="!h-9 !w-9 bg-white/10 text-white ring-white/10" />
+                        <div>
+                            <dd class="font-display text-lg font-semibold text-white">{{ $val }}</dd>
+                            <dt class="text-xs text-slate-400">{{ $label }}</dt>
                         </div>
+                    </div>
                     @endforeach
                 </dl>
             </div>
@@ -57,10 +57,10 @@
         </div>
         <div class="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-3" data-reveal-stagger>
             @foreach($tech['skills'] as $skill)
-                <div class="card-premium flex items-center gap-3 px-4 py-3">
-                    <x-icon-box icon="check" variant="soft" class="!h-8 !w-8" />
-                    <span class="text-sm font-medium text-navy">{{ $skill }}</span>
-                </div>
+            <div class="card-premium flex items-center gap-3 px-4 py-3">
+                <x-icon-box icon="check" variant="soft" class="!h-8 !w-8" />
+                <span class="text-sm font-medium text-navy">{{ $skill }}</span>
+            </div>
             @endforeach
         </div>
     </div>
@@ -70,14 +70,14 @@
     <div class="container-narrow">
         <div class="grid gap-6 md:grid-cols-3" data-reveal-stagger>
             @foreach($tech['benefits'] as $i => [$title, $text])
-                @php
-                    $benefitIcons = ['shield', 'chart', 'workflow'];
-                @endphp
-                <article class="card-premium p-8 reveal-on-scroll">
-                    <x-icon-box :icon="$benefitIcons[$i] ?? 'check'" variant="soft" />
-                    <h3 class="mt-4 font-display text-lg font-semibold text-navy">{{ $title }}</h3>
-                    <p class="mt-3 text-sm leading-relaxed text-slate-600">{{ $text }}</p>
-                </article>
+            @php
+            $benefitIcons = ['shield', 'chart', 'workflow'];
+            @endphp
+            <article class="card-premium p-8 reveal-on-scroll">
+                <x-icon-box :icon="$benefitIcons[$i] ?? 'check'" variant="soft" />
+                <h3 class="mt-4 font-display text-lg font-semibold text-navy">{{ $title }}</h3>
+                <p class="mt-3 text-sm leading-relaxed text-slate-600">{{ $text }}</p>
+            </article>
             @endforeach
         </div>
     </div>
@@ -90,18 +90,18 @@
                 <x-section-header align="left" eyebrow="Delivery workflow" title="How {{ $tech['name'] }} engagements run" description="Structured onboarding so your developer contributes from the first sprint—not after weeks of ramp-up." />
                 <ol class="mt-8 space-y-4">
                     @foreach([
-                        ['Technical brief', 'Stack versions, repos, ceremonies, and definition of done.', 'document'],
-                        ['Profile shortlist', 'Vetted engineers with relevant production experience.', 'users'],
-                        ['Interview & trial', 'You meet finalists; optional paid trial sprint.', 'chat'],
-                        ['Embedded delivery', 'Daily standups, PR reviews, and shared documentation.', 'workflow'],
+                    ['Technical brief', 'Stack versions, repos, ceremonies, and definition of done.', 'document'],
+                    ['Profile shortlist', 'Vetted engineers with relevant production experience.', 'users'],
+                    ['Interview & trial', 'You meet finalists; optional paid trial sprint.', 'chat'],
+                    ['Embedded delivery', 'Daily standups, PR reviews, and shared documentation.', 'workflow'],
                     ] as $i => [$title, $desc, $icon])
-                        <li class="flex gap-4">
-                            <x-icon-box :icon="$icon" variant="brand" class="!h-9 !w-9 shrink-0" />
-                            <div>
-                                <h3 class="text-sm font-semibold text-navy">{{ $title }}</h3>
-                                <p class="mt-1 text-sm text-slate-600">{{ $desc }}</p>
-                            </div>
-                        </li>
+                    <li class="flex gap-4">
+                        <x-icon-box :icon="$icon" variant="brand" class="!h-9 !w-9 shrink-0" />
+                        <div>
+                            <h3 class="text-sm font-semibold text-navy">{{ $title }}</h3>
+                            <p class="mt-1 text-sm text-slate-600">{{ $desc }}</p>
+                        </div>
+                    </li>
                     @endforeach
                 </ol>
             </div>
@@ -119,15 +119,15 @@
         </div>
         <div class="mt-10 grid gap-6 md:grid-cols-3" data-reveal-stagger>
             @foreach([
-                ['Hourly', 'Senior expertise for audits, spikes, or advisory without long commitments.', 'clock'],
-                ['Dedicated', 'Full-time engineer in your timezone with monthly retainer billing.', 'users'],
-                ['Project squad', 'Blended team with tech lead, developers, and QA on fixed scope.', 'briefcase'],
+            ['Hourly', 'Senior expertise for audits, spikes, or advisory without long commitments.', 'clock'],
+            ['Dedicated', 'Full-time engineer in your timezone with monthly retainer billing.', 'users'],
+            ['Project squad', 'Blended team with tech lead, developers, and QA on fixed scope.', 'briefcase'],
             ] as [$title, $desc, $icon])
-                <article class="card-premium p-6">
-                    <x-icon-box :icon="$icon" variant="soft" />
-                    <h3 class="mt-4 font-display text-base font-semibold text-navy">{{ $title }}</h3>
-                    <p class="mt-2 text-sm text-slate-600">{{ $desc }}</p>
-                </article>
+            <article class="card-premium p-6">
+                <x-icon-box :icon="$icon" variant="soft" />
+                <h3 class="mt-4 font-display text-base font-semibold text-navy">{{ $title }}</h3>
+                <p class="mt-2 text-sm text-slate-600">{{ $desc }}</p>
+            </article>
             @endforeach
         </div>
     </div>
@@ -146,7 +146,7 @@
                 </div>
                 <ul class="mt-4 space-y-2 text-sm text-slate-600">
                     @foreach(['CI/CD aligned to your branching strategy', 'Staging environments before production releases', 'Docker and cloud deploy experience (AWS, VPS)', 'Rollback plans and post-release monitoring'] as $item)
-                        <li class="flex gap-2"><x-icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />{{ $item }}</li>
+                    <li class="flex gap-2"><x-icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />{{ $item }}</li>
                     @endforeach
                 </ul>
             </div>
@@ -157,14 +157,14 @@
                 </div>
                 <ul class="mt-4 space-y-2 text-sm text-slate-600">
                     @foreach(['Slack, Teams, or email—your preference', 'Weekly written status with risks and blockers', 'Shared documentation in Notion or Confluence', 'Account manager for escalation and billing'] as $item)
-                        <li class="flex gap-2"><x-icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />{{ $item }}</li>
+                    <li class="flex gap-2"><x-icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />{{ $item }}</li>
                     @endforeach
                 </ul>
             </div>
         </div>
         <div class="mt-10 flex flex-wrap gap-2 reveal-on-scroll">
             @foreach(['Fintech', 'Healthcare', 'Logistics', 'SaaS', 'Retail', 'Manufacturing'] as $ind)
-                <span class="badge-metric">{{ $ind }}</span>
+            <span class="badge-metric">{{ $ind }}</span>
             @endforeach
         </div>
     </div>
@@ -177,10 +177,10 @@
         <h3 class="mt-10 text-xl font-semibold text-navy">Related technologies</h3>
         <div class="mt-4 flex flex-wrap gap-3">
             @foreach(['Laravel' => '/hire-laravel-developers', 'React' => '/hire-react-developers', 'Node.js' => '/hire-nodejs-developers', 'Flutter' => '/hire-flutter-developers'] as $name => $href)
-                <a href="{{ $href }}" class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-navy shadow-soft transition-colors hover:border-brand-200 hover:bg-brand-50">
-                    <x-tech-icon :tech="$name" box="h-7 w-7 rounded-md" class="h-3.5 w-3.5" />
-                    {{ $name }}
-                </a>
+            <a href="{{ $href }}" class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm font-medium text-navy shadow-soft transition-colors hover:border-brand-200 hover:bg-brand-50">
+                <x-tech-icon :tech="$name" box="h-7 w-7 rounded-md" class="h-3.5 w-3.5" />
+                {{ $name }}
+            </a>
             @endforeach
         </div>
     </div>
