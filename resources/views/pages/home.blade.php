@@ -147,10 +147,10 @@
                 <x-section-header align="left" eyebrow="Why Hire Developer" title="Built for teams that cannot afford hiring mistakes" description="We combine agency-grade delivery with the flexibility of staff augmentation—so you get speed without sacrificing quality." />
                 <ul class="mt-8 space-y-4">
                     @foreach([
-                    ['shield', 'Rigorous vetting', 'Technical interviews, live coding, and reference checks on every developer.'],
-                    ['users', 'Dedicated account management', 'A single point of contact for staffing, billing, and escalation.'],
-                    ['clock', 'Timezone overlap', 'Engineers available for US, UK, EU, and APAC collaboration windows.'],
-                    ['lock', 'IP protection', 'NDAs, secure repositories, and role-based access from day one.'],
+                    ['shield-check', 'Rigorous vetting', 'Technical interviews, live coding, and reference checks on every developer.'],
+                    ['user-group', 'Dedicated account management', 'A single point of contact for staffing, billing, and escalation.'],
+                    ['globe', 'Timezone overlap', 'Engineers available for US, UK, EU, and APAC collaboration windows.'],
+                    ['shield-lock', 'IP protection', 'NDAs, secure repositories, and role-based access from day one.'],
                     ] as [$icon, $title, $text])
                     <li class="flex gap-4 card-premium p-5">
                         <x-icon-box :icon="$icon" />
@@ -164,8 +164,8 @@
             </div>
             <div class="reveal-on-scroll" data-reveal-delay="150">
                 <x-stat-grid :stats="[
-                        ['label' => 'Developers placed', 'value' => '320+', 'note' => 'Across 18 countries', 'icon' => 'users'],
-                        ['label' => 'Client retention', 'value' => '94%', 'note' => '12-month average', 'icon' => 'chart'],
+                        ['label' => 'Developers placed', 'value' => '320+', 'note' => 'Across 18 countries', 'icon' => 'user-group'],
+                        ['label' => 'Client retention', 'value' => '94%', 'note' => '12-month average', 'icon' => 'presentation-chart-line'],
                         ['label' => 'Avg. time to match', 'value' => '3 days', 'note' => 'For senior roles', 'icon' => 'clock'],
                         ['label' => 'Projects delivered', 'value' => '180+', 'note' => 'Since 2018', 'icon' => 'briefcase'],
                     ]" />
@@ -181,9 +181,9 @@
         </div>
         @php
         $pricingPlans = [
-        ['currency', 'Hourly Basis', 'Best for advisory, audits, or short bursts of senior expertise.', '$15–$45/hr', 'Scale up or down weekly'],
-        ['briefcase', 'Dedicated Developer', 'A full-time engineer embedded in your sprint rituals and tools.', 'Monthly retainer', '40 hrs/week commitment'],
-        ['document', 'Full Project', 'Fixed scope with milestones, QA, and handover documentation.', 'Custom quote', 'Discovery workshop included'],
+        ['clock-currency', 'Hourly Basis', 'Best for advisory, audits, or short bursts of senior expertise.', '$15–$45/hr', 'Scale up or down weekly'],
+        ['identification', 'Dedicated Developer', 'A full-time engineer embedded in your sprint rituals and tools.', 'Monthly retainer', '40 hrs/week commitment'],
+        ['clipboard-document-check', 'Full Project', 'Fixed scope with milestones, QA, and handover documentation.', 'Custom quote', 'Discovery workshop included'],
         ];
         @endphp
         {{-- Mobile & tablet: peek carousel with arrows & dots --}}
@@ -211,13 +211,13 @@
         <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
             @foreach([
             ['layers', 'Full-Stack', 'Laravel + React, Node + Vue'],
-            ['server', 'Backend & APIs', 'REST, GraphQL, microservices'],
-            ['component', 'Frontend & UI', 'Design systems, accessibility'],
+            ['circle-stack', 'Backend & APIs', 'REST, GraphQL, microservices'],
+            ['computer-desktop', 'Frontend & UI', 'Design systems, accessibility'],
             ['smartphone', 'Mobile', 'Flutter, React Native, native'],
-            ['cloud', 'DevOps', 'CI/CD, Docker, cloud deploy'],
-            ['check', 'QA & Testing', 'Automation, regression suites'],
-            ['chart', 'Data & BI', 'ETL, Power BI, analytics'],
-            ['cpu', 'AI & ML', 'Integrations, workflow bots'],
+            ['cloud-arrow-up', 'DevOps', 'CI/CD, Docker, cloud deploy'],
+            ['check-circle', 'QA & Testing', 'Automation, regression suites'],
+            ['presentation-chart-line', 'Data & BI', 'ETL, Power BI, analytics'],
+            ['sparkles', 'AI & ML', 'Integrations, workflow bots'],
             ] as [$icon, $role, $skills])
             <div class="card-premium p-5 reveal-on-scroll">
                 <x-icon-box :icon="$icon" variant="soft" class="!h-9 !w-9" />
@@ -236,10 +236,10 @@
         </div>
         <ol class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
             @foreach([
-            ['chat', '01', 'Share requirements', 'Tell us your stack, timeline, and team structure via our form or a call.'],
-            ['users', '02', 'Receive shortlist', 'We send profiles with portfolios, availability, and rate cards.'],
-            ['workflow', '03', 'Interview & select', 'Meet candidates live. Swap or extend with no long-term lock-in.'],
-            ['code', '04', 'Start delivery', 'Developer joins your tools. We handle contracts and invoicing.'],
+            ['clipboard-document', '01', 'Share requirements', 'Tell us your stack, timeline, and team structure via our form or a call.'],
+            ['clipboard-document-list', '02', 'Receive shortlist', 'We send profiles with portfolios, availability, and rate cards.'],
+            ['user-check', '03', 'Interview & select', 'Meet candidates live. Swap or extend with no long-term lock-in.'],
+            ['rocket-launch', '04', 'Start delivery', 'Developer joins your tools. We handle contracts and invoicing.'],
             ] as [$icon, $step, $title, $desc])
             <li class="card-premium p-6 reveal-on-scroll">
                 <div class="flex items-center justify-between">
