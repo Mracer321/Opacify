@@ -1,8 +1,29 @@
 <?php
 
+use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\Admin\EnquiryController as AdminEnquiryController;
+use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\ServicePageController;
 use App\Http\Controllers\TechnologyPageController;
 use Illuminate\Support\Facades\Route;
+
+Route::post('/enquiries', [EnquiryController::class, 'store'])
+    ->middleware('throttle:enquiries')
+    ->name('enquiries.store');
+
+Route::get('/admin/login', [AdminAuthController::class, 'showLogin'])
+    ->middleware('guest')
+    ->name('login');
+Route::post('/admin/login', [AdminAuthController::class, 'login'])
+    ->middleware('guest')
+    ->name('admin.login.store');
+
+Route::middleware('auth')->group(function () {
+    Route::post('/admin/logout', [AdminAuthController::class, 'logout'])->name('admin.logout');
+    Route::redirect('/admin', '/admin/enquiries')->name('admin');
+    Route::get('/admin/enquiries', [AdminEnquiryController::class, 'index'])->name('admin.enquiries.index');
+    Route::get('/admin/enquiries/{enquiry}', [AdminEnquiryController::class, 'show'])->name('admin.enquiries.show');
+});
 
 Route::view('/', 'pages.home')->name('home');
 
