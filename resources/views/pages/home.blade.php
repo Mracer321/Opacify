@@ -87,13 +87,31 @@
             @endforeach
         </div>
         @php
-        $techChips = ['React', 'Next.js', 'Laravel', 'PHP', 'Node.js', 'Vue.js', 'Angular', 'Flutter', 'Docker', 'AWS', 'TypeScript', 'PostgreSQL', 'MySQL', 'Python'];
+        // Explicit destinations: high-intent stacks point to canonical /hire-* pages;
+        // the rest point to data-backed /technologies/{slug} entries.
+        $techChips = [
+            'React' => '/hire-react-developers',
+            'Next.js' => '/technologies/nextjs',
+            'Laravel' => '/hire-laravel-developers',
+            'PHP' => '/technologies/php',
+            'Node.js' => '/hire-nodejs-developers',
+            'Vue.js' => '/technologies/vue',
+            'Angular' => '/technologies/angular',
+            'Flutter' => '/hire-flutter-developers',
+            'Docker' => '/technologies/docker',
+            'AWS' => '/technologies/aws',
+            'TypeScript' => '/technologies/typescript',
+            'PostgreSQL' => '/technologies/postgresql',
+            'MySQL' => '/technologies/mysql',
+            'Python' => '/technologies/python',
+        ];
+        $techChipsDesktop = ['Vue.js', 'Angular', 'Python', 'MySQL', 'Docker', 'AWS', 'TypeScript', 'PostgreSQL'];
         @endphp
         {{-- Mobile & tablet: horizontal swipe slider --}}
         <div class="mobile-snap-row mt-8 reveal-on-scroll lg:hidden" data-reveal-delay="200">
             <div class="mobile-tech-track scrollbar-hide gap-2.5" data-tech-marquee>
-                @foreach($techChips as $badge)
-                <a href="/technologies/{{ strtolower(str_replace([' ', '.'], ['-', ''], $badge)) }}" class="badge-tech-icon mobile-snap-chip">
+                @foreach($techChips as $badge => $href)
+                <a href="{{ $href }}" class="badge-tech-icon mobile-snap-chip">
                     <x-tech-icon :tech="$badge" class="h-4 w-4" box="h-7 w-7 rounded-md" />
                     {{ $badge }}
                 </a>
@@ -102,8 +120,8 @@
         </div>
         {{-- Desktop: unchanged wrap layout --}}
         <div class="mt-8 hidden flex-wrap justify-center gap-2 reveal-on-scroll lg:flex" data-reveal-delay="200">
-            @foreach(['Vue.js', 'Angular', 'Python', 'MySQL', 'Docker', 'AWS', 'TypeScript', 'PostgreSQL'] as $badge)
-            <a href="/technologies/{{ strtolower(str_replace([' ', '.'], ['-', ''], $badge)) }}" class="badge-tech-icon">
+            @foreach($techChipsDesktop as $badge)
+            <a href="{{ $techChips[$badge] }}" class="badge-tech-icon">
                 <x-tech-icon :tech="$badge" class="h-4 w-4" box="h-7 w-7 rounded-md" />
                 {{ $badge }}
             </a>

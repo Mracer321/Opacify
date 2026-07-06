@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ServicePageController;
+use App\Http\Controllers\TechnologyPageController;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'pages.home')->name('home');
@@ -24,4 +25,12 @@ Route::view('/hire-react-developers', 'pages.hire-react-developers');
 Route::view('/hire-nodejs-developers', 'pages.hire-nodejs-developers');
 Route::view('/hire-flutter-developers', 'pages.hire-flutter-developers');
 
-Route::view('/technologies/{slug}', 'pages.technology')->name('technologies.show');
+// Canonical hire-intent slugs are served by the dedicated /hire-*-developers pages.
+// Permanently redirect the technology equivalents (previously linked via the broken
+// fallback route) to avoid duplicate content and cannibalization.
+Route::redirect('/technologies/laravel', '/hire-laravel-developers', 301);
+Route::redirect('/technologies/react', '/hire-react-developers', 301);
+Route::redirect('/technologies/nodejs', '/hire-nodejs-developers', 301);
+Route::redirect('/technologies/flutter', '/hire-flutter-developers', 301);
+
+Route::get('/technologies/{slug}', [TechnologyPageController::class, 'show'])->name('technologies.show');

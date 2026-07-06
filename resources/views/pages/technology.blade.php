@@ -1,24 +1,12 @@
 @extends('layouts.app')
 
 @php
-$tech = $technology ?? [
-    'name' => 'Laravel',
-    'slug' => 'hire-laravel-developers',
-    'headline' => 'Hire Expert Laravel Developers',
-    'description' => 'Build secure APIs, admin panels, and SaaS backends with senior Laravel engineers who understand queues, testing, and production operations.',
-    'canonical' => 'https://opacify.in/hire-laravel-developers',
-    'rate' => '$18–$42/hour',
-    'skills' => ['Laravel 10/11', 'Eloquent & Query Builder', 'Livewire / Inertia', 'PHPUnit & Pest', 'Redis & Horizon', 'REST & Sanctum APIs'],
-    'benefits' => [
-        ['Faster delivery', 'Experienced developers skip ramp-up on MVC patterns, migrations, and package ecosystems.'],
-        ['Production discipline', 'Logging, error tracking, and deployment practices baked in from sprint one.'],
-        ['Flexible engagement', 'Hourly, dedicated monthly, or fixed-scope project teams.'],
-    ],
-];
+// $technology is always provided by TechnologyPageController (unknown slugs 404 there).
+$tech = $technology;
 @endphp
 
-@section('title', $tech['headline'] . ' — OpacifyWeb')
-@section('meta_description', $tech['description'])
+@section('title', $tech['meta_title'] ?? ($tech['headline'] . ' — OpacifyWeb'))
+@section('meta_description', $tech['meta_description'] ?? $tech['description'])
 @section('canonical', $tech['canonical'])
 
 @section('content')
@@ -78,11 +66,9 @@ $tech = $technology ?? [
         <div class="container-narrow max-w-3xl">
             <article class="prose prose-slate max-w-none">
                 <h2 class="heading-section">Why teams hire {{ $tech['name'] }} developers through us</h2>
+                <p class="mt-4 text-slate-600 leading-relaxed">{{ $tech['longform'] }}</p>
                 <p class="mt-4 text-slate-600 leading-relaxed">
-                    Finding {{ $tech['name'] }} talent on job boards takes months. Freelance marketplaces offer inconsistent quality. OpacifyWeb sits in the middle: a structured agency process with individual developer flexibility. Every engineer in our {{ $tech['name'] }} pool has contributed to production codebases—payment gateways, multi-tenant SaaS, or high-traffic APIs—not tutorial projects.
-                </p>
-                <p class="mt-4 text-slate-600 leading-relaxed">
-                    We start with a technical brief call, then share profiles that match your version requirements, timezone, and budget type. You interview finalists directly. Once selected, your developer joins Slack, Jira, or GitHub within 48 hours with a signed NDA and clear invoicing.
+                    We start with a technical brief call, then share profiles that match your version requirements, timezone, and budget type. You interview finalists directly. Once selected, your developer joins your tools within 48 hours with a signed NDA and clear invoicing.
                 </p>
                 <h3 class="mt-10 text-xl font-semibold text-navy">Related technologies</h3>
                 <div class="mt-4 flex flex-wrap gap-2">
