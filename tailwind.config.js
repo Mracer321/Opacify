@@ -40,7 +40,11 @@ export default {
           500: '#6377EE',
           600: '#4557d8',
         },
-        surface: '#F8FAFC',
+        surface: {
+          DEFAULT: '#FFFFFF',
+          soft: '#E4E8FF',
+          strong: '#D6DCFF',
+        },
       },
       fontFamily: {
         sans: ['"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],

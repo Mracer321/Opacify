@@ -66,7 +66,7 @@
     </div>
 </section>
 
-<section class="section-padding gradient-subtle">
+<section class="section-padding bg-surface-soft">
     <div class="container-narrow">
         <div class="reveal-on-scroll">
             <x-section-header eyebrow="Technologies" title="Hire developers across your entire stack" description="From backend APIs to mobile apps—we place engineers who have shipped production systems in the technologies you rely on." />
@@ -112,7 +112,7 @@
     </div>
 </section>
 
-<section class="section-padding">
+<section class="section-padding bg-white">
     <div class="container-narrow">
         <div class="reveal-on-scroll">
             <x-section-header eyebrow="Services" title="End-to-end software delivery" description="Whether you need a single senior engineer or a full product squad, we align talent to your roadmap and delivery model." />
@@ -140,7 +140,7 @@
     </div>
 </section>
 
-<section class="section-padding bg-slate-50">
+<section class="section-padding bg-surface-soft">
     <div class="container-narrow">
         <div class="grid items-center gap-12 lg:grid-cols-2">
             <div class="reveal-on-scroll">
@@ -174,7 +174,7 @@
     </div>
 </section>
 
-<section class="section-padding">
+<section class="section-padding bg-white">
     <div class="container-narrow">
         <div class="reveal-on-scroll">
             <x-section-header eyebrow="Engagement models" title="Flexible hiring that fits your budget" />
@@ -203,7 +203,7 @@
     </div>
 </section>
 
-<section class="section-padding border-y border-slate-100 bg-white">
+<section class="section-padding border-y border-slate-100 bg-surface-soft">
     <div class="container-narrow">
         <div class="reveal-on-scroll">
             <x-section-header eyebrow="Expertise" title="Senior talent across product and platform" description="Our network includes staff-level engineers who have led migrations, built payment flows, and owned on-call for high-traffic systems." />
@@ -229,7 +229,7 @@
     </div>
 </section>
 
-<section class="section-padding bg-slate-50">
+<section class="section-padding bg-white">
     <div class="container-narrow">
         <div class="reveal-on-scroll">
             <x-section-header eyebrow="How it works" title="From brief to onboarded developer in days" />
@@ -254,7 +254,7 @@
     </div>
 </section>
 
-<section class="section-padding">
+<section class="section-padding bg-surface-soft">
     <div class="container-narrow">
         <div class="reveal-on-scroll">
             <x-section-header eyebrow="Client stories" title="Teams that scaled with OpacifyWeb" />
@@ -295,7 +295,7 @@
     </div>
 </section>
 
-<section class="section-padding bg-slate-50">
+<section class="section-padding bg-white">
     <div class="container-narrow">
         <div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end reveal-on-scroll">
             <x-section-header align="left" eyebrow="Case studies" title="Recent work across industries" class="max-w-xl" />
@@ -322,7 +322,7 @@
     </div>
 </section>
 
-<section class="section-padding reveal-on-scroll" id="faqs">
+<section class="section-padding bg-surface-soft reveal-on-scroll" id="faqs">
     <div class="container-narrow max-w-3xl">
         <x-section-header eyebrow="FAQs" title="Common questions about hiring developers" />
         <div class="mt-10">
