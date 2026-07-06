@@ -120,7 +120,7 @@ $preview = $study['preview'] ?? 'erp';
     @php
         $initials = implode('', array_map(fn ($w) => $w[0] ?? '', explode(' ', $study['author'])));
     @endphp
-    <section class="section-padding bg-slate-50">
+    <section class="section-padding bg-surface-soft">
         <div class="container-narrow max-w-3xl reveal-on-scroll">
             <x-testimonial-card
                 :quote="$study['quote']"

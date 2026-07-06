@@ -66,7 +66,7 @@
     </div>
 </section>
 
-<section class="section-padding bg-slate-50">
+<section class="section-padding bg-surface-soft">
     <div class="container-narrow">
         <div class="grid gap-6 md:grid-cols-3" data-reveal-stagger>
             @foreach($tech['benefits'] as $i => [$title, $text])
@@ -112,7 +112,7 @@
     </div>
 </section>
 
-<section class="section-padding bg-slate-50">
+<section class="section-padding bg-surface-soft">
     <div class="container-narrow">
         <div class="reveal-on-scroll">
             <x-section-header eyebrow="Engagement models" title="Flexible ways to work with {{ $tech['name'] }} developers" />
@@ -170,7 +170,7 @@
     </div>
 </section>
 
-<section class="section-padding bg-slate-50">
+<section class="section-padding bg-surface-soft">
     <div class="container-narrow max-w-3xl reveal-on-scroll">
         <h2 class="heading-section">Why teams hire {{ $tech['name'] }} developers through us</h2>
         <p class="mt-4 leading-relaxed text-slate-600">{{ $tech['longform'] ?? 'Every engineer in our pool has contributed to production codebases—not tutorial projects. We share profiles within 48 hours, you interview finalists directly, and onboarding happens within days under NDA.' }}</p>

@@ -51,6 +51,6 @@ $icons = [
 ];
 @endphp
 
-<svg {{ $attributes->merge(['class' => $class]) }} fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+<svg {{ $attributes->merge(['class' => $class]) }} fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
     {!! $icons[$name] ?? $icons['check'] !!}
 </svg>

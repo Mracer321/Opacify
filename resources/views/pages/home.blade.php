@@ -55,7 +55,7 @@
     </div>
 </section>
 
-<section class="border-b border-slate-100 bg-slate-50 py-12 reveal-on-scroll">
+<section class="border-b border-slate-100 bg-white py-12 reveal-on-scroll">
     <div class="container-narrow px-4 sm:px-6 lg:px-8">
         <p class="text-center text-sm font-medium uppercase tracking-wider text-slate-500">Trusted by product teams and agencies</p>
         <div class="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-6 opacity-70 grayscale">
@@ -127,7 +127,7 @@
             ['AI & Automation', 'Workflow automation, integrations, and data-driven decision tools.', '/services/ai-automation', 'ai'],
             ] as [$title, $desc, $href, $icon])
             <a href="{{ $href }}" class="card-premium card-equal block p-6 reveal-on-scroll">
-                <x-service-icon :name="$icon" size="h-7 w-7" box="h-14 w-14 rounded-xl" />
+                <x-service-icon :name="$icon" size="h-6 w-6" box="h-12 w-12 rounded-xl" />
                 <h3 class="mt-4 font-display text-lg font-semibold text-navy">{{ $title }}</h3>
                 <p class="mt-2 text-sm leading-relaxed text-slate-600">{{ $desc }}</p>
                 <span class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-brand-700 link-underline">Learn more</span>

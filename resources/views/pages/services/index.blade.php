@@ -40,7 +40,7 @@ $services = array_values($servicesCatalog);
     </div>
 </section>
 
-<section class="section-padding bg-slate-50">
+<section class="section-padding bg-surface-soft">
     <div class="container-narrow">
         <x-section-header eyebrow="Delivery methodology" title="How we deliver across every practice" description="Consistent governance whether you hire developers or commission a full project." />
         <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
@@ -65,7 +65,7 @@ $services = array_values($servicesCatalog);
         <x-section-header eyebrow="Industries" title="Sectors we serve regularly" />
         <div class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-4">
             @foreach(['Fintech', 'Healthcare', 'Logistics', 'Retail', 'Manufacturing', 'SaaS', 'Education', 'Real Estate'] as $industry)
-            <div class="rounded-xl border border-slate-200/80 bg-slate-50/50 px-4 py-5 text-center">
+            <div class="rounded-xl border border-slate-200/80 bg-surface-soft px-4 py-5 text-center">
                 <span class="text-sm font-semibold text-slate-700">{{ $industry }}</span>
             </div>
             @endforeach
@@ -73,7 +73,7 @@ $services = array_values($servicesCatalog);
     </div>
 </section>
 
-<section class="section-padding bg-slate-50">
+<section class="section-padding bg-surface-soft">
     <div class="container-narrow">
         <x-section-header eyebrow="Process" title="From first call to production delivery" />
         <ol class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">

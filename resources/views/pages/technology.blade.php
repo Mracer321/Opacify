@@ -61,7 +61,7 @@ $tech = $technology ?? [
         </div>
     </section>
 
-    <section class="section-padding bg-slate-50">
+    <section class="section-padding bg-surface-soft">
         <div class="container-narrow">
             <div class="grid gap-12 lg:grid-cols-3">
                 @foreach($tech['benefits'] as [$title, $text])

@@ -57,7 +57,7 @@
         </div>
     </section>
 
-    <section class="section-padding bg-slate-50">
+    <section class="section-padding bg-surface-soft">
         <div class="container-narrow max-w-3xl">
             <x-section-header title="Why founders choose us over job boards" />
             <div class="mt-10 grid gap-6 sm:grid-cols-3" data-reveal-stagger>
@@ -97,7 +97,7 @@
         </div>
     </section>
 
-    <section class="section-padding bg-slate-50">
+    <section class="section-padding bg-surface-soft">
         <div class="container-narrow max-w-2xl">
             <x-section-header title="Quick answers" />
             <div class="mt-8">

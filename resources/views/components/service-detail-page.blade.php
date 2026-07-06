@@ -34,7 +34,7 @@
     </div>
 </section>
 
-<section class="section-padding bg-slate-50">
+<section class="section-padding bg-surface-soft">
     <div class="container-narrow">
         <div class="grid gap-10 lg:grid-cols-2 lg:items-start">
             <div>
@@ -70,7 +70,7 @@
     </div>
 </section>
 
-<section class="section-padding bg-slate-50">
+<section class="section-padding bg-surface-soft">
     <div class="container-narrow">
         <x-section-header eyebrow="Engagement" title="Delivery models" />
         <div class="mt-10 grid gap-6 md:grid-cols-3" data-reveal-stagger>
@@ -98,7 +98,7 @@
     </div>
 </section>
 
-<section id="consultation" class="section-padding border-t border-slate-100 bg-slate-50">
+<section id="consultation" class="section-padding border-t border-slate-100 bg-surface-soft">
     <div class="container-narrow">
         <div class="grid items-start gap-10 lg:grid-cols-2 lg:gap-14">
             <div class="reveal-on-scroll">

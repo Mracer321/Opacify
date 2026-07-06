@@ -29,7 +29,7 @@
         </div>
     </section>
 
-    <section class="section-padding bg-slate-50">
+    <section class="section-padding bg-surface-soft">
         <div class="container-narrow">
             <div class="reveal-on-scroll">
                 <x-section-header eyebrow="Values" title="How we work with every client" />
@@ -61,7 +61,7 @@
         </div>
     </section>
 
-    <section class="section-padding bg-slate-50">
+    <section class="section-padding bg-surface-soft">
         <div class="container-narrow max-w-3xl text-center">
             <h2 class="heading-section reveal-on-scroll">Leadership</h2>
             <p class="mt-4 text-slate-600 reveal-on-scroll">Our leadership team combines product engineering backgrounds with client services experience—so conversations stay technical and practical.</p>

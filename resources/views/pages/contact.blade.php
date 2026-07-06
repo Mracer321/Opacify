@@ -5,7 +5,7 @@
 @section('canonical', 'https://opacify.in/contact')
 
 @section('content')
-    <section class="section-padding gradient-subtle border-b border-slate-100">
+    <section class="section-padding bg-surface-soft border-b border-slate-100">
         <div class="container-narrow reveal-on-scroll">
             <x-section-header
                 eyebrow="Contact"
