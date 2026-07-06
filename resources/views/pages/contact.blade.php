@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Contact Us — Get a Free Quote | Hire Developer')
-@section('meta_description', 'Contact Hire Developer for a free quote. Hire Laravel, React, Node.js, and Flutter developers. Response within one business day.')
-@section('canonical', 'https://hiredeveloper.co.in/contact')
+@section('title', 'Contact Us — Get a Free Quote | OpacifyWeb')
+@section('meta_description', 'Contact OpacifyWeb for a free quote. Hire Laravel, React, Node.js, and Flutter developers. Response within one business day.')
+@section('canonical', 'https://opacifyweb.in/contact')
 
 @section('content')
     <section class="section-padding gradient-subtle border-b border-slate-100">
@@ -38,7 +38,7 @@
                                 <x-icon-box icon="chat" variant="soft" class="!h-9 !w-9 shrink-0" />
                                 <div>
                                     <span class="font-medium text-slate-500">Email</span>
-                                    <a href="mailto:hello@hiredeveloper.co.in" class="mt-1 block text-brand-700 hover:text-brand-800">hello@hiredeveloper.co.in</a>
+                                    <a href="mailto:hello@opacifyweb.in" class="mt-1 block text-brand-700 hover:text-brand-800">hello@opacifyweb.in</a>
                                 </div>
                             </li>
                             <li class="flex gap-3">

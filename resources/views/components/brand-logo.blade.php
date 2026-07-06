@@ -5,9 +5,9 @@
 
 @php
 $variants = [
-    'default' => ['src' => '/images/logo.png', 'alt' => 'Hire Developer'],
-    'dark' => ['src' => '/images/logo-dark.png', 'alt' => 'Hire Developer'],
-    'icon' => ['src' => '/images/favicon.png', 'alt' => 'Hire Developer'],
+    'default' => ['src' => '/images/logo.png', 'alt' => 'OpacifyWeb'],
+    'dark' => ['src' => '/images/logo-dark.png', 'alt' => 'OpacifyWeb'],
+    'icon' => ['src' => '/images/favicon.png', 'alt' => 'OpacifyWeb'],
 ];
 $config = $variants[$variant] ?? $variants['default'];
 @endphp

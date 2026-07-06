@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Case Studies — Enterprise Software Projects | Hire Developer')
-@section('meta_description', 'Explore case studies in logistics, healthcare, fintech, and SaaS. See how Hire Developer delivers measurable outcomes.')
-@section('canonical', 'https://hiredeveloper.co.in/case-studies')
+@section('title', 'Case Studies — Enterprise Software Projects | OpacifyWeb')
+@section('meta_description', 'Explore case studies in logistics, healthcare, fintech, and SaaS. See how OpacifyWeb delivers measurable outcomes.')
+@section('canonical', 'https://opacifyweb.in/case-studies')
 
 @php
 $previewVariants = [

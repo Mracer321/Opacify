@@ -1,8 +1,8 @@
 @extends('layouts.landing')
 
-@section('title', 'Hire Remote Developers — Free Quote in 24 Hours | Hire Developer')
+@section('title', 'Hire Remote Developers — Free Quote in 24 Hours | OpacifyWeb')
 @section('meta_description', 'Hire vetted Laravel, React, Node.js, and Flutter developers. Starting $15/hour. Get matched within 48 hours. Free quote.')
-@section('canonical', 'https://hiredeveloper.co.in/lp/hire-developers')
+@section('canonical', 'https://opacifyweb.in/lp/hire-developers')
 
 @section('content')
     {{-- Minimal header for conversion --}}
@@ -122,6 +122,6 @@
     </section>
 
     <footer class="border-t border-slate-200 py-6 text-center text-xs text-slate-500">
-        <p>&copy; {{ date('Y') }} Hire Developer · <a href="/" class="text-brand-700">hiredeveloper.co.in</a></p>
+        <p>&copy; {{ date('Y') }} OpacifyWeb · <a href="/" class="text-brand-700">opacifyweb.in</a></p>
     </footer>
 @endsection

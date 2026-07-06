@@ -275,8 +275,8 @@
 
   .gradient-hero {
     background:
-      radial-gradient(ellipse 80% 50% at 90% 0%, rgba(255, 122, 69, 0.18), transparent 55%),
-      radial-gradient(ellipse 60% 40% at 0% 100%, rgba(255, 122, 69, 0.1), transparent 50%),
+      radial-gradient(ellipse 80% 50% at 90% 0%, rgba(99, 119, 238, 0.18), transparent 55%),
+      radial-gradient(ellipse 60% 40% at 0% 100%, rgba(99, 119, 238, 0.1), transparent 50%),
       linear-gradient(165deg, #0F172A 0%, #0F172A 50%, #1e293b 100%);
   }
 
@@ -364,11 +364,11 @@ a.footer-contact-link:hover .footer-contact-icon {
   }
 
   .fab-call {
-    background-color: #FF7A45;
+    background-color: #6377EE;
   }
 
   .fab-call:hover {
-    background-color: #e86a38;
+    background-color: #4557d8;
   }
 
   .fab-whatsapp {

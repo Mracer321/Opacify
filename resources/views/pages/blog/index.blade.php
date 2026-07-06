@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Blog — Hiring Developers & Software Insights | Hire Developer')
+@section('title', 'Blog — Hiring Developers & Software Insights | OpacifyWeb')
 @section('meta_description', 'Practical guides on hiring remote developers, scaling engineering teams, and delivering software projects.')
-@section('canonical', 'https://hiredeveloper.co.in/blog')
+@section('canonical', 'https://opacifyweb.in/blog')
 
 @php
 $posts = [

@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Hire Developer — Hire Top Remote Developers For Your Projects')
+@section('title', 'OpacifyWeb — Hire Top Remote Developers For Your Projects')
 @section('meta_description', 'Hire experienced Laravel, React, Node.js, Flutter, and full-stack developers for hourly, dedicated, or project-based work. Starting from $15/hour.')
-@section('canonical', 'https://hiredeveloper.co.in')
+@section('canonical', 'https://opacifyweb.in')
 
 @section('content')
 <section class="gradient-hero relative overflow-hidden">
@@ -144,7 +144,7 @@
     <div class="container-narrow">
         <div class="grid items-center gap-12 lg:grid-cols-2">
             <div class="reveal-on-scroll">
-                <x-section-header align="left" eyebrow="Why Hire Developer" title="Built for teams that cannot afford hiring mistakes" description="We combine agency-grade delivery with the flexibility of staff augmentation—so you get speed without sacrificing quality." />
+                <x-section-header align="left" eyebrow="Why OpacifyWeb" title="Built for teams that cannot afford hiring mistakes" description="We combine agency-grade delivery with the flexibility of staff augmentation—so you get speed without sacrificing quality." />
                 <ul class="mt-8 space-y-4">
                     @foreach([
                     ['shield-check', 'Rigorous vetting', 'Technical interviews, live coding, and reference checks on every developer.'],
@@ -257,11 +257,11 @@
 <section class="section-padding">
     <div class="container-narrow">
         <div class="reveal-on-scroll">
-            <x-section-header eyebrow="Client stories" title="Teams that scaled with Hire Developer" />
+            <x-section-header eyebrow="Client stories" title="Teams that scaled with OpacifyWeb" />
         </div>
         @php
         $testimonials = [
-        ['quote' => 'We needed a Laravel lead within a week for a fintech MVP. Hire Developer sent three strong profiles; we onboarded one in four days. Code quality and communication were consistently excellent.', 'author' => 'Priya Mehta', 'role' => 'CTO', 'company' => 'FinEdge Payments', 'initials' => 'PM'],
+        ['quote' => 'We needed a Laravel lead within a week for a fintech MVP. OpacifyWeb sent three strong profiles; we onboarded one in four days. Code quality and communication were consistently excellent.', 'author' => 'Priya Mehta', 'role' => 'CTO', 'company' => 'FinEdge Payments', 'initials' => 'PM'],
         ['quote' => 'Our React dashboard was six weeks behind. A dedicated frontend engineer from HD joined our standups, refactored our component library, and helped us ship before our investor demo.', 'author' => 'James Whitfield', 'role' => 'VP Engineering', 'company' => 'RetailOS', 'initials' => 'JW'],
         ['quote' => 'We run a dedicated Flutter team through HD for two apps. They understand our release process, handle store submissions, and have never missed a sprint commitment in fourteen months.', 'author' => 'Anita Korhonen', 'role' => 'Product Director', 'company' => 'HealthBridge', 'initials' => 'AK'],
         ];

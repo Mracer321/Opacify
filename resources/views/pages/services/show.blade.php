@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', $service['title'] . ' Services — Hire Developer')
+@section('title', $service['title'] . ' Services — OpacifyWeb')
 @section('meta_description', $service['meta_description'])
-@section('canonical', 'https://hiredeveloper.co.in/services/' . $service['slug'])
+@section('canonical', 'https://opacifyweb.in/services/' . $service['slug'])
 
 @section('content')
     <x-service-detail-page :service="$service" />

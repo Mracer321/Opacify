@@ -6,7 +6,7 @@ $tech = $technology ?? [
     'slug' => 'hire-laravel-developers',
     'headline' => 'Hire Expert Laravel Developers',
     'description' => 'Build secure APIs, admin panels, and SaaS backends with senior Laravel engineers who understand queues, testing, and production operations.',
-    'canonical' => 'https://hiredeveloper.co.in/hire-laravel-developers',
+    'canonical' => 'https://opacifyweb.in/hire-laravel-developers',
     'rate' => '$18–$42/hour',
     'skills' => ['Laravel 10/11', 'Eloquent & Query Builder', 'Livewire / Inertia', 'PHPUnit & Pest', 'Redis & Horizon', 'REST & Sanctum APIs'],
     'benefits' => [
@@ -17,7 +17,7 @@ $tech = $technology ?? [
 ];
 @endphp
 
-@section('title', $tech['headline'] . ' — Hire Developer')
+@section('title', $tech['headline'] . ' — OpacifyWeb')
 @section('meta_description', $tech['description'])
 @section('canonical', $tech['canonical'])
 
@@ -79,7 +79,7 @@ $tech = $technology ?? [
             <article class="prose prose-slate max-w-none">
                 <h2 class="heading-section">Why teams hire {{ $tech['name'] }} developers through us</h2>
                 <p class="mt-4 text-slate-600 leading-relaxed">
-                    Finding {{ $tech['name'] }} talent on job boards takes months. Freelance marketplaces offer inconsistent quality. Hire Developer sits in the middle: a structured agency process with individual developer flexibility. Every engineer in our {{ $tech['name'] }} pool has contributed to production codebases—payment gateways, multi-tenant SaaS, or high-traffic APIs—not tutorial projects.
+                    Finding {{ $tech['name'] }} talent on job boards takes months. Freelance marketplaces offer inconsistent quality. OpacifyWeb sits in the middle: a structured agency process with individual developer flexibility. Every engineer in our {{ $tech['name'] }} pool has contributed to production codebases—payment gateways, multi-tenant SaaS, or high-traffic APIs—not tutorial projects.
                 </p>
                 <p class="mt-4 text-slate-600 leading-relaxed">
                     We start with a technical brief call, then share profiles that match your version requirements, timezone, and budget type. You interview finalists directly. Once selected, your developer joins Slack, Jira, or GitHub within 48 hours with a signed NDA and clear invoicing.

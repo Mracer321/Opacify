@@ -115,7 +115,7 @@ $techCategoryShort = [
 >
     <div class="nav-shell">
         {{-- LEFT: Logo --}}
-        <a href="/" class="nav-brand" aria-label="Hire Developer home">
+        <a href="/" class="nav-brand" aria-label="OpacifyWeb home">
             <x-brand-logo variant="default" class="h-9 w-auto max-w-[10.5rem] sm:max-w-[11.5rem]" />
         </a>
 

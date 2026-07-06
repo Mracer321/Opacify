@@ -16,7 +16,7 @@ $study = $study ?? [
         ['12', 'Legacy modules migrated'],
     ],
     'tech' => ['Laravel', 'Vue.js', 'MySQL', 'Redis', 'AWS'],
-    'quote' => 'Hire Developer felt like an extension of our internal IT team. They challenged our assumptions and still hit the go-live date.',
+    'quote' => 'OpacifyWeb felt like an extension of our internal IT team. They challenged our assumptions and still hit the go-live date.',
     'author' => 'Marcus Lindqvist',
     'role' => 'COO, LogiStack',
     'preview' => 'erp',
@@ -24,8 +24,8 @@ $study = $study ?? [
 $preview = $study['preview'] ?? 'erp';
 @endphp
 
-@section('title', $study['title'] . ' Case Study — Hire Developer')
-@section('canonical', 'https://hiredeveloper.co.in/case-studies/' . $study['slug'])
+@section('title', $study['title'] . ' Case Study — OpacifyWeb')
+@section('canonical', 'https://opacifyweb.in/case-studies/' . $study['slug'])
 
 @section('content')
     <header class="gradient-hero section-padding pb-12">

@@ -12,8 +12,8 @@ $post = $post ?? [
 ];
 @endphp
 
-@section('title', $post['title'] . ' — Hire Developer Blog')
-@section('canonical', 'https://hiredeveloper.co.in/blog/' . $post['slug'])
+@section('title', $post['title'] . ' — OpacifyWeb Blog')
+@section('canonical', 'https://opacifyweb.in/blog/' . $post['slug'])
 
 @section('content')
     <article>
@@ -45,7 +45,7 @@ $post = $post ?? [
                     Teams that define trial acceptance criteria in writing onboard 40% faster than those relying on vague "see how it goes" agreements.
                 </blockquote>
                 <h2>When agency support helps</h2>
-                <p>If you need replacement coverage, consolidated invoicing, or NDA management across jurisdictions, a partner like Hire Developer reduces operational overhead—while you still interview and manage day-to-day engineering.</p>
+                <p>If you need replacement coverage, consolidated invoicing, or NDA management across jurisdictions, a partner like OpacifyWeb reduces operational overhead—while you still interview and manage day-to-day engineering.</p>
                 <p>Ready to see Laravel profiles matched to your brief? <a href="/contact">Request a free quote</a> and we will respond within one business day.</p>
             </div>
         </div>

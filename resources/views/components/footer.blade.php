@@ -68,11 +68,11 @@
                     <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-500">Contact</h4>
                     <ul class="mt-4 space-y-3.5 text-sm">
                         <li>
-                            <a href="mailto:hello@hiredeveloper.co.in" class="footer-contact-link group">
+                            <a href="mailto:hello@opacifyweb.in" class="footer-contact-link group">
                                 <span class="footer-contact-icon" aria-hidden="true">
                                     <x-tabler-icon name="mail" class="h-[18px] w-[18px]" />
                                 </span>
-                                <span>hello@hiredeveloper.co.in</span>
+                                <span>hello@opacifyweb.in</span>
                             </a>
                         </li>
                         <li>
@@ -99,11 +99,11 @@
             </div>
 
             <div class="mt-10 flex flex-col items-center justify-between gap-4 border-t border-slate-800 pt-8 text-sm text-slate-500 sm:flex-row">
-                <p>&copy; {{ date('Y') }} Hire Developer. All rights reserved.</p>
+                <p>&copy; {{ date('Y') }} OpacifyWeb. All rights reserved.</p>
                 <div class="flex flex-wrap justify-center gap-6">
                     <a href="#" class="transition-colors hover:text-brand-400">Privacy Policy</a>
                     <a href="#" class="transition-colors hover:text-brand-400">Terms of Service</a>
-                    <a href="https://hiredeveloper.co.in" class="transition-colors hover:text-brand-400">hiredeveloper.co.in</a>
+                    <a href="https://opacifyweb.in" class="transition-colors hover:text-brand-400">opacifyweb.in</a>
                 </div>
             </div>
         </div>

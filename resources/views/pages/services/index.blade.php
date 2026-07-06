@@ -5,9 +5,9 @@ $servicesCatalog = require resource_path('data/services.php');
 $services = array_values($servicesCatalog);
 @endphp
 
-@section('title', 'Software Development Services — Hire Developer')
+@section('title', 'Software Development Services — OpacifyWeb')
 @section('meta_description', 'Enterprise software services: web development, mobile apps, ERP, custom software, digital marketing, and AI automation.')
-@section('canonical', 'https://hiredeveloper.co.in/services')
+@section('canonical', 'https://opacifyweb.in/services')
 
 @section('content')
 <section class="gradient-hero section-padding pb-14">
@@ -96,7 +96,7 @@ $services = array_values($servicesCatalog);
 <section class="section-padding bg-white">
     <div class="container-narrow">
         <div class="grid items-center gap-12 lg:grid-cols-2">
-            <x-section-header align="left" eyebrow="Why Hire Developer" title="Built for teams that need agency quality without agency friction" description="Vetted engineers, documented delivery, and account management that stays technical." />
+            <x-section-header align="left" eyebrow="Why OpacifyWeb" title="Built for teams that need agency quality without agency friction" description="Vetted engineers, documented delivery, and account management that stays technical." />
             <ul class="space-y-4">
                 @foreach([
                 ['Rigorous vetting', 'Live technical interviews and production reference checks.'],
