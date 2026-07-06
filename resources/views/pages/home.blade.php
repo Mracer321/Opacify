@@ -2,7 +2,7 @@
 
 @section('title', 'OpacifyWeb — Hire Top Remote Developers For Your Projects')
 @section('meta_description', 'Hire experienced Laravel, React, Node.js, Flutter, and full-stack developers for hourly, dedicated, or project-based work. Starting from $15/hour.')
-@section('canonical', 'https://opacifyweb.in')
+@section('canonical', 'https://opacify.in')
 
 @section('content')
 <section class="gradient-hero relative overflow-hidden">

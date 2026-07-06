@@ -2,7 +2,7 @@
 
 @section('title', 'Blog — Hiring Developers & Software Insights | OpacifyWeb')
 @section('meta_description', 'Practical guides on hiring remote developers, scaling engineering teams, and delivering software projects.')
-@section('canonical', 'https://opacifyweb.in/blog')
+@section('canonical', 'https://opacify.in/blog')
 
 @php
 $posts = [

@@ -7,7 +7,7 @@ $services = array_values($servicesCatalog);
 
 @section('title', 'Software Development Services — OpacifyWeb')
 @section('meta_description', 'Enterprise software services: web development, mobile apps, ERP, custom software, digital marketing, and AI automation.')
-@section('canonical', 'https://opacifyweb.in/services')
+@section('canonical', 'https://opacify.in/services')
 
 @section('content')
 <section class="gradient-hero section-padding pb-14">

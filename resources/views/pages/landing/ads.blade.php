@@ -2,7 +2,7 @@
 
 @section('title', 'Hire Remote Developers — Free Quote in 24 Hours | OpacifyWeb')
 @section('meta_description', 'Hire vetted Laravel, React, Node.js, and Flutter developers. Starting $15/hour. Get matched within 48 hours. Free quote.')
-@section('canonical', 'https://opacifyweb.in/lp/hire-developers')
+@section('canonical', 'https://opacify.in/lp/hire-developers')
 
 @section('content')
     {{-- Minimal header for conversion --}}
@@ -11,7 +11,7 @@
             <a href="/" class="flex items-center">
                 <x-brand-logo variant="default" class="h-8 w-auto max-w-[10rem]" />
             </a>
-            <a href="tel:+919876543210" class="text-sm font-semibold text-brand-600 hover:text-brand-700">+91 98765 43210</a>
+            <a href="tel:+918802032023" class="text-sm font-semibold text-brand-600 hover:text-brand-700">+91 88020 32023</a>
         </div>
     </header>
 
@@ -116,12 +116,12 @@
             <p class="mt-4 text-slate-300">Submit the form above or call us now.</p>
             <div class="mt-8 flex flex-wrap justify-center gap-4">
                 <x-button href="#quote-form" variant="accent" size="lg">Get Free Quote</x-button>
-                <x-button href="tel:+919876543210" variant="outline-light" size="lg">Call Now</x-button>
+                <x-button href="tel:+918802032023" variant="outline-light" size="lg">Call Now</x-button>
             </div>
         </div>
     </section>
 
     <footer class="border-t border-slate-200 py-6 text-center text-xs text-slate-500">
-        <p>&copy; {{ date('Y') }} OpacifyWeb · <a href="/" class="text-brand-700">opacifyweb.in</a></p>
+        <p>&copy; {{ date('Y') }} OpacifyWeb · <a href="/" class="text-brand-700">opacify.in</a></p>
     </footer>
 @endsection

@@ -2,7 +2,7 @@
 
 @section('title', 'Hire Expert Laravel Developers — OpacifyWeb')
 @section('meta_description', 'Hire senior Laravel developers for APIs, SaaS, and enterprise backends. Vetted talent, NDA-backed, starting from $18/hour.')
-@section('canonical', 'https://opacifyweb.in/hire-laravel-developers')
+@section('canonical', 'https://opacify.in/hire-laravel-developers')
 
 @section('content')
     <x-technology-page :tech="[

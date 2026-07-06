@@ -13,7 +13,7 @@ $post = $post ?? [
 @endphp
 
 @section('title', $post['title'] . ' — OpacifyWeb Blog')
-@section('canonical', 'https://opacifyweb.in/blog/' . $post['slug'])
+@section('canonical', 'https://opacify.in/blog/' . $post['slug'])
 
 @section('content')
     <article>

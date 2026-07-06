@@ -2,7 +2,7 @@
 
 @section('title', 'Case Studies — Enterprise Software Projects | OpacifyWeb')
 @section('meta_description', 'Explore case studies in logistics, healthcare, fintech, and SaaS. See how OpacifyWeb delivers measurable outcomes.')
-@section('canonical', 'https://opacifyweb.in/case-studies')
+@section('canonical', 'https://opacify.in/case-studies')
 
 @php
 $previewVariants = [

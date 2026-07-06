@@ -1,8 +1,8 @@
 # OpacifyWeb
 
-Premium software agency & developer hiring platform — **Laravel 12** + Blade + Tailwind CSS + Alpine.js.
+Developer hiring platform — **Laravel 12** + Blade + Tailwind CSS + Alpine.js.
 
-**Site:** [opacifyweb.in](https://opacifyweb.in)
+**Site:** [opacify.in](https://opacify.in)
 
 ## Requirements
 

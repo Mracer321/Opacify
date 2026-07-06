@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'About Us — OpacifyWeb | Premium Software Agency')
-@section('meta_description', 'Learn about OpacifyWeb—an enterprise software agency helping companies hire remote developers and deliver complex digital products since 2018.')
-@section('canonical', 'https://opacifyweb.in/about')
+@section('title', 'About Us — OpacifyWeb | Developer Hiring Platform')
+@section('meta_description', 'Learn about OpacifyWeb—a developer hiring platform helping companies hire skilled remote developers and build their engineering teams.')
+@section('canonical', 'https://opacify.in/about')
 
 @section('content')
     <section class="gradient-hero section-padding pb-16">
@@ -11,7 +11,7 @@
                 We help ambitious teams build software—and hire the people who ship it
             </h1>
             <p class="mt-6 max-w-2xl text-lg text-slate-300">
-                OpacifyWeb is a remote-first software agency based in India, partnering with startups and enterprises across North America, Europe, and APAC since 2018.
+                OpacifyWeb is a remote-first developer hiring platform based in India, partnering with startups and enterprises across North America, Europe, and APAC since 2018.
             </p>
         </div>
     </section>

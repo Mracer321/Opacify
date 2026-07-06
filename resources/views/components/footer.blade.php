@@ -68,19 +68,19 @@
                     <h4 class="text-xs font-semibold uppercase tracking-wider text-slate-500">Contact</h4>
                     <ul class="mt-4 space-y-3.5 text-sm">
                         <li>
-                            <a href="mailto:hello@opacifyweb.in" class="footer-contact-link group">
+                            <a href="mailto:opacifyweb@gmail.com" class="footer-contact-link group">
                                 <span class="footer-contact-icon" aria-hidden="true">
                                     <x-tabler-icon name="mail" class="h-[18px] w-[18px]" />
                                 </span>
-                                <span>hello@opacifyweb.in</span>
+                                <span>opacifyweb@gmail.com</span>
                             </a>
                         </li>
                         <li>
-                            <a href="tel:+919876543210" class="footer-contact-link group">
+                            <a href="tel:+918802032023" class="footer-contact-link group">
                                 <span class="footer-contact-icon" aria-hidden="true">
                                     <x-tabler-icon name="phone" class="h-[18px] w-[18px]" />
                                 </span>
-                                <span>+91 98765 43210</span>
+                                <span>+91 88020 32023</span>
                             </a>
                         </li>
                         <li class="footer-contact-link text-slate-400">
@@ -103,7 +103,7 @@
                 <div class="flex flex-wrap justify-center gap-6">
                     <a href="#" class="transition-colors hover:text-brand-400">Privacy Policy</a>
                     <a href="#" class="transition-colors hover:text-brand-400">Terms of Service</a>
-                    <a href="https://opacifyweb.in" class="transition-colors hover:text-brand-400">opacifyweb.in</a>
+                    <a href="https://opacify.in" class="transition-colors hover:text-brand-400">opacify.in</a>
                 </div>
             </div>
         </div>

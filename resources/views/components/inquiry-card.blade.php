@@ -22,6 +22,6 @@
     @endif
     <div class="mt-5 flex flex-wrap gap-3">
         <x-button href="{{ $service ? $href . '?service=' . urlencode($service) : $href }}" variant="primary" size="md">{{ $buttonLabel }}</x-button>
-        <x-button href="tel:+919876543210" variant="secondary" size="md">Call us</x-button>
+        <x-button href="tel:+918802032023" variant="secondary" size="md">Call us</x-button>
     </div>
 </div>

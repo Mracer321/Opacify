@@ -25,7 +25,7 @@ $preview = $study['preview'] ?? 'erp';
 @endphp
 
 @section('title', $study['title'] . ' Case Study — OpacifyWeb')
-@section('canonical', 'https://opacifyweb.in/case-studies/' . $study['slug'])
+@section('canonical', 'https://opacify.in/case-studies/' . $study['slug'])
 
 @section('content')
     <header class="gradient-hero section-padding pb-12">

@@ -2,7 +2,7 @@
 
 @section('title', 'Hire Expert React Developers — OpacifyWeb')
 @section('meta_description', 'Hire React developers for SPAs, dashboards, and design systems. Senior frontend engineers, flexible engagement models.')
-@section('canonical', 'https://opacifyweb.in/hire-react-developers')
+@section('canonical', 'https://opacify.in/hire-react-developers')
 
 @section('content')
     <x-technology-page :tech="[

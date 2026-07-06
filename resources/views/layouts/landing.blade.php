@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title', 'OpacifyWeb')</title>
     <meta name="description" content="@yield('meta_description', '')">
-    <link rel="canonical" href="@yield('canonical', 'https://opacifyweb.in')">
+    <link rel="canonical" href="@yield('canonical', 'https://opacify.in')">
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

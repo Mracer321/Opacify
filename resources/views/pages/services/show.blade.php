@@ -2,7 +2,7 @@
 
 @section('title', $service['title'] . ' Services — OpacifyWeb')
 @section('meta_description', $service['meta_description'])
-@section('canonical', 'https://opacifyweb.in/services/' . $service['slug'])
+@section('canonical', 'https://opacify.in/services/' . $service['slug'])
 
 @section('content')
     <x-service-detail-page :service="$service" />

@@ -2,7 +2,7 @@
 
 @section('title', 'Hire Expert Flutter Developers — OpacifyWeb')
 @section('meta_description', 'Hire Flutter developers for iOS and Android apps. Cross-platform mobile engineers with store release experience.')
-@section('canonical', 'https://opacifyweb.in/hire-flutter-developers')
+@section('canonical', 'https://opacify.in/hire-flutter-developers')
 
 @section('content')
     <x-technology-page :tech="[

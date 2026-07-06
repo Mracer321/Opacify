@@ -2,7 +2,7 @@
 
 @section('title', 'Contact Us — Get a Free Quote | OpacifyWeb')
 @section('meta_description', 'Contact OpacifyWeb for a free quote. Hire Laravel, React, Node.js, and Flutter developers. Response within one business day.')
-@section('canonical', 'https://opacifyweb.in/contact')
+@section('canonical', 'https://opacify.in/contact')
 
 @section('content')
     <section class="section-padding gradient-subtle border-b border-slate-100">
@@ -38,14 +38,14 @@
                                 <x-icon-box icon="chat" variant="soft" class="!h-9 !w-9 shrink-0" />
                                 <div>
                                     <span class="font-medium text-slate-500">Email</span>
-                                    <a href="mailto:hello@opacifyweb.in" class="mt-1 block text-brand-700 hover:text-brand-800">hello@opacifyweb.in</a>
+                                    <a href="mailto:opacifyweb@gmail.com" class="mt-1 block text-brand-700 hover:text-brand-800">opacifyweb@gmail.com</a>
                                 </div>
                             </li>
                             <li class="flex gap-3">
                                 <x-icon-box icon="smartphone" variant="soft" class="!h-9 !w-9 shrink-0" />
                                 <div>
                                     <span class="font-medium text-slate-500">Phone</span>
-                                    <a href="tel:+919876543210" class="mt-1 block text-brand-700 hover:text-brand-800">+91 98765 43210</a>
+                                    <a href="tel:+918802032023" class="mt-1 block text-brand-700 hover:text-brand-800">+91 88020 32023</a>
                                 </div>
                             </li>
                             <li class="flex gap-3">

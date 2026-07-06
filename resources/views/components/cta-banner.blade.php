@@ -24,7 +24,7 @@
                     </ul>
                     <div class="mt-8 flex flex-wrap gap-4">
                         <x-button href="{{ $primaryHref }}" variant="primary" size="lg">{{ $primaryLabel }}</x-button>
-                        <x-button href="tel:+919876543210" variant="outline-light" size="lg">Call +91 98765 43210</x-button>
+                        <x-button href="tel:+918802032023" variant="outline-light" size="lg">Call +91 88020 32023</x-button>
                     </div>
                 </div>
                 <div class="hidden w-full max-w-xs lg:block">
