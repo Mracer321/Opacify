@@ -10,6 +10,9 @@ Route::get('/services/{slug}', [ServicePageController::class, 'show'])->name('se
 
 Route::view('/about', 'pages.about')->name('about');
 Route::view('/contact', 'pages.contact')->name('contact');
+
+Route::view('/privacy-policy', 'pages.legal.privacy-policy')->name('privacy-policy');
+Route::view('/terms', 'pages.legal.terms')->name('terms');
 Route::view('/blog', 'pages.blog.index')->name('blog.index');
 Route::view('/blog/{slug}', 'pages.blog.show')->name('blog.show');
 Route::view('/case-studies', 'pages.case-studies.index')->name('case-studies.index');

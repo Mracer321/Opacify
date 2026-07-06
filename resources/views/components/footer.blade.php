@@ -46,7 +46,6 @@
                         <h3 class="text-sm font-semibold text-white">Resources</h3>
                         <ul class="mt-4 space-y-2.5 text-sm">
                             <li><a href="/blog" class="transition-colors hover:text-brand-400">Blog</a></li>
-                            <li><a href="/resources/guides" class="transition-colors hover:text-brand-400">Guides</a></li>
                             <li><a href="/#faqs" class="transition-colors hover:text-brand-400">FAQs</a></li>
                         </ul>
                     </div>
@@ -101,8 +100,8 @@
             <div class="mt-10 flex flex-col items-center justify-between gap-4 border-t border-slate-800 pt-8 text-sm text-slate-500 sm:flex-row">
                 <p>&copy; {{ date('Y') }} OpacifyWeb. All rights reserved.</p>
                 <div class="flex flex-wrap justify-center gap-6">
-                    <a href="#" class="transition-colors hover:text-brand-400">Privacy Policy</a>
-                    <a href="#" class="transition-colors hover:text-brand-400">Terms of Service</a>
+                    <a href="{{ route('privacy-policy') }}" class="transition-colors hover:text-brand-400">Privacy Policy</a>
+                    <a href="{{ route('terms') }}" class="transition-colors hover:text-brand-400">Terms of Service</a>
                     <a href="https://opacify.in" class="transition-colors hover:text-brand-400">opacify.in</a>
                 </div>
             </div>

@@ -262,6 +262,26 @@
   .process-step-icon {
     @apply flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-500 text-white shadow-sm;
   }
+
+  .legal-prose h2 {
+    @apply mt-10 font-display text-xl font-semibold text-navy;
+  }
+
+  .legal-prose h2:first-child {
+    @apply mt-0;
+  }
+
+  .legal-prose p {
+    @apply mt-3 text-sm leading-relaxed text-slate-600 sm:text-base;
+  }
+
+  .legal-prose ul {
+    @apply mt-3 list-disc space-y-1.5 pl-5 text-sm leading-relaxed text-slate-600 sm:text-base;
+  }
+
+  .legal-prose a {
+    @apply font-medium text-brand-700 hover:text-brand-800;
+  }
 }
 
 @layer utilities {

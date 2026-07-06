@@ -58,7 +58,6 @@ $techMenu = [
 
 $resourcesMenu = [
     ['label' => 'Blog', 'href' => '/blog'],
-    ['label' => 'Guides', 'href' => '/resources/guides'],
     ['label' => 'FAQs', 'href' => '/#faqs'],
 ];
 
