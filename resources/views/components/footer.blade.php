@@ -70,7 +70,7 @@
                         <li>
                             <a href="mailto:opacifyweb@gmail.com" class="footer-contact-link group">
                                 <span class="footer-contact-icon" aria-hidden="true">
-                                    <x-tabler-icon name="mail" class="h-[18px] w-[18px]" />
+                                    <x-icon name="mail" class="h-[18px] w-[18px]" />
                                 </span>
                                 <span>opacifyweb@gmail.com</span>
                             </a>
@@ -78,14 +78,14 @@
                         <li>
                             <a href="tel:+918802032023" class="footer-contact-link group">
                                 <span class="footer-contact-icon" aria-hidden="true">
-                                    <x-tabler-icon name="phone" class="h-[18px] w-[18px]" />
+                                    <x-icon name="phone" class="h-[18px] w-[18px]" />
                                 </span>
                                 <span>+91 88020 32023</span>
                             </a>
                         </li>
                         <li class="footer-contact-link text-slate-400">
                             <span class="footer-contact-icon" aria-hidden="true">
-                                <x-tabler-icon name="map-pin" class="h-[18px] w-[18px]" />
+                                <x-icon name="map-pin" class="h-[18px] w-[18px]" />
                             </span>
                             <span>India · Remote-first delivery</span>
                         </li>

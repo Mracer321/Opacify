@@ -75,9 +75,16 @@
         <x-section-header eyebrow="Engagement" title="Delivery models" />
         <div class="mt-10 grid gap-6 md:grid-cols-3" data-reveal-stagger>
             @foreach($service['delivery'] as $i => [$title, $desc])
-            @php $deliveryIcons = ['clock', 'users', 'briefcase']; @endphp
+            @php
+                $deliveryIcons = ['clock', 'users', 'briefcase'];
+                $deliveryIconMap = [
+                    'Dedicated squad' => 'users', 'Milestone project' => 'flag', 'Staff augmentation' => 'user-plus',
+                    'Dedicated mobile team' => 'users', 'Pilot release' => 'rocket-launch', 'Augmented engineers' => 'user-plus',
+                ];
+                $deliveryIcon = $deliveryIconMap[$title] ?? ($deliveryIcons[$i] ?? 'briefcase');
+            @endphp
             <article class="card-premium p-6 reveal-on-scroll">
-                <x-icon-box :icon="$deliveryIcons[$i] ?? 'briefcase'" variant="soft" />
+                <x-icon-box :icon="$deliveryIcon" variant="soft" />
                 <h3 class="mt-4 font-display text-base font-semibold text-navy">{{ $title }}</h3>
                 <p class="mt-2 text-sm text-slate-600">{{ $desc }}</p>
             </article>

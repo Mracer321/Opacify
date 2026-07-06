@@ -210,7 +210,7 @@
         </div>
         <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
             @foreach([
-            ['layers', 'Full-Stack', 'Laravel + React, Node + Vue'],
+            ['code-window', 'Full-Stack', 'Laravel + React, Node + Vue'],
             ['circle-stack', 'Backend & APIs', 'REST, GraphQL, microservices'],
             ['computer-desktop', 'Frontend & UI', 'Design systems, accessibility'],
             ['smartphone', 'Mobile', 'Flutter, React Native, native'],

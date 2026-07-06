@@ -35,14 +35,14 @@
                         <h2 class="font-display text-lg font-semibold text-navy">Direct contact</h2>
                         <ul class="mt-4 space-y-4 text-sm">
                             <li class="flex gap-3">
-                                <x-icon-box icon="chat" variant="soft" class="!h-9 !w-9 shrink-0" />
+                                <x-icon-box icon="mail" variant="soft" class="!h-9 !w-9 shrink-0" />
                                 <div>
                                     <span class="font-medium text-slate-500">Email</span>
                                     <a href="mailto:opacifyweb@gmail.com" class="mt-1 block text-brand-700 hover:text-brand-800">opacifyweb@gmail.com</a>
                                 </div>
                             </li>
                             <li class="flex gap-3">
-                                <x-icon-box icon="smartphone" variant="soft" class="!h-9 !w-9 shrink-0" />
+                                <x-icon-box icon="phone" variant="soft" class="!h-9 !w-9 shrink-0" />
                                 <div>
                                     <span class="font-medium text-slate-500">Phone</span>
                                     <a href="tel:+918802032023" class="mt-1 block text-brand-700 hover:text-brand-800">+91 88020 32023</a>

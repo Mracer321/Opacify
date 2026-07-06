@@ -1,4 +1,25 @@
 import Alpine from 'alpinejs';
+import {
+    createIcons,
+    ArrowRight, Check, CircleCheck, MessageSquare, CircleHelp, FileText, Globe, Lock,
+    Shield, ShieldCheck, Sparkles, Workflow, Cpu, TrendingUp, LineChart, AppWindow,
+    Smartphone, Building2, Terminal, Megaphone, Code, Layers, Network, Server, Database,
+    Cloud, Clock, UserCheck, Briefcase, UserPlus, Users, ClipboardList, ClipboardCheck,
+    Rocket, Flag, CircleDollarSign, Mail, Phone, MapPin, Bug,
+} from 'lucide';
+
+// Centralized Lucide init — replaces <i data-lucide="..."> placeholders rendered by <x-icon>.
+const lucideIcons = {
+    ArrowRight, Check, CircleCheck, MessageSquare, CircleHelp, FileText, Globe, Lock,
+    Shield, ShieldCheck, Sparkles, Workflow, Cpu, TrendingUp, LineChart, AppWindow,
+    Smartphone, Building2, Terminal, Megaphone, Code, Layers, Network, Server, Database,
+    Cloud, Clock, UserCheck, Briefcase, UserPlus, Users, ClipboardList, ClipboardCheck,
+    Rocket, Flag, CircleDollarSign, Mail, Phone, MapPin, Bug,
+};
+
+function initLucideIcons() {
+    createIcons({ icons: lucideIcons, attrs: { 'stroke-width': 1.75 } });
+}
 
 window.Alpine = Alpine;
 
@@ -173,6 +194,7 @@ function initTechMarquee() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    initLucideIcons();
     initRevealAnimations();
     initTechMarquee();
 });
