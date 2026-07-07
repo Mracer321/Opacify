@@ -19,7 +19,8 @@
             </a>
             @auth
                 <nav class="flex items-center gap-4 text-sm">
-                    <a href="{{ route('admin.enquiries.index') }}" class="font-medium text-slate-600 hover:text-brand-700">Enquiries</a>
+                    <a href="{{ route('admin.enquiries.index') }}" class="font-medium {{ request()->routeIs('admin.enquiries.*') ? 'text-brand-700' : 'text-slate-600' }} hover:text-brand-700">Enquiries</a>
+                    <a href="{{ route('admin.projects.index') }}" class="font-medium {{ request()->routeIs('admin.projects.*') ? 'text-brand-700' : 'text-slate-600' }} hover:text-brand-700">Projects</a>
                     <form method="post" action="{{ route('admin.logout') }}">
                         @csrf
                         <button type="submit" class="font-medium text-slate-600 hover:text-brand-700">Logout</button>
@@ -30,6 +31,11 @@
     </header>
 
     <main class="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
+        @if(session('status'))
+            <div class="mb-6 rounded-xl border border-brand-200 bg-brand-50 px-4 py-3 text-sm font-medium text-brand-800">
+                {{ session('status') }}
+            </div>
+        @endif
         @yield('content')
     </main>
 </body>

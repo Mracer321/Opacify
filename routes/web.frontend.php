@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\EnquiryController as AdminEnquiryController;
+use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
+use App\Http\Controllers\CaseStudyController;
 use App\Http\Controllers\EnquiryController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServicePageController;
 use App\Http\Controllers\TechnologyPageController;
 use Illuminate\Support\Facades\Route;
@@ -23,9 +26,13 @@ Route::middleware('auth')->group(function () {
     Route::redirect('/admin', '/admin/enquiries')->name('admin');
     Route::get('/admin/enquiries', [AdminEnquiryController::class, 'index'])->name('admin.enquiries.index');
     Route::get('/admin/enquiries/{enquiry}', [AdminEnquiryController::class, 'show'])->name('admin.enquiries.show');
+
+    Route::resource('admin/projects', AdminProjectController::class)
+        ->except(['show'])
+        ->names('admin.projects');
 });
 
-Route::view('/', 'pages.home')->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/services', [ServicePageController::class, 'index'])->name('services');
 Route::get('/services/{slug}', [ServicePageController::class, 'show'])->name('services.show');
@@ -37,8 +44,8 @@ Route::view('/privacy-policy', 'pages.legal.privacy-policy')->name('privacy-poli
 Route::view('/terms', 'pages.legal.terms')->name('terms');
 Route::view('/blog', 'pages.blog.index')->name('blog.index');
 Route::view('/blog/{slug}', 'pages.blog.show')->name('blog.show');
-Route::view('/case-studies', 'pages.case-studies.index')->name('case-studies.index');
-Route::view('/case-studies/{slug}', 'pages.case-studies.show')->name('case-studies.show');
+Route::get('/case-studies', [CaseStudyController::class, 'index'])->name('case-studies.index');
+Route::get('/case-studies/{slug}', [CaseStudyController::class, 'show'])->name('case-studies.show');
 Route::view('/lp/hire-developers', 'pages.landing.ads')->name('landing.ads');
 
 Route::view('/hire-laravel-developers', 'pages.hire-laravel-developers');

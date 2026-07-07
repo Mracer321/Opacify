@@ -1,0 +1,12 @@
+@extends('layouts.admin')
+
+@section('title', 'Add Project — OpacifyWeb Admin')
+
+@section('content')
+    <div class="mb-6">
+        <a href="{{ route('admin.projects.index') }}" class="text-sm font-semibold text-brand-700 hover:text-brand-800">Back to projects</a>
+        <h1 class="mt-3 font-display text-3xl font-semibold text-navy">Add project</h1>
+    </div>
+
+    @include('admin.projects._form')
+@endsection

@@ -313,30 +313,46 @@
     </div>
 </section>
 
+@php
+    // Single featured, published project drives the homepage case-study card.
+    // No featured project => the card is omitted (no invented content).
+    $featuredProject = $featuredProject ?? null;
+    $featuredMetric = $featuredProject?->highlights[0]['text'] ?? null;
+    $featuredImageUrl = $featuredProject?->primary_image
+        ? \Illuminate\Support\Facades\Storage::disk('public')->url($featuredProject->primary_image)
+        : null;
+@endphp
 <section class="section-padding bg-white">
     <div class="container-narrow">
         <div class="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end reveal-on-scroll">
             <x-section-header align="left" eyebrow="Case studies" title="Recent work across industries" class="max-w-xl" />
             <x-button href="/case-studies" variant="secondary">View all case studies</x-button>
         </div>
+        @if($featuredProject)
         <div class="mt-12 grid gap-8 lg:grid-cols-2" data-reveal-stagger>
-            @foreach([
-            ['Logistics ERP Modernization', 'Replaced legacy desktop software with a Laravel + Vue platform serving 40 warehouses.', ['Laravel', 'Vue.js', 'MySQL'], '40% faster fulfillment', '/case-studies/logistics-erp-modernization', 'erp'],
-            ['Healthcare Patient Portal', 'HIPAA-aware React portal with appointment booking and secure messaging.', ['React', 'Node.js', 'AWS'], '2.1M sessions / year', '/case-studies/healthcare-patient-portal', 'dashboard'],
-            ] as [$title, $desc, $techs, $metric, $href, $variant])
-            <a href="{{ $href }}" class="card-premium group overflow-hidden reveal-on-scroll">
-                <x-ui-mockup :variant="$variant" :title="$title" subtitle="Client deliverable preview" class="rounded-none border-0 border-b border-slate-200/80 shadow-none" />
-                <div class="p-6 sm:p-8">
-                    <div class="flex flex-wrap gap-2">
-                        @foreach($techs as $t)<span class="badge-tech">{{ $t }}</span>@endforeach
+            <a href="{{ route('case-studies.show', $featuredProject->slug) }}" class="card-premium group overflow-hidden reveal-on-scroll">
+                @if($featuredImageUrl)
+                    <div class="aspect-[16/9] w-full border-b border-slate-200/80">
+                        <img src="{{ $featuredImageUrl }}" alt="{{ $featuredProject->title }}" class="h-full w-full object-cover" loading="lazy">
                     </div>
-                    <h3 class="mt-4 font-display text-xl font-semibold text-navy group-hover:text-brand-700">{{ $title }}</h3>
-                    <p class="mt-2 text-sm text-slate-600">{{ $desc }}</p>
-                    <p class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600"><x-icon name="chart" class="h-4 w-4" /> {{ $metric }}</p>
+                @else
+                    <x-ui-mockup variant="dashboard" :title="$featuredProject->title" subtitle="Client deliverable preview" class="rounded-none border-0 border-b border-slate-200/80 shadow-none" />
+                @endif
+                <div class="p-6 sm:p-8">
+                    @if(!empty($featuredProject->technologies))
+                        <div class="flex flex-wrap gap-2">
+                            @foreach($featuredProject->technologies as $t)<span class="badge-tech">{{ $t }}</span>@endforeach
+                        </div>
+                    @endif
+                    <h3 class="mt-4 font-display text-xl font-semibold text-navy group-hover:text-brand-700">{{ $featuredProject->title }}</h3>
+                    <p class="mt-2 text-sm text-slate-600">{{ $featuredProject->short_summary }}</p>
+                    @if($featuredMetric)
+                        <p class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600"><x-icon name="chart" class="h-4 w-4" /> {{ $featuredMetric }}</p>
+                    @endif
                 </div>
             </a>
-            @endforeach
         </div>
+        @endif
     </div>
 </section>
 
