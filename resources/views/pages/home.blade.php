@@ -57,10 +57,47 @@
 
 <section class="border-b border-slate-100 bg-white py-12 reveal-on-scroll">
     <div class="container-narrow px-4 sm:px-6 lg:px-8">
-        <p class="text-center text-sm font-medium uppercase tracking-wider text-slate-500">Trusted by product teams and agencies</p>
-        <div class="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-6 opacity-70 grayscale">
-            @foreach(['FinEdge', 'RetailOS', 'HealthBridge', 'LogiStack', 'EduNova', 'PropTech Co'] as $brand)
-            <span class="font-display text-lg font-semibold tracking-tight text-slate-400">{{ $brand }}</span>
+        <p class="text-center text-sm font-medium uppercase tracking-wider text-slate-500">
+            Technologies We Work With
+        </p>
+
+        @php
+        $technologies = [
+        ['key' => 'Laravel', 'name' => 'Laravel'],
+        ['key' => 'React', 'name' => 'React'],
+        ['key' => 'Next.js', 'name' => 'Next.js'],
+        ['key' => 'Node.js', 'name' => 'Node.js'],
+        ['key' => 'Flutter', 'name' => 'Flutter'],
+        ['key' => 'Go', 'name' => 'Golang'],
+        ];
+        @endphp
+
+        <div class="mt-8 flex flex-wrap items-center justify-center gap-x-12 gap-y-8">
+            @foreach($technologies as $technology)
+            @php
+            $logo = \App\Support\TechLogo::scopedLogoFor($technology['key']);
+            @endphp
+
+            <div class="group flex items-center gap-3 opacity-70 transition duration-300 hover:opacity-100">
+                <span class="tech-logo-box inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-white p-1.5 ring-1 ring-slate-200/80 shadow-sm">
+                    @if($logo)
+                    <svg
+                        class="tech-logo h-7 w-7"
+                        viewBox="{{ $logo['viewBox'] }}"
+                        xmlns="http://www.w3.org/2000/svg"
+                        role="img"
+                        aria-label="{{ $technology['name'] }} logo">{!! $logo['svg'] !!}</svg>
+                    @else
+                    <span class="flex h-7 w-7 items-center justify-center rounded bg-slate-100 text-[10px] font-bold uppercase text-slate-500">
+                        {{ strtoupper(substr($technology['name'], 0, 2)) }}
+                    </span>
+                    @endif
+                </span>
+
+                <span class="font-display text-lg font-semibold tracking-tight text-slate-500">
+                    {{ $technology['name'] }}
+                </span>
+            </div>
             @endforeach
         </div>
     </div>
@@ -90,20 +127,20 @@
         // Explicit destinations: high-intent stacks point to canonical /hire-* pages;
         // the rest point to data-backed /technologies/{slug} entries.
         $techChips = [
-            'React' => '/hire-react-developers',
-            'Next.js' => '/technologies/nextjs',
-            'Laravel' => '/hire-laravel-developers',
-            'PHP' => '/technologies/php',
-            'Node.js' => '/hire-nodejs-developers',
-            'Vue.js' => '/technologies/vue',
-            'Angular' => '/technologies/angular',
-            'Flutter' => '/hire-flutter-developers',
-            'Docker' => '/technologies/docker',
-            'AWS' => '/technologies/aws',
-            'TypeScript' => '/technologies/typescript',
-            'PostgreSQL' => '/technologies/postgresql',
-            'MySQL' => '/technologies/mysql',
-            'Python' => '/technologies/python',
+        'React' => '/hire-react-developers',
+        'Next.js' => '/technologies/nextjs',
+        'Laravel' => '/hire-laravel-developers',
+        'PHP' => '/technologies/php',
+        'Node.js' => '/hire-nodejs-developers',
+        'Vue.js' => '/technologies/vue',
+        'Angular' => '/technologies/angular',
+        'Flutter' => '/hire-flutter-developers',
+        'Docker' => '/technologies/docker',
+        'AWS' => '/technologies/aws',
+        'TypeScript' => '/technologies/typescript',
+        'PostgreSQL' => '/technologies/postgresql',
+        'MySQL' => '/technologies/mysql',
+        'Python' => '/technologies/python',
         ];
         $techChipsDesktop = ['Vue.js', 'Angular', 'Python', 'MySQL', 'Docker', 'AWS', 'TypeScript', 'PostgreSQL'];
         @endphp
@@ -314,13 +351,13 @@
 </section>
 
 @php
-    // Single featured, published project drives the homepage case-study card.
-    // No featured project => the card is omitted (no invented content).
-    $featuredProject = $featuredProject ?? null;
-    $featuredMetric = $featuredProject?->highlights[0]['text'] ?? null;
-    $featuredImageUrl = $featuredProject?->primary_image
-        ? \Illuminate\Support\Facades\Storage::disk('public')->url($featuredProject->primary_image)
-        : null;
+// Single featured, published project drives the homepage case-study card.
+// No featured project => the card is omitted (no invented content).
+$featuredProject = $featuredProject ?? null;
+$featuredMetric = $featuredProject?->highlights[0]['text'] ?? null;
+$featuredImageUrl = $featuredProject?->primary_image
+? \Illuminate\Support\Facades\Storage::disk('public')->url($featuredProject->primary_image)
+: null;
 @endphp
 <section class="section-padding bg-white">
     <div class="container-narrow">
@@ -332,22 +369,22 @@
         <div class="mt-12 grid gap-8 lg:grid-cols-2" data-reveal-stagger>
             <a href="{{ route('case-studies.show', $featuredProject->slug) }}" class="card-premium group overflow-hidden reveal-on-scroll">
                 @if($featuredImageUrl)
-                    <div class="aspect-[16/9] w-full border-b border-slate-200/80">
-                        <img src="{{ $featuredImageUrl }}" alt="{{ $featuredProject->title }}" class="h-full w-full object-cover" loading="lazy">
-                    </div>
+                <div class="aspect-[16/9] w-full border-b border-slate-200/80">
+                    <img src="{{ $featuredImageUrl }}" alt="{{ $featuredProject->title }}" class="h-full w-full object-cover" loading="lazy">
+                </div>
                 @else
-                    <x-ui-mockup variant="dashboard" :title="$featuredProject->title" subtitle="Client deliverable preview" class="rounded-none border-0 border-b border-slate-200/80 shadow-none" />
+                <x-ui-mockup variant="dashboard" :title="$featuredProject->title" subtitle="Client deliverable preview" class="rounded-none border-0 border-b border-slate-200/80 shadow-none" />
                 @endif
                 <div class="p-6 sm:p-8">
                     @if(!empty($featuredProject->technologies))
-                        <div class="flex flex-wrap gap-2">
-                            @foreach($featuredProject->technologies as $t)<span class="badge-tech">{{ $t }}</span>@endforeach
-                        </div>
+                    <div class="flex flex-wrap gap-2">
+                        @foreach($featuredProject->technologies as $t)<span class="badge-tech">{{ $t }}</span>@endforeach
+                    </div>
                     @endif
                     <h3 class="mt-4 font-display text-xl font-semibold text-navy group-hover:text-brand-700">{{ $featuredProject->title }}</h3>
                     <p class="mt-2 text-sm text-slate-600">{{ $featuredProject->short_summary }}</p>
                     @if($featuredMetric)
-                        <p class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600"><x-icon name="chart" class="h-4 w-4" /> {{ $featuredMetric }}</p>
+                    <p class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600"><x-icon name="chart" class="h-4 w-4" /> {{ $featuredMetric }}</p>
                     @endif
                 </div>
             </a>
