@@ -41,7 +41,10 @@ return [
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),
-            'url' => rtrim(env('APP_URL', 'http://localhost'), '/').'/storage',
+            // Root-relative so image URLs resolve against whatever origin serves the
+            // page (localhost:8000, opacify.in, etc.) instead of being locked to
+            // APP_URL. Prevents broken images when the serving host != APP_URL.
+            'url' => '/storage',
             'visibility' => 'public',
             'throw' => false,
             'report' => false,

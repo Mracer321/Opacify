@@ -15,8 +15,10 @@
 
     // Open Graph image only (social metadata) — never rendered as page content.
     // Prefer a dedicated OG image, else reuse the primary project image.
+    // Social crawlers require an ABSOLUTE URL, so promote the relative disk URL
+    // to absolute against the current request host.
     $ogImagePath = $project->og_image ?: $project->primary_image;
-    $ogImageUrl = $ogImagePath ? Storage::disk('public')->url($ogImagePath) : null;
+    $ogImageUrl = $ogImagePath ? url(Storage::disk('public')->url($ogImagePath)) : null;
 @endphp
 
 @section('title', $project->seo_title ?: $project->title . ' Case Study — OpacifyWeb')
