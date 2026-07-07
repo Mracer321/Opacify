@@ -15,6 +15,11 @@ class Project extends Model
 
     public const STATUS_PUBLISHED = 'published';
 
+    /**
+     * Maximum number of projects that may be featured on the homepage at once.
+     */
+    public const MAX_FEATURED = 4;
+
     protected $fillable = [
         'title',
         'slug',

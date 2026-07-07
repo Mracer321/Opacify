@@ -301,4 +301,50 @@ class CaseStudyPublicTest extends TestCase
     {
         $this->get('/')->assertOk();
     }
+
+    public function test_homepage_displays_a_maximum_of_four_featured_projects(): void
+    {
+        foreach (range(1, 5) as $i) {
+            Project::factory()->featured()->create([
+                'title' => "Featured Card {$i}",
+                'slug' => "featured-card-{$i}",
+                'sort_order' => $i,
+            ]);
+        }
+
+        $response = $this->get('/')->assertOk();
+
+        foreach (range(1, 4) as $i) {
+            $response->assertSee("Featured Card {$i}");
+        }
+        // The 5th (highest sort_order) is beyond the 4-card limit.
+        $response->assertDontSee('Featured Card 5');
+    }
+
+    public function test_homepage_respects_sort_order_ascending(): void
+    {
+        Project::factory()->featured()->create(['title' => 'Beta Card', 'slug' => 'beta', 'sort_order' => 2]);
+        Project::factory()->featured()->create(['title' => 'Alpha Card', 'slug' => 'alpha', 'sort_order' => 1]);
+
+        $content = $this->get('/')->assertOk()->getContent();
+
+        $this->assertLessThan(
+            strpos($content, 'Beta Card'),
+            strpos($content, 'Alpha Card')
+        );
+    }
+
+    public function test_unpublished_featured_projects_do_not_appear_on_homepage(): void
+    {
+        Project::factory()->create([
+            'title' => 'Unpublished Featured Study',
+            'slug' => 'unpublished-featured',
+            'is_featured' => true,
+            'status' => 'draft',
+        ]);
+
+        $this->get('/')
+            ->assertOk()
+            ->assertDontSee('Unpublished Featured Study');
+    }
 }

@@ -1,8 +1,8 @@
 @props([
-    'title' => 'Ready to hire developers who deliver?',
-    'description' => 'Tell us about your project. We will match you with vetted engineers and send a tailored proposal within 24 hours.',
-    'primaryLabel' => 'Get Free Quote',
-    'primaryHref' => '/contact',
+'title' => 'Ready to hire developers who deliver?',
+'description' => 'Tell us about your project. We will match you with vetted engineers and send a tailored proposal within 24 hours.',
+'primaryLabel' => 'Get Free Quote',
+'primaryHref' => '/contact',
 ])
 
 <section {{ $attributes->merge(['class' => 'section-padding']) }}>

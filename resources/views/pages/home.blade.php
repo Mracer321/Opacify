@@ -351,13 +351,9 @@
 </section>
 
 @php
-// Single featured, published project drives the homepage case-study card.
-// No featured project => the card is omitted (no invented content).
-$featuredProject = $featuredProject ?? null;
-$featuredMetric = $featuredProject?->highlights[0]['text'] ?? null;
-$featuredImageUrl = $featuredProject?->primary_image
-? \Illuminate\Support\Facades\Storage::disk('public')->url($featuredProject->primary_image)
-: null;
+// Up to 4 featured, published projects drive the homepage case-study cards.
+// No featured projects => the grid is omitted (no invented content).
+$featuredProjects = $featuredProjects ?? collect();
 @endphp
 <section class="section-padding bg-white">
     <div class="container-narrow">
@@ -365,8 +361,15 @@ $featuredImageUrl = $featuredProject?->primary_image
             <x-section-header align="left" eyebrow="Case studies" title="Recent work across industries" class="max-w-xl" />
             <x-button href="/case-studies" variant="secondary">View all case studies</x-button>
         </div>
-        @if($featuredProject)
+        @if($featuredProjects->isNotEmpty())
         <div class="mt-12 grid gap-8 lg:grid-cols-2" data-reveal-stagger>
+            @foreach($featuredProjects as $featuredProject)
+            @php
+            $featuredMetric = $featuredProject->highlights[0]['text'] ?? null;
+            $featuredImageUrl = $featuredProject->primary_image
+                ? \Illuminate\Support\Facades\Storage::disk('public')->url($featuredProject->primary_image)
+                : null;
+            @endphp
             <a href="{{ route('case-studies.show', $featuredProject->slug) }}" class="card-premium group overflow-hidden reveal-on-scroll">
                 @if($featuredImageUrl)
                 <div class="aspect-[16/9] w-full border-b border-slate-200/80">
@@ -388,6 +391,7 @@ $featuredImageUrl = $featuredProject?->primary_image
                     @endif
                 </div>
             </a>
+            @endforeach
         </div>
         @endif
     </div>

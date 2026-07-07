@@ -206,7 +206,7 @@ class ProjectAdminTest extends TestCase
         $this->assertTrue(Project::firstWhere('slug', 'logistics-erp-modernization')->is_featured);
     }
 
-    public function test_featuring_a_second_published_project_unfeatures_the_first(): void
+    public function test_featuring_a_second_project_does_not_unfeature_the_first(): void
     {
         $first = Project::factory()->featured()->create(['slug' => 'first-project']);
 
@@ -215,11 +215,65 @@ class ProjectAdminTest extends TestCase
                 'slug' => 'second-project',
                 'status' => 'published',
                 'is_featured' => '1',
-            ]));
+            ]))
+            ->assertSessionHasNoErrors();
 
-        $this->assertFalse($first->fresh()->is_featured);
+        // Both remain featured — no auto-unfeature.
+        $this->assertTrue($first->fresh()->is_featured);
         $this->assertTrue(Project::firstWhere('slug', 'second-project')->is_featured);
-        $this->assertSame(1, Project::where('is_featured', true)->count());
+        $this->assertSame(2, Project::where('is_featured', true)->count());
+    }
+
+    public function test_up_to_four_projects_can_be_featured_simultaneously(): void
+    {
+        Project::factory()->count(3)->featured()->create();
+
+        $this->actingAs(User::factory()->create())
+            ->post('/admin/projects', $this->validPayload([
+                'slug' => 'fourth-featured',
+                'status' => 'published',
+                'is_featured' => '1',
+            ]))
+            ->assertSessionHasNoErrors();
+
+        $this->assertSame(4, Project::where('is_featured', true)->count());
+    }
+
+    public function test_fifth_featured_project_is_rejected_with_a_validation_error(): void
+    {
+        Project::factory()->count(4)->featured()->create();
+
+        $this->actingAs(User::factory()->create())
+            ->post('/admin/projects', $this->validPayload([
+                'slug' => 'fifth-featured',
+                'status' => 'published',
+                'is_featured' => '1',
+            ]))
+            ->assertSessionHasErrors('is_featured');
+
+        // The rejected project was not created and the count stays at 4.
+        $this->assertNull(Project::firstWhere('slug', 'fifth-featured'));
+        $this->assertSame(4, Project::where('is_featured', true)->count());
+    }
+
+    public function test_editing_an_already_featured_project_works_when_four_are_featured(): void
+    {
+        $featured = Project::factory()->count(4)->featured()->create();
+        $target = $featured->first();
+
+        $this->actingAs(User::factory()->create())
+            ->put("/admin/projects/{$target->id}", $this->validPayload([
+                'slug' => $target->slug,
+                'title' => 'Edited While Featured',
+                'status' => 'published',
+                'is_featured' => '1',
+            ]))
+            ->assertRedirect('/admin/projects')
+            ->assertSessionHasNoErrors();
+
+        $this->assertTrue($target->fresh()->is_featured);
+        $this->assertSame('Edited While Featured', $target->fresh()->title);
+        $this->assertSame(4, Project::where('is_featured', true)->count());
     }
 
     public function test_draft_project_cannot_become_the_public_featured_project(): void

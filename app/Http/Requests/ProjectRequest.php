@@ -91,7 +91,7 @@ class ProjectRequest extends FormRequest
             'testimonial_role' => ['nullable', 'string', 'max:160'],
 
             'status' => ['required', Rule::in([Project::STATUS_DRAFT, Project::STATUS_PUBLISHED])],
-            'is_featured' => ['boolean'],
+            'is_featured' => ['boolean', $this->featuredLimitRule()],
             'sort_order' => ['required', 'integer', 'min:0', 'max:100000'],
 
             'seo_title' => ['nullable', 'string', 'max:160'],
@@ -109,5 +109,30 @@ class ProjectRequest extends FormRequest
             'slug.regex' => 'The slug may only contain lowercase letters, numbers, and hyphens.',
             'technologies.min' => 'Add at least one technology.',
         ];
+    }
+
+    /**
+     * Cap the number of homepage-featured projects at Project::MAX_FEATURED.
+     *
+     * Counts *other* featured projects (excluding the one being edited) so
+     * re-saving an already-featured project never trips the limit.
+     */
+    private function featuredLimitRule(): \Closure
+    {
+        return function (string $attribute, $value, \Closure $fail): void {
+            if (! $value) {
+                return;
+            }
+
+            $query = Project::query()->where('is_featured', true);
+
+            if ($current = $this->route('project')) {
+                $query->whereKeyNot($current->getKey());
+            }
+
+            if ($query->count() >= Project::MAX_FEATURED) {
+                $fail('You can feature at most '.Project::MAX_FEATURED.' projects on the homepage. Unfeature another project first.');
+            }
+        };
     }
 }

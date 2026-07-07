@@ -216,11 +216,15 @@
                     </select>
                     @error('status')<p class="mt-1 text-xs font-medium text-red-600">{{ $message }}</p>@enderror
                 </div>
-                <label class="flex items-center gap-3">
-                    <input type="hidden" name="is_featured" value="0">
-                    <input type="checkbox" name="is_featured" value="1" @checked(old('is_featured', $project->is_featured)) class="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-500">
-                    <span class="text-sm font-medium text-slate-700">Feature on homepage <span class="text-slate-400">(only one project can be featured)</span></span>
-                </label>
+                <div>
+                    <label class="flex items-center gap-3">
+                        <input type="hidden" name="is_featured" value="0">
+                        <input type="checkbox" name="is_featured" value="1" @checked(old('is_featured', $project->is_featured)) class="h-4 w-4 rounded border-slate-300 text-brand-600 focus:ring-brand-500">
+                        <span class="text-sm font-medium text-slate-700">Feature on homepage</span>
+                    </label>
+                    <p class="mt-1 text-xs text-slate-400">Select up to 4 projects for the homepage. Lower sort order numbers appear first.</p>
+                    @error('is_featured')<p class="mt-1 text-xs font-medium text-red-600">{{ $message }}</p>@enderror
+                </div>
                 <div>
                     <label for="sort_order" class="label-field">Sort Order</label>
                     <input id="sort_order" type="number" name="sort_order" value="{{ old('sort_order', $project->sort_order ?? 0) }}" min="0" class="input-field w-32 @error('sort_order') border-red-300 @enderror">

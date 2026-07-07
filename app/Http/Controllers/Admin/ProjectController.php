@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
@@ -44,12 +43,7 @@ class ProjectController extends Controller
                 : null;
         }
 
-        $project = DB::transaction(function () use ($data) {
-            $project = Project::create($data);
-            $this->syncFeatured($project);
-
-            return $project;
-        });
+        $project = Project::create($data);
 
         return redirect()
             ->route('admin.projects.index')
@@ -78,10 +72,7 @@ class ProjectController extends Controller
             }
         }
 
-        DB::transaction(function () use ($project, $data) {
-            $project->update($data);
-            $this->syncFeatured($project);
-        });
+        $project->update($data);
 
         // Delete replaced files only after the new paths are safely persisted.
         foreach ($replaced as $oldPath) {
@@ -117,22 +108,6 @@ class ProjectController extends Controller
         );
 
         return $validated;
-    }
-
-    /**
-     * Guarantee at most one featured project. Featuring a project unfeatures
-     * every other project; we never auto-promote a replacement.
-     */
-    private function syncFeatured(Project $project): void
-    {
-        if (! $project->is_featured) {
-            return;
-        }
-
-        Project::query()
-            ->whereKeyNot($project->getKey())
-            ->where('is_featured', true)
-            ->update(['is_featured' => false]);
     }
 
     /**
