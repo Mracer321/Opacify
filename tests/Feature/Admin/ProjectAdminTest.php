@@ -152,6 +152,47 @@ class ProjectAdminTest extends TestCase
         $this->assertSame([['value' => '40%', 'label' => 'Reduction in fulfillment time']], $project->key_results);
     }
 
+    public function test_project_can_be_saved_without_key_results(): void
+    {
+        $this->actingAs(User::factory()->create())
+            ->post('/admin/projects', $this->validPayload(['key_results' => []]))
+            ->assertRedirect('/admin/projects')
+            ->assertSessionHasNoErrors();
+
+        $project = Project::firstWhere('slug', 'logistics-erp-modernization');
+        $this->assertSame([], $project->key_results ?? []);
+    }
+
+    public function test_empty_key_result_rows_do_not_fail_validation_or_persist(): void
+    {
+        $payload = $this->validPayload([
+            'key_results' => [
+                ['value' => '', 'label' => ''],
+                ['value' => '   ', 'label' => '   '],
+            ],
+        ]);
+
+        $this->actingAs(User::factory()->create())
+            ->post('/admin/projects', $payload)
+            ->assertRedirect('/admin/projects')
+            ->assertSessionHasNoErrors();
+
+        $project = Project::firstWhere('slug', 'logistics-erp-modernization');
+        $this->assertSame([], $project->key_results ?? []);
+    }
+
+    public function test_partial_key_result_row_is_validated(): void
+    {
+        // A row with a value but no label is meaningful-but-incomplete → rejected.
+        $this->actingAs(User::factory()->create())
+            ->post('/admin/projects', $this->validPayload([
+                'key_results' => [['value' => '40%', 'label' => '']],
+            ]))
+            ->assertSessionHasErrors('key_results.0.label');
+
+        $this->assertDatabaseCount('projects', 0);
+    }
+
     // --- Featured rule --------------------------------------------------
 
     public function test_published_featured_project_can_be_featured(): void

@@ -79,7 +79,10 @@ class ProjectRequest extends FormRequest
             'solution' => ['required', 'string', 'max:5000'],
             'team_summary' => ['required', 'string', 'max:255'],
 
-            'key_results' => ['required', 'array', 'min:1'],
+            // Optional. Completely empty rows are stripped in prepareForValidation();
+            // any row that survives has content, so both parts are then required
+            // to honour the {value,label} data contract.
+            'key_results' => ['nullable', 'array'],
             'key_results.*.value' => ['required', 'string', 'max:60'],
             'key_results.*.label' => ['required', 'string', 'max:160'],
 
@@ -105,7 +108,6 @@ class ProjectRequest extends FormRequest
         return [
             'slug.regex' => 'The slug may only contain lowercase letters, numbers, and hyphens.',
             'technologies.min' => 'Add at least one technology.',
-            'key_results.min' => 'Add at least one key result.',
         ];
     }
 }

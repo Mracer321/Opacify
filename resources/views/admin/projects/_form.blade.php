@@ -14,9 +14,8 @@
     if (empty($highlights)) {
         $highlights = [''];
     }
-    if (empty($keyResults)) {
-        $keyResults = [['value' => '', 'label' => '']];
-    }
+    // Key results are optional — start with no rows so nothing empty is forced.
+    $keyResults = array_values($keyResults);
 
     $sectionClass = 'rounded-2xl border border-slate-200 bg-white p-6 shadow-soft';
     $headingClass = 'font-display text-lg font-semibold text-navy';
@@ -139,18 +138,20 @@
     {{-- KEY RESULTS --}}
     <section class="{{ $sectionClass }}" x-data="{ items: @js(array_values($keyResults)) }">
         <div class="flex items-center justify-between">
-            <h2 class="{{ $headingClass }}">Key results <span class="text-red-500">*</span></h2>
+            <h2 class="{{ $headingClass }}">Key results <span class="text-sm font-normal text-slate-400">(optional)</span></h2>
             <button type="button" class="{{ $addBtnClass }}" @click="items.push({ value: '', label: '' })"><x-icon name="plus" class="h-4 w-4" /> Add</button>
         </div>
+        <p class="mt-1 text-xs text-slate-400">Value + label pairs shown on the case-study detail. Leave empty to hide the block.</p>
         @error('key_results')<p class="mt-2 text-xs font-medium text-red-600">{{ $message }}</p>@enderror
         <div class="mt-4 space-y-2">
             <template x-for="(item, i) in items" :key="i">
                 <div class="flex items-center gap-2">
                     <input type="text" :name="`key_results[${i}][value]`" x-model="items[i].value" placeholder="40%" class="input-field w-28">
                     <input type="text" :name="`key_results[${i}][label]`" x-model="items[i].label" placeholder="Reduction in order fulfillment time" class="input-field flex-1">
-                    <button type="button" class="{{ $removeBtnClass }}" @click="items.splice(i, 1)" x-show="items.length > 1" aria-label="Remove result">&times;</button>
+                    <button type="button" class="{{ $removeBtnClass }}" @click="items.splice(i, 1)" aria-label="Remove result">&times;</button>
                 </div>
             </template>
+            <p class="text-xs text-slate-400" x-show="items.length === 0">No key results added.</p>
         </div>
     </section>
 

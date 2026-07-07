@@ -12,11 +12,22 @@
     $mainVisualUrl = $secondaryImageUrl ?? $primaryImageUrl;
 
     $metaDescription = $project->meta_description ?: $project->short_summary;
+
+    // Open Graph image only (social metadata) — never rendered as page content.
+    // Prefer a dedicated OG image, else reuse the primary project image.
+    $ogImagePath = $project->og_image ?: $project->primary_image;
+    $ogImageUrl = $ogImagePath ? Storage::disk('public')->url($ogImagePath) : null;
 @endphp
 
 @section('title', $project->seo_title ?: $project->title . ' Case Study — OpacifyWeb')
 @section('meta_description', $metaDescription)
 @section('canonical', 'https://opacify.in/case-studies/' . $project->slug)
+
+@if($ogImageUrl)
+    @push('head')
+        <meta property="og:image" content="{{ $ogImageUrl }}">
+    @endpush
+@endif
 
 @section('content')
     <header class="gradient-hero section-padding pb-12">

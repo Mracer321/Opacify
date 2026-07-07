@@ -120,6 +120,104 @@ class CaseStudyPublicTest extends TestCase
             ->assertDontSee('Orphan quote without attribution.');
     }
 
+    // --- Media rendering ------------------------------------------------
+
+    public function test_uploaded_primary_image_is_rendered_instead_of_mockup_on_detail(): void
+    {
+        $project = Project::factory()->published()->create([
+            'slug' => 'has-primary',
+            'primary_image' => 'projects/hero.jpg',
+        ]);
+
+        // "Production interface" is the subtitle of the hero/main mockup fallback
+        // (the CTA banner mockup uses a different subtitle), so its absence proves
+        // the uploaded image replaced the project's fallback visual.
+        $this->get("/case-studies/{$project->slug}")
+            ->assertOk()
+            ->assertSee('projects/hero.jpg', false)
+            ->assertDontSee('Production interface');
+    }
+
+    public function test_uploaded_primary_image_is_rendered_on_listing_card(): void
+    {
+        Project::factory()->published()->create([
+            'slug' => 'listing-image',
+            'primary_image' => 'projects/listing.jpg',
+        ]);
+
+        $this->get('/case-studies')
+            ->assertOk()
+            ->assertSee('projects/listing.jpg', false);
+    }
+
+    public function test_uploaded_primary_image_is_rendered_on_homepage_featured_card(): void
+    {
+        Project::factory()->featured()->create([
+            'slug' => 'home-image',
+            'primary_image' => 'projects/home.jpg',
+        ]);
+
+        $this->get('/')
+            ->assertOk()
+            ->assertSee('projects/home.jpg', false);
+    }
+
+    public function test_uploaded_secondary_image_is_rendered_in_detail_content(): void
+    {
+        $project = Project::factory()->published()->create([
+            'slug' => 'has-secondary',
+            'primary_image' => 'projects/primary.jpg',
+            'secondary_image' => 'projects/secondary.jpg',
+        ]);
+
+        $this->get("/case-studies/{$project->slug}")
+            ->assertOk()
+            ->assertSee('projects/primary.jpg', false)   // hero
+            ->assertSee('projects/secondary.jpg', false); // content/media section
+    }
+
+    public function test_generic_mockup_is_used_as_fallback_when_no_image(): void
+    {
+        $project = Project::factory()->published()->create([
+            'slug' => 'no-image',
+            'primary_image' => null,
+            'secondary_image' => null,
+        ]);
+
+        // With no uploaded images, the hero/main visual falls back to the mockup,
+        // whose distinctive "Production interface" subtitle is present.
+        $this->get("/case-studies/{$project->slug}")
+            ->assertOk()
+            ->assertDontSee('projects/', false)
+            ->assertSee('Production interface');
+    }
+
+    public function test_detail_hides_key_results_block_when_none_exist(): void
+    {
+        $project = Project::factory()->published()->create([
+            'slug' => 'no-results',
+            'key_results' => [],
+        ]);
+
+        $this->get("/case-studies/{$project->slug}")
+            ->assertOk()
+            ->assertDontSee('Key results');
+    }
+
+    public function test_og_image_meta_is_emitted_and_falls_back_to_primary_image(): void
+    {
+        $project = Project::factory()->published()->create([
+            'slug' => 'og-fallback',
+            'og_image' => null,
+            'primary_image' => 'projects/hero.jpg',
+        ]);
+
+        $this->get("/case-studies/{$project->slug}")
+            ->assertOk()
+            ->assertSee('property="og:image"', false)
+            ->assertSee('projects/hero.jpg', false);
+    }
+
     // --- SEO ------------------------------------------------------------
 
     public function test_project_seo_title_is_used_when_present(): void
