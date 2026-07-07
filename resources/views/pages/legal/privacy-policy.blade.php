@@ -63,5 +63,7 @@
     <h2>Contact Us</h2>
     <p>If you have questions about this Privacy Policy or how your information is handled, contact us at <a href="mailto:opacifyweb@gmail.com">opacifyweb@gmail.com</a>.</p>
 
+    <p class="mt-8 text-sm text-slate-600">Related pages: <a href="/contact" class="font-medium text-brand-700 hover:text-brand-800">Contact us</a> · <a href="/terms" class="font-medium text-brand-700 hover:text-brand-800">Terms of Service</a></p>
+
 </x-legal-page>
 @endsection

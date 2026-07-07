@@ -3,10 +3,12 @@
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\EnquiryController as AdminEnquiryController;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CaseStudyController;
 use App\Http\Controllers\EnquiryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ServicePageController;
+use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\TechnologyPageController;
 use Illuminate\Support\Facades\Route;
 
@@ -32,6 +34,8 @@ Route::middleware('auth')->group(function () {
         ->names('admin.projects');
 });
 
+Route::get('/sitemap.xml', [SitemapController::class, 'show'])->name('sitemap');
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/services', [ServicePageController::class, 'index'])->name('services');
@@ -42,8 +46,15 @@ Route::view('/contact', 'pages.contact')->name('contact');
 
 Route::view('/privacy-policy', 'pages.legal.privacy-policy')->name('privacy-policy');
 Route::view('/terms', 'pages.legal.terms')->name('terms');
-Route::view('/blog', 'pages.blog.index')->name('blog.index');
-Route::view('/blog/{slug}', 'pages.blog.show')->name('blog.show');
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{slug}', [BlogController::class, 'show'])->name('blog.show');
+
+Route::redirect('/faqs', '/#faqs', 301);
+Route::redirect(
+    '/case-studies/digitiffin-food-ordering-platform',
+    '/case-studies/digitiffin-meal-ordering-platform',
+    301
+);
 Route::get('/case-studies', [CaseStudyController::class, 'index'])->name('case-studies.index');
 Route::get('/case-studies/{slug}', [CaseStudyController::class, 'show'])->name('case-studies.show');
 Route::view('/lp/hire-developers', 'pages.landing.ads')->name('landing.ads');

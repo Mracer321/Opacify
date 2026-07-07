@@ -1,0 +1,48 @@
+<?php
+
+return [
+    'how-to-hire-laravel-developers' => [
+        'slug' => 'how-to-hire-laravel-developers',
+        'title' => 'How to Hire Laravel Developers Without a Six-Month Search',
+        'excerpt' => 'A practical framework for evaluating Laravel talent, structuring trials, and avoiding common outsourcing pitfalls.',
+        'category' => 'Hiring',
+        'date' => 'May 12, 2026',
+        'read' => '8 min read',
+        'preview' => 'dashboard',
+        'author' => 'Neha Kapoor',
+        'role' => 'Head of Delivery',
+    ],
+    'dedicated-developer-vs-hourly' => [
+        'slug' => 'dedicated-developer-vs-hourly',
+        'title' => 'Dedicated Developer vs Hourly: Which Model Fits Your Roadmap?',
+        'excerpt' => 'Compare cost predictability, velocity, and governance across engagement models before you sign.',
+        'category' => 'Strategy',
+        'date' => 'Apr 28, 2026',
+        'read' => '6 min read',
+        'preview' => 'crm',
+        'author' => 'Neha Kapoor',
+        'role' => 'Head of Delivery',
+    ],
+    'react-team-augmentation-checklist' => [
+        'slug' => 'react-team-augmentation-checklist',
+        'title' => 'The React Team Augmentation Checklist for Series A Startups',
+        'excerpt' => 'What to prepare in design systems, repos, and ceremonies before your first frontend contractor joins.',
+        'category' => 'Frontend',
+        'date' => 'Apr 15, 2026',
+        'read' => '7 min read',
+        'preview' => 'analytics',
+        'author' => 'Neha Kapoor',
+        'role' => 'Head of Delivery',
+    ],
+    'erp-migration-lessons' => [
+        'slug' => 'erp-migration-lessons',
+        'title' => 'Five Lessons from Migrating a Legacy ERP to Laravel',
+        'excerpt' => 'Data migration, user training, and phased rollouts—what actually reduced downtime.',
+        'category' => 'Case insights',
+        'date' => 'Mar 30, 2026',
+        'read' => '10 min read',
+        'preview' => 'erp',
+        'author' => 'Neha Kapoor',
+        'role' => 'Head of Delivery',
+    ],
+];

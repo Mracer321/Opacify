@@ -122,6 +122,6 @@
     </section>
 
     <footer class="border-t border-slate-200 py-6 text-center text-xs text-slate-500">
-        <p>&copy; {{ date('Y') }} OpacifyWeb · <a href="/" class="text-brand-700">opacify.in</a></p>
+        <p>&copy; {{ date('Y') }} OpacifyWeb · <a href="/" class="text-brand-700">opacify.in</a> · <a href="/contact" class="text-brand-700">Contact</a></p>
     </footer>
 @endsection

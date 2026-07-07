@@ -1,2 +1,8 @@
 User-agent: *
-Disallow:
+Allow: /
+
+Disallow: /admin
+Disallow: /enquiries
+Disallow: /up
+
+Sitemap: https://opacify.in/sitemap.xml

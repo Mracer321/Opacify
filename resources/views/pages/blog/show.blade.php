@@ -1,17 +1,5 @@
 @extends('layouts.app')
 
-@php
-$post = $post ?? [
-    'title' => 'How to Hire Laravel Developers Without a Six-Month Search',
-    'slug' => 'how-to-hire-laravel-developers',
-    'category' => 'Hiring',
-    'date' => 'May 12, 2026',
-    'read' => '8 min read',
-    'author' => 'Neha Kapoor',
-    'role' => 'Head of Delivery',
-];
-@endphp
-
 @section('title', $post['title'] . ' — OpacifyWeb Blog')
 @section('canonical', 'https://opacify.in/blog/' . $post['slug'])
 
@@ -20,7 +8,7 @@ $post = $post ?? [
         <header class="gradient-hero section-padding pb-12">
             <div class="container-narrow max-w-3xl">
                 <nav class="text-sm text-slate-400">
-                    <a href="/blog" class="hover:text-white">Blog</a>
+                    <a href="{{ route('blog.index') }}" class="hover:text-white">Blog</a>
                     <span class="mx-2">/</span>
                     <span class="text-slate-300">{{ $post['category'] }}</span>
                 </nav>

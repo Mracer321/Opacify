@@ -9,6 +9,7 @@
         <div class="container-narrow reveal-on-scroll">
             <x-section-header
                 eyebrow="Contact"
+                headingTag="h1"
                 title="Tell us about your project"
                 description="Complete the form and our solutions team will reach out with developer profiles, timelines, and pricing options."
             />

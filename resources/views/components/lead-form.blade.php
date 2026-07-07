@@ -154,6 +154,6 @@ $sourcePath = request()->getPathInfo();
 
     <div class="pt-1">
         <x-button type="submit" variant="primary" :size="$slim ? 'md' : 'lg'" class="w-full sm:w-auto">{{ $submitLabel }}</x-button>
-        <p class="mt-3 text-xs text-slate-500">By submitting, you agree to our privacy policy. We respond within one business day.</p>
+        <p class="mt-3 text-xs text-slate-500">By submitting, you agree to our <a href="/privacy-policy" class="font-medium text-brand-700 hover:text-brand-800">privacy policy</a>. We respond within one business day.</p>
     </div>
 </form>
