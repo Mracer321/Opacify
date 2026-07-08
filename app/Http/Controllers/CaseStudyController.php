@@ -25,8 +25,19 @@ class CaseStudyController extends Controller
             ->where('slug', $slug)
             ->firstOrFail();
 
+        // Sibling case studies power the "Related case studies" block, giving
+        // each deep page additional internal links (fixes the orphan finding).
+        $relatedProjects = Project::query()
+            ->published()
+            ->whereKeyNot($project->getKey())
+            ->orderBy('sort_order')
+            ->orderByDesc('id')
+            ->take(3)
+            ->get();
+
         return view('pages.case-studies.show', [
             'project' => $project,
+            'relatedProjects' => $relatedProjects,
         ]);
     }
 }

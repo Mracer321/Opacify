@@ -18,5 +18,9 @@
             ['Flexible engagement', 'Hourly, dedicated monthly, or fixed-scope squads with a tech lead.'],
         ],
         'longform' => 'Laravel remains the backbone of thousands of B2B products. Our developers have built subscription billing, role-based admin panels, and webhook-heavy integrations for fintech and logistics clients. You interview finalists, we handle contracts and replacements if fit is not right within the trial period.',
+        'related_article' => [
+            'slug' => 'how-to-hire-laravel-developers',
+            'title' => 'How to Hire Laravel Developers Without a Six-Month Search',
+        ],
     ]" />
 @endsection

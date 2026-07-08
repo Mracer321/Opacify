@@ -73,6 +73,7 @@ $sourcePath = request()->getPathInfo();
                     type="button"
                     @click="countryOpen = !countryOpen"
                     class="flex {{ $slim ? 'h-[42px]' : 'h-[46px]' }} min-w-[7.5rem] items-center gap-2 rounded-lg border border-slate-200 bg-slate-50 px-3 text-sm font-medium text-slate-800 transition-colors hover:bg-slate-100"
+                    aria-label="Select country dial code"
                     aria-haspopup="listbox"
                     :aria-expanded="countryOpen">
                     <span x-text="selectedCode">+91</span>

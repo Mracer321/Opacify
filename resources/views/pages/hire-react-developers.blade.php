@@ -18,5 +18,9 @@
             ['Team integration', 'Comfortable in PR reviews, Figma handoffs, and CI pipelines.'],
         ],
         'longform' => 'Whether you maintain a Create React App legacy codebase or a Next.js 14 product, we match developers who have already solved your class of problems—data tables with virtualization, complex forms, or real-time updates via WebSockets.',
+        'related_article' => [
+            'slug' => 'react-team-augmentation-checklist',
+            'title' => 'The React Team Augmentation Checklist for Series A Startups',
+        ],
     ]" />
 @endsection

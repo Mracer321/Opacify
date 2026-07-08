@@ -21,8 +21,17 @@ class BlogController extends Controller
             abort(404);
         }
 
+        // Sibling posts power the "Related articles" block, giving each deep
+        // post additional internal links (fixes the orphan-page finding).
+        $relatedPosts = collect($posts)
+            ->except($slug)
+            ->take(3)
+            ->values()
+            ->all();
+
         return view('pages.blog.show', [
             'post' => $posts[$slug],
+            'relatedPosts' => $relatedPosts,
         ]);
     }
 }

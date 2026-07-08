@@ -24,14 +24,18 @@
 @section('title', $project->seo_title ?: $project->title . ' Case Study — OpacifyWeb')
 @section('meta_description', $metaDescription)
 @section('canonical', 'https://opacify.in/case-studies/' . $project->slug)
+@section('og_type', 'article')
 
 @if($ogImageUrl)
-    @push('head')
-        <meta property="og:image" content="{{ $ogImageUrl }}">
-    @endpush
+    @section('og_image', $ogImageUrl)
 @endif
 
 @section('content')
+    <x-schema.breadcrumbs :items="[
+        ['name' => 'Home', 'url' => 'https://opacify.in'],
+        ['name' => 'Case Studies', 'url' => 'https://opacify.in/case-studies'],
+        ['name' => $project->title],
+    ]" />
     <header class="gradient-hero section-padding pb-12">
         <div class="container-narrow">
             <nav class="text-sm text-slate-400 reveal-on-scroll">
@@ -148,6 +152,26 @@
                     :company="$project->project_label"
                     :initials="$initials"
                 />
+            </div>
+        </section>
+    @endif
+
+    @if(isset($relatedProjects) && $relatedProjects->isNotEmpty())
+        <section class="section-padding">
+            <div class="container-narrow">
+                <x-section-header align="left" eyebrow="More work" title="Related case studies" class="max-w-xl" />
+                <div class="mt-10 grid gap-6 md:grid-cols-3" data-reveal-stagger>
+                    @foreach($relatedProjects as $related)
+                        <a href="{{ route('case-studies.show', $related->slug) }}" class="card-premium group flex flex-col p-6 reveal-on-scroll">
+                            @if(!empty($related->industry))
+                                <span class="inline-flex w-fit items-center badge-tech text-xs font-medium text-slate-500">{{ $related->industry }}</span>
+                            @endif
+                            <h3 class="mt-4 font-display text-lg font-semibold text-navy group-hover:text-brand-700">{{ $related->title }}</h3>
+                            <p class="mt-2 flex-1 text-sm text-slate-600">{{ $related->short_summary }}</p>
+                            <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 link-underline">View case study</span>
+                        </a>
+                    @endforeach
+                </div>
             </div>
         </section>
     @endif

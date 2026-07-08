@@ -1,9 +1,17 @@
 @extends('layouts.app')
 
 @section('title', $post['title'] . ' — OpacifyWeb Blog')
+@section('meta_description', $post['excerpt'] ?? \Illuminate\Support\Str::limit(strip_tags($post['title']), 150))
 @section('canonical', 'https://opacify.in/blog/' . $post['slug'])
+@section('og_type', 'article')
 
 @section('content')
+    <x-schema.blog-posting :post="$post" />
+    <x-schema.breadcrumbs :items="[
+        ['name' => 'Home', 'url' => 'https://opacify.in'],
+        ['name' => 'Blog', 'url' => 'https://opacify.in/blog'],
+        ['name' => $post['title']],
+    ]" />
     <article>
         <header class="gradient-hero section-padding pb-12">
             <div class="container-narrow max-w-3xl">
@@ -38,6 +46,27 @@
             </div>
         </div>
     </article>
+
+    @if(!empty($relatedPosts))
+        <section class="section-padding bg-surface-soft">
+            <div class="container-narrow">
+                <x-section-header align="left" eyebrow="Keep reading" title="Related articles" class="max-w-xl" />
+                <div class="mt-10 grid gap-6 md:grid-cols-3" data-reveal-stagger>
+                    @foreach($relatedPosts as $related)
+                        <a href="{{ route('blog.show', $related['slug']) }}" class="card-premium group flex flex-col p-6 reveal-on-scroll">
+                            <span class="inline-flex w-fit items-center gap-1.5 badge-tech text-xs font-medium text-slate-500">
+                                <x-icon name="document" class="h-3.5 w-3.5 text-brand-600" />
+                                {{ $related['category'] }}
+                            </span>
+                            <h3 class="mt-4 font-display text-lg font-semibold text-navy group-hover:text-brand-700">{{ $related['title'] }}</h3>
+                            <p class="mt-2 flex-1 text-sm text-slate-600">{{ $related['excerpt'] }}</p>
+                            <span class="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 link-underline">Read article</span>
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
 
     <x-cta-banner title="Need Laravel developers this month?" />
 @endsection

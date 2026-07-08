@@ -1,5 +1,17 @@
 @props(['service'])
 
+<x-schema.service
+    :name="$service['title'] . ' Services'"
+    :description="$service['meta_description'] ?? ($service['hero_text'] ?? null)"
+    :service-type="$service['title']"
+    :url="'https://opacify.in/services/' . $service['slug']"
+/>
+<x-schema.breadcrumbs :items="[
+    ['name' => 'Home', 'url' => 'https://opacify.in'],
+    ['name' => 'Services', 'url' => 'https://opacify.in/services'],
+    ['name' => $service['title']],
+]" />
+
 <section class="gradient-hero section-padding pb-12">
     <div class="container-narrow">
         <nav class="text-sm text-slate-400" aria-label="Breadcrumb">

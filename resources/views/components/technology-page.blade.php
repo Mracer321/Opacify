@@ -1,5 +1,16 @@
 @props(['tech'])
 
+<x-schema.service
+    :name="'Hire ' . $tech['name'] . ' Developers'"
+    :description="$tech['meta_description'] ?? ($tech['description'] ?? null)"
+    :service-type="$tech['name'] . ' Development'"
+    :url="$tech['canonical'] ?? null"
+/>
+<x-schema.breadcrumbs :items="[
+    ['name' => 'Home', 'url' => 'https://opacify.in'],
+    ['name' => $tech['name'] . ' Developers'],
+]" />
+
 <section class="gradient-hero section-padding pb-16">
     <div class="container-narrow">
         <nav class="text-sm text-slate-400 reveal-on-scroll" aria-label="Breadcrumb">
@@ -174,6 +185,14 @@
     <div class="container-narrow max-w-3xl reveal-on-scroll">
         <h2 class="heading-section">Why teams hire {{ $tech['name'] }} developers through us</h2>
         <p class="mt-4 leading-relaxed text-slate-600">{{ $tech['longform'] ?? 'Every engineer in our pool has contributed to production codebases—not tutorial projects. We share profiles within 48 hours, you interview finalists directly, and onboarding happens within days under NDA.' }}</p>
+        @if(!empty($tech['related_article']))
+        <p class="mt-6">
+            <a href="{{ route('blog.show', $tech['related_article']['slug']) }}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 link-underline">
+                <x-icon name="document" class="h-4 w-4" />
+                Read: {{ $tech['related_article']['title'] }}
+            </a>
+        </p>
+        @endif
         <h3 class="mt-10 text-xl font-semibold text-navy">Related technologies</h3>
         <div class="mt-4 flex flex-wrap gap-3">
             @foreach(['Laravel' => '/hire-laravel-developers', 'React' => '/hire-react-developers', 'Node.js' => '/hire-nodejs-developers', 'Flutter' => '/hire-flutter-developers'] as $name => $href)
