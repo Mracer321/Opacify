@@ -1,6 +1,6 @@
 @props([
 'title' => 'Ready to hire developers who deliver?',
-'description' => 'Tell us about your project. We will match you with vetted engineers and send a tailored proposal within 24 hours.',
+'description' => 'Tell us about your project. We will match you with vetted engineers and send a proposal within 24 hours.',
 'primaryLabel' => 'Get Free Quote',
 'primaryHref' => '/contact',
 ])

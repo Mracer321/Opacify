@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Privacy Policy — OpacifyWeb')
+@section('title', 'Privacy Policy | OpacifyWeb')
 @section('meta_description', 'How OpacifyWeb collects, uses, and protects information submitted through our developer hiring enquiry and contact forms.')
 @section('canonical', 'https://opacify.in/privacy-policy')
 

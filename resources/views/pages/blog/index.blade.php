@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Blog — Hiring Developers & Software Insights | OpacifyWeb')
+@section('title', 'Blog: Hiring Developers & Software Insights | OpacifyWeb')
 @section('meta_description', 'Practical guides on hiring remote developers, scaling engineering teams, and delivering software projects.')
 @section('canonical', 'https://opacify.in/blog')
 {{-- Search result pages are low-value for the index; keep them out of the index
@@ -15,7 +15,7 @@
                 <p class="text-sm font-semibold uppercase tracking-wider text-brand-400">Insights</p>
             </div>
             <h1 class="mt-4 font-display text-4xl font-semibold text-white sm:text-5xl">Insights for hiring and building</h1>
-            <p class="mt-4 max-w-2xl text-lg text-slate-300">Guides written by delivery leads—not generic content farms.</p>
+            <p class="mt-4 max-w-2xl text-lg text-slate-300">Guides written by our delivery leads, not generic content farms.</p>
 
             <form method="get" action="{{ route('blog.index') }}" role="search" class="mt-8 flex max-w-md gap-2">
                 <label for="blog-search" class="sr-only">Search articles</label>

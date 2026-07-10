@@ -21,11 +21,11 @@ $tech = [
         'rate' => '$20–$45/hour',
         'skills' => ['RxJS & reactive state', 'NgRx / signals', 'Angular Material & CDK', 'Standalone components', 'Jasmine/Karma testing', 'SSR with Angular Universal'],
         'benefits' => [
-            ['Structured at scale', 'Angular suits large teams and long-lived apps—our developers keep modules, routing, and DI maintainable.'],
+            ['Structured at scale', 'Angular suits large teams and long-lived apps, and our developers keep modules, routing, and DI maintainable.'],
             ['Typed end to end', 'Strict TypeScript, reactive forms, and interceptors reduce runtime surprises in complex UIs.'],
             ['Flexible engagement', 'Hourly, dedicated monthly, or a squad with a front-end lead.'],
         ],
-        'longform' => 'Angular is the framework of choice for data-heavy enterprise front-ends—admin consoles, insurance portals, and internal tooling. Our developers have migrated legacy AngularJS apps, introduced NgRx where state complexity warranted it, and kept bundle sizes in check with lazy-loaded routes.',
+        'longform' => 'Angular is the framework of choice for data-heavy enterprise front-ends such as admin consoles, insurance portals, and internal tooling. Our developers have migrated legacy AngularJS apps, introduced NgRx where state complexity warranted it, and kept bundle sizes in check with lazy-loaded routes.',
     ],
     'vue' => [
         'name' => 'Vue.js', 'headline' => 'Hire Vue.js Developers',
@@ -34,7 +34,7 @@ $tech = [
         'skills' => ['Vue 3 Composition API', 'Pinia state', 'Vue Router', 'Nuxt SSR/SSG', 'Vitest & Testing Library', 'Component libraries'],
         'benefits' => [
             ['Fast to ship', 'Vue’s gentle learning curve and single-file components speed up feature delivery.'],
-            ['Incremental adoption', 'Drop Vue into an existing page or build a full Nuxt app—our developers do both.'],
+            ['Incremental adoption', 'Drop Vue into an existing page or build a full Nuxt app. Our developers do both.'],
             ['Flexible engagement', 'Hourly, dedicated, or fixed-scope with QA included.'],
         ],
         'longform' => 'Vue powers everything from marketing sites to embedded dashboards. Our developers build with the Composition API and Pinia, and reach for Nuxt when SEO and server rendering matter. Common work includes admin panels, customer portals, and interactive widgets embedded in existing stacks.',
@@ -57,7 +57,7 @@ $tech = [
         'rate' => '$15–$35/hour',
         'skills' => ['Semantic markup', 'WCAG accessibility', 'Canvas & SVG', 'Responsive templates', 'Web components', 'Email/AMP markup'],
         'benefits' => [
-            ['Accessible & semantic', 'Correct landmarks, ARIA, and keyboard support—not div soup.'],
+            ['Accessible & semantic', 'Correct landmarks, ARIA, and keyboard support, not div soup.'],
             ['Cross-device', 'Markup that holds up across browsers, screen readers, and viewports.'],
             ['Flexible engagement', 'Task-based or embedded with your design team.'],
         ],
@@ -109,7 +109,7 @@ $tech = [
             ['Lean output', 'Purged, JIT-built CSS keeps payloads small.'],
             ['Flexible engagement', 'Design-system setup or ongoing front-end delivery.'],
         ],
-        'longform' => 'Tailwind lets small teams ship consistent interfaces fast. Our developers centralise brand tokens in config, extract sensible components, and keep production CSS lean—so the design system scales without fighting specificity.',
+        'longform' => 'Tailwind lets small teams ship consistent interfaces fast. Our developers centralise brand tokens in config, extract sensible components, and keep production CSS lean, so the design system scales without fighting specificity.',
     ],
     'bootstrap' => [
         'name' => 'Bootstrap', 'headline' => 'Hire Bootstrap Developers',
@@ -131,7 +131,7 @@ $tech = [
         'rate' => '$16–$40/hour',
         'skills' => ['PHP 8.x & OOP', 'Laravel / Symfony', 'REST APIs & auth', 'MySQL & query tuning', 'Composer & PSR standards', 'Legacy modernization'],
         'benefits' => [
-            ['Broad ecosystem', 'From WordPress to Laravel, our developers work across the PHP landscape.'],
+            ['Broad ecosystem', 'From WordPress to Laravel, our developers work across the full PHP stack.'],
             ['Security-minded', 'Input validation, prepared statements, and safe file handling by default.'],
             ['Flexible engagement', 'Hourly fixes, dedicated build, or legacy rescue.'],
         ],
@@ -151,7 +151,7 @@ $tech = [
     ],
     'java' => [
         'name' => 'Java', 'headline' => 'Hire Java Developers',
-        'description' => 'Java engineers for robust enterprise services, high-throughput APIs, and JVM performance work.',
+        'description' => 'Java engineers for reliable enterprise services, high-throughput APIs, and JVM performance work.',
         'rate' => '$22–$50/hour',
         'skills' => ['Core Java & concurrency', 'Spring ecosystem', 'JPA / Hibernate', 'Microservices', 'JUnit & testing', 'JVM tuning'],
         'benefits' => [
@@ -271,7 +271,7 @@ $tech = [
             ['Realtime', 'Live sync for chat, collaboration, and dashboards.'],
             ['Flexible engagement', 'MVP builds or feature work on existing apps.'],
         ],
-        'longform' => 'Firebase gets realtime products to market quickly. Our developers model Firestore data, write hardened security rules, and move heavier logic into Cloud Functions—keeping client apps thin and costs predictable.',
+        'longform' => 'Firebase gets realtime products to market quickly. Our developers model Firestore data, write hardened security rules, and move heavier logic into Cloud Functions, keeping client apps thin and costs predictable.',
     ],
 
     // ---- DevOps / Cloud ----
@@ -321,7 +321,7 @@ $tech = [
             ['Faster releases', 'From weekly manual deploys to on-demand delivery.'],
             ['Flexible engagement', 'Pipeline builds or platform partnership.'],
         ],
-        'longform' => 'CI/CD is what lets teams ship daily without fear. Our engineers design pipelines with real test gates, safe release strategies like canary and blue-green, and rollback plans—so velocity doesn’t cost reliability.',
+        'longform' => 'CI/CD is what lets teams ship daily without fear. Our engineers design pipelines with real test gates, safe release strategies like canary and blue-green, and rollback plans, so velocity doesn’t cost reliability.',
     ],
     'cloud-deployment' => [
         'name' => 'Cloud Deployment', 'headline' => 'Hire Cloud Deployment Engineers',
@@ -359,7 +359,7 @@ $tech = [
             ['Responsible', 'Evaluation, guardrails, and cost controls around model use.'],
             ['Flexible engagement', 'Prototype sprints or embedded product work.'],
         ],
-        'longform' => 'Most AI value comes from careful integration, not novel research. Our developers add LLM-powered search, summarisation, and assistants with retrieval, evaluation, and guardrails—and keep latency and token costs under control.',
+        'longform' => 'Most AI value comes from careful integration, not novel research. Our developers add LLM-powered search, summarisation, and assistants with retrieval, evaluation, and guardrails. They also keep latency and token costs under control.',
     ],
     'automation' => [
         'name' => 'Automation', 'headline' => 'Hire Automation Developers',
@@ -371,7 +371,7 @@ $tech = [
             ['Connected tools', 'Systems that talk to each other via APIs and webhooks.'],
             ['Flexible engagement', 'Focused automation sprints or ongoing work.'],
         ],
-        'longform' => 'Manual processes quietly drain teams. Our developers automate them—syncing systems over APIs, scripting recurring jobs, and building workflows with proper error handling and alerts so automation is trustworthy.',
+        'longform' => 'Manual processes quietly drain teams. Our developers automate them by syncing systems over APIs, scripting recurring jobs, and building workflows with proper error handling and alerts so automation is trustworthy.',
     ],
     'power-bi' => [
         'name' => 'Power BI', 'headline' => 'Hire Power BI Developers',
@@ -405,7 +405,7 @@ foreach ($tech as $slug => $data) {
     $technologies[$slug] = array_merge([
         'slug' => $slug,
         'canonical' => $canonical($slug),
-        'meta_title' => $data['headline'] . ' — OpacifyWeb',
+        'meta_title' => $data['headline'] . ' | OpacifyWeb',
         'meta_description' => $data['description'],
     ], $data);
 }

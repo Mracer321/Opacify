@@ -5,7 +5,7 @@
 $tech = $technology;
 @endphp
 
-@section('title', $tech['meta_title'] ?? ($tech['headline'] . ' — OpacifyWeb'))
+@section('title', $tech['meta_title'] ?? ($tech['headline'] . ' | OpacifyWeb'))
 @section('meta_description', $tech['meta_description'] ?? $tech['description'])
 @section('canonical', $tech['canonical'])
 

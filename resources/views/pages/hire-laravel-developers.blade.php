@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Hire Expert Laravel Developers — OpacifyWeb')
+@section('title', 'Hire Expert Laravel Developers | OpacifyWeb')
 @section('meta_description', 'Hire senior Laravel developers for APIs, SaaS, and enterprise backends. Vetted talent, NDA-backed, starting from $18/hour.')
 @section('canonical', 'https://opacify.in/hire-laravel-developers')
 
@@ -13,7 +13,7 @@
         'rate' => '$18–$42/hour',
         'skills' => ['Laravel 10/11', 'Eloquent & Query Builder', 'Livewire / Inertia', 'PHPUnit & Pest', 'Redis & Horizon', 'REST & Sanctum APIs'],
         'benefits' => [
-            ['Faster delivery', 'Skip framework ramp-up—our developers have shipped billing, auth, and reporting modules before.'],
+            ['Faster delivery', 'Skip the framework ramp-up. Our developers have shipped billing, auth, and reporting modules before.'],
             ['Production discipline', 'Structured logging, Horizon workers, and deployment checklists from day one.'],
             ['Flexible engagement', 'Hourly, dedicated monthly, or fixed-scope squads with a tech lead.'],
         ],

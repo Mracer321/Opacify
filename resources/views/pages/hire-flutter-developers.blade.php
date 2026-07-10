@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Hire Expert Flutter Developers — OpacifyWeb')
+@section('title', 'Hire Expert Flutter Developers | OpacifyWeb')
 @section('meta_description', 'Hire Flutter developers for iOS and Android apps. Cross-platform mobile engineers with store release experience.')
 @section('canonical', 'https://opacify.in/hire-flutter-developers')
 
@@ -17,6 +17,6 @@
             ['Polished UX', 'Animations, offline modes, and adaptive layouts.'],
             ['Release support', 'CI builds, signing, and store metadata assistance.'],
         ],
-        'longform' => 'Our Flutter developers have shipped consumer apps and B2B field tools—with Bluetooth peripherals, maps, and secure storage. You get weekly builds and clear communication on device-specific issues.',
+        'longform' => 'Our Flutter developers have shipped consumer apps and B2B field tools, including Bluetooth peripherals, maps, and secure storage. You get weekly builds and clear communication on device-specific issues.',
     ]" />
 @endsection

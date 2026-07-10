@@ -21,7 +21,7 @@
     $ogImageUrl = $ogImagePath ? url(Storage::disk('public')->url($ogImagePath)) : null;
 @endphp
 
-@section('title', $project->seo_title ?: $project->title . ' Case Study — OpacifyWeb')
+@section('title', $project->seo_title ?: $project->title . ' Case Study | OpacifyWeb')
 @section('meta_description', $metaDescription)
 @section('canonical', 'https://opacify.in/case-studies/' . $project->slug)
 @section('og_type', 'article')
@@ -176,5 +176,5 @@
         </section>
     @endif
 
-    <x-cta-banner title="Planning a similar transformation?" />
+    <x-cta-banner title="Planning a similar project?" />
 @endsection

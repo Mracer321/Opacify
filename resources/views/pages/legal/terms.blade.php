@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Terms of Service — OpacifyWeb')
+@section('title', 'Terms of Service | OpacifyWeb')
 @section('meta_description', 'The terms that govern use of the OpacifyWeb website and enquiries about hiring developers and development teams.')
 @section('canonical', 'https://opacify.in/terms')
 

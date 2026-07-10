@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Hire Expert React Developers — OpacifyWeb')
+@section('title', 'Hire Expert React Developers | OpacifyWeb')
 @section('meta_description', 'Hire React developers for SPAs, dashboards, and design systems. Senior frontend engineers, flexible engagement models.')
 @section('canonical', 'https://opacify.in/hire-react-developers')
 
@@ -17,7 +17,7 @@
             ['Performance focus', 'Code splitting, memoization, and Core Web Vitals awareness.'],
             ['Team integration', 'Comfortable in PR reviews, Figma handoffs, and CI pipelines.'],
         ],
-        'longform' => 'Whether you maintain a Create React App legacy codebase or a Next.js 14 product, we match developers who have already solved your class of problems—data tables with virtualization, complex forms, or real-time updates via WebSockets.',
+        'longform' => 'Maintaining a Create React App legacy codebase or a Next.js 14 product? We match developers who have already solved your class of problems: data tables with virtualization, complex forms, or real-time updates via WebSockets.',
         'related_article' => [
             'slug' => 'react-team-augmentation-checklist',
             'title' => 'The React Team Augmentation Checklist for Series A Startups',

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'OpacifyWeb — Hire Top Remote Developers For Your Projects')
+@section('title', 'OpacifyWeb | Hire Top Remote Developers For Your Projects')
 @section('meta_description', 'Hire experienced Laravel, React, Node.js, Flutter, and full-stack developers for hourly, dedicated, or project-based work. Starting from $15/hour.')
 @section('canonical', 'https://opacify.in')
 
@@ -13,7 +13,7 @@
                 <div class="reveal-on-scroll relative z-10">
                     <p class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-slate-300 backdrop-blur-sm">
                         <span class="h-2 w-2 rounded-full bg-brand-500 ring-2 ring-brand-500/30"></span>
-                        Vetted developers · NDA-backed engagements
+                        Experienced developers · NDA-backed engagements
                     </p>
                     <h1 class="mt-6 font-display text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem] text-balance">
                         Hire Top Remote Developers For Your Projects
@@ -106,7 +106,7 @@
 <section class="section-padding bg-surface-soft">
     <div class="container-narrow">
         <div class="reveal-on-scroll">
-            <x-section-header eyebrow="Technologies" title="Hire developers across your entire stack" description="From backend APIs to mobile apps—we place engineers who have shipped production systems in the technologies you rely on." />
+            <x-section-header eyebrow="Technologies" title="Hire developers across your entire stack" description="From backend APIs to mobile apps, we place engineers who have shipped production systems in the technologies you rely on." />
         </div>
         <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
             @foreach([
@@ -170,13 +170,13 @@
 <section class="section-padding bg-white">
     <div class="container-narrow">
         <div class="reveal-on-scroll">
-            <x-section-header eyebrow="Services" title="End-to-end software delivery" description="Whether you need a single senior engineer or a full product squad, we align talent to your roadmap and delivery model." />
+            <x-section-header eyebrow="Services" title="End-to-end software delivery" description="Need a single senior engineer or a full product squad? We align talent to your roadmap and delivery model." />
         </div>
         <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3" data-reveal-stagger>
             @foreach([
             ['Web Development', 'Custom portals, SaaS platforms, and internal tools built for scale.', '/services/web-development', 'web'],
             ['Mobile App Development', 'Native and cross-platform apps with polished UX and reliable releases.', '/services/mobile-app-development', 'mobile'],
-            ['ERP Solutions', 'Inventory, finance, and operations modules tailored to your workflows.', '/services/erp-solutions', 'erp'],
+            ['ERP Solutions', 'Inventory, finance, and operations modules built around your workflows.', '/services/erp-solutions', 'erp'],
             ['Software Development', 'Greenfield products and legacy modernization with clear milestones.', '/services/software-development', 'software'],
             ['Digital Marketing', 'SEO, paid media, and conversion optimization for growth teams.', '/services/digital-marketing', 'marketing'],
             ['AI & Automation', 'Workflow automation, integrations, and data-driven decision tools.', '/services/ai-automation', 'ai'],
@@ -199,7 +199,7 @@
     <div class="container-narrow">
         <div class="grid items-center gap-12 lg:grid-cols-2">
             <div class="reveal-on-scroll">
-                <x-section-header align="left" eyebrow="Why OpacifyWeb" title="Built for teams that cannot afford hiring mistakes" description="We combine agency-grade delivery with the flexibility of staff augmentation—so you get speed without sacrificing quality." />
+                <x-section-header align="left" eyebrow="Why OpacifyWeb" title="Built for teams that cannot afford hiring mistakes" description="We combine agency-grade delivery with the flexibility of staff augmentation, so you get speed without sacrificing quality." />
                 <ul class="mt-8 space-y-4">
                     @foreach([
                     ['shield-check', 'Rigorous vetting', 'Technical interviews, live coding, and reference checks on every developer.'],
@@ -367,8 +367,8 @@ $featuredProjects = $featuredProjects ?? collect();
             @php
             $featuredMetric = $featuredProject->highlights[0]['text'] ?? null;
             $featuredImageUrl = $featuredProject->primary_image
-                ? \Illuminate\Support\Facades\Storage::disk('public')->url($featuredProject->primary_image)
-                : null;
+            ? \Illuminate\Support\Facades\Storage::disk('public')->url($featuredProject->primary_image)
+            : null;
             @endphp
             <a href="{{ route('case-studies.show', $featuredProject->slug) }}" class="card-premium group overflow-hidden reveal-on-scroll">
                 @if($featuredImageUrl)
@@ -404,7 +404,7 @@ $featuredProjects = $featuredProjects ?? collect();
             <x-faq-accordion :items="[
                     ['question' => 'How quickly can you provide developers?', 'answer' => 'For common stacks like Laravel, React, and Node.js, we typically share profiles within 48 hours. Niche or principal-level roles may take 3–5 business days.'],
                     ['question' => 'What is your minimum engagement?', 'answer' => 'Hourly engagements start at 20 hours per month. Dedicated developers work on a monthly retainer with a 30-day notice period for changes.'],
-                    ['question' => 'Do developers work in our timezone?', 'answer' => 'Yes. We align overlap with your core hours—commonly 4–6 hours with US Eastern and full UK business hours for European clients.'],
+                    ['question' => 'Do developers work in our timezone?', 'answer' => 'Yes. We align overlap with your core hours. That usually means 4–6 hours with US Eastern and full UK business hours for European clients.'],
                     ['question' => 'How do you ensure code quality?', 'answer' => 'Developers follow your branching strategy, participate in reviews, and can include QA engineers. We also offer technical leads for architecture oversight.'],
                     ['question' => 'Can we hire a full project team?', 'answer' => 'Absolutely. We staff blended squads with a tech lead, developers, QA, and DevOps based on a fixed statement of work after a discovery workshop.'],
                 ]" />

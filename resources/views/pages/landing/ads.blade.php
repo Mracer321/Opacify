@@ -1,6 +1,6 @@
 @extends('layouts.landing')
 
-@section('title', 'Hire Remote Developers — Free Quote in 24 Hours | OpacifyWeb')
+@section('title', 'Hire Remote Developers | Free Quote in 24 Hours | OpacifyWeb')
 @section('meta_description', 'Hire vetted Laravel, React, Node.js, and Flutter developers. Starting $15/hour. Get matched within 48 hours. Free quote.')
 @section('canonical', 'https://opacify.in/lp/hire-developers')
 
@@ -21,7 +21,7 @@
                 <div class="reveal-on-scroll relative z-10">
                     <p class="text-sm font-semibold uppercase tracking-wider text-brand-400">Limited onboarding slots this month</p>
                     <h1 class="mt-4 font-display text-4xl font-semibold text-white sm:text-5xl text-balance">
-                        Hire senior developers in 48 hours—not 48 days
+                        Hire senior developers in 48 hours, not 48 days
                     </h1>
                     <p class="mt-6 text-lg text-slate-300">
                         Laravel, React, Node.js, and Flutter engineers. Hourly from <strong class="text-white">$15/hour</strong>. NDA included. No recruitment fees.

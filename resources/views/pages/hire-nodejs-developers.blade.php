@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Hire Expert Node.js Developers — OpacifyWeb')
+@section('title', 'Hire Expert Node.js Developers | OpacifyWeb')
 @section('meta_description', 'Hire Node.js developers for APIs, microservices, and real-time systems. Vetted backend engineers for startups and enterprises.')
 @section('canonical', 'https://opacify.in/hire-nodejs-developers')
 

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Contact Us — Get a Free Quote | OpacifyWeb')
+@section('title', 'Contact Us | Get a Free Quote | OpacifyWeb')
 @section('meta_description', 'Contact OpacifyWeb for a free quote. Hire Laravel, React, Node.js, and Flutter developers. Response within one business day.')
 @section('canonical', 'https://opacify.in/contact')
 

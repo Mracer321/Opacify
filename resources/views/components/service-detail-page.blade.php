@@ -107,7 +107,7 @@
 
 <section class="section-padding bg-white">
     <div class="container-narrow max-w-3xl">
-        <x-section-header eyebrow="FAQ" :title="$service['title'] . ' — common questions'" />
+        <x-section-header eyebrow="FAQ" :title="'Common questions about ' . $service['title']" />
         <div class="mt-8">
             @php
             $faqItems = array_map(fn ($f) => ['question' => $f['question'], 'answer' => $f['answer']], $service['faqs']);

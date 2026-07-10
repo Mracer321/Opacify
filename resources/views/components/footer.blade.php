@@ -95,7 +95,7 @@
                 </div>
                 <div class="sm:col-span-2 lg:col-span-2">
                     <p class="text-sm leading-relaxed text-slate-400">
-                        <span class="font-medium text-slate-300">Our commitment:</span> Every engagement is backed by signed NDAs, structured delivery milestones, and a dedicated account manager. We match you with developers who have shipped production code in your stack—not generic freelancers.
+                        <span class="font-medium text-slate-300">Our commitment:</span> Every engagement is backed by signed NDAs, structured delivery milestones, and a dedicated account manager. We match you with developers who have shipped production code in your stack, not generic freelancers.
                     </p>
                 </div>
             </div>

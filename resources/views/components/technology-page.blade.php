@@ -98,7 +98,7 @@
     <div class="container-narrow">
         <div class="grid items-center gap-10 lg:grid-cols-2">
             <div class="reveal-on-scroll">
-                <x-section-header align="left" eyebrow="Delivery workflow" title="How {{ $tech['name'] }} engagements run" description="Structured onboarding so your developer contributes from the first sprint—not after weeks of ramp-up." />
+                <x-section-header align="left" eyebrow="Delivery workflow" title="How {{ $tech['name'] }} engagements run" description="Structured onboarding so your developer contributes from the first sprint, not after weeks of ramp-up." />
                 <ol class="mt-8 space-y-4">
                     @foreach([
                     ['Technical brief', 'Stack versions, repos, ceremonies, and definition of done.', 'document'],
@@ -167,7 +167,7 @@
                     <h3 class="font-semibold text-navy">Communication rhythm</h3>
                 </div>
                 <ul class="mt-4 space-y-2 text-sm text-slate-600">
-                    @foreach(['Slack, Teams, or email—your preference', 'Weekly written status with risks and blockers', 'Shared documentation in Notion or Confluence', 'Account manager for escalation and billing'] as $item)
+                    @foreach(['Slack, Teams, or email, whichever you prefer', 'Weekly written status with risks and blockers', 'Shared documentation in Notion or Confluence', 'Account manager for escalation and billing'] as $item)
                     <li class="flex gap-2"><x-icon name="check" class="mt-0.5 h-4 w-4 shrink-0 text-brand-600" />{{ $item }}</li>
                     @endforeach
                 </ul>
@@ -184,7 +184,7 @@
 <section class="section-padding bg-surface-soft">
     <div class="container-narrow max-w-3xl reveal-on-scroll">
         <h2 class="heading-section">Why teams hire {{ $tech['name'] }} developers through us</h2>
-        <p class="mt-4 leading-relaxed text-slate-600">{{ $tech['longform'] ?? 'Every engineer in our pool has contributed to production codebases—not tutorial projects. We share profiles within 48 hours, you interview finalists directly, and onboarding happens within days under NDA.' }}</p>
+        <p class="mt-4 leading-relaxed text-slate-600">{{ $tech['longform'] ?? 'Every engineer in our pool has contributed to production codebases, not tutorial projects. We share profiles within 48 hours, you interview finalists directly, and onboarding happens within days under NDA.' }}</p>
         @if(!empty($tech['related_article']))
         <p class="mt-6">
             <a href="{{ route('blog.show', $tech['related_article']['slug']) }}" class="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-700 link-underline">

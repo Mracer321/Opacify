@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Case Studies — Enterprise Software Projects | OpacifyWeb')
+@section('title', 'Case Studies: Enterprise Software Projects | OpacifyWeb')
 @section('meta_description', 'Explore case studies in logistics, healthcare, fintech, and SaaS. See how OpacifyWeb delivers measurable outcomes.')
 @section('canonical', 'https://opacify.in/case-studies')
 
@@ -9,7 +9,7 @@
         <div class="container-narrow">
             <h1 class="font-display text-4xl font-semibold text-white sm:text-5xl">Case studies</h1>
             <p class="mt-4 max-w-2xl text-lg text-slate-300">
-                Real outcomes from ERP modernizations, patient portals, and product rebuilds—documented with the metrics stakeholders care about.
+                Real outcomes from ERP modernizations, patient portals, and product rebuilds, documented with the metrics stakeholders care about.
             </p>
         </div>
     </section>

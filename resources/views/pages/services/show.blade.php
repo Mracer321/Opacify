@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', $service['title'] . ' Services — OpacifyWeb')
+@section('title', $service['title'] . ' Services | OpacifyWeb')
 @section('meta_description', $service['meta_description'])
 @section('canonical', 'https://opacify.in/services/' . $service['slug'])
 

@@ -5,7 +5,7 @@ $servicesCatalog = require resource_path('data/services.php');
 $services = array_values($servicesCatalog);
 @endphp
 
-@section('title', 'Software Development Services — OpacifyWeb')
+@section('title', 'Software Development Services | OpacifyWeb')
 @section('meta_description', 'Enterprise software services: web development, mobile apps, ERP, custom software, digital marketing, and AI automation.')
 @section('canonical', 'https://opacify.in/services')
 
@@ -21,7 +21,7 @@ $services = array_values($servicesCatalog);
             Enterprise software services
         </h1>
         <p class="mt-6 max-w-2xl text-lg text-slate-300">
-            Six practice areas. One delivery standard. Explore the capability that matches your roadmap—each service has a dedicated overview with process, technology, and engagement detail.
+            Six practice areas. One delivery standard. Find the capability that matches your roadmap. Each service has its own overview with process, technology, and engagement detail.
         </p>
     </div>
 </section>
@@ -31,7 +31,7 @@ $services = array_values($servicesCatalog);
         <x-section-header
             eyebrow="Our practices"
             title="Choose a service to learn more"
-            description="Select a practice below for capabilities, delivery models, and FAQs—without scrolling through one long page." />
+            description="Select a practice below for capabilities, delivery models, and FAQs, without scrolling through one long page." />
         <div class="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             @foreach($services as $service)
             <x-service-card :service="$service" />
@@ -42,7 +42,7 @@ $services = array_values($servicesCatalog);
 
 <section class="section-padding bg-surface-soft">
     <div class="container-narrow">
-        <x-section-header eyebrow="Delivery methodology" title="How we deliver across every practice" description="Consistent governance whether you hire developers or commission a full project." />
+        <x-section-header eyebrow="Delivery methodology" title="How we deliver across every practice" description="The same governance applies whether you hire developers or commission a full project." />
         <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
             @foreach([
             ['workflow', 'Discover', 'Workshops, scope definition, and risk identification before build.'],
@@ -78,7 +78,7 @@ $services = array_values($servicesCatalog);
         <x-section-header eyebrow="Process" title="From first call to production delivery" />
         <ol class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             @foreach([
-            ['01', 'Consultation', 'Share goals, constraints, and timeline—we respond within one business day.'],
+            ['01', 'Consultation', 'Share goals, constraints, and timeline. We respond within one business day.'],
             ['02', 'Proposal', 'Team structure, milestones, and transparent commercial options.'],
             ['03', 'Onboarding', 'NDA, tool access, and sprint cadence aligned to your org.'],
             ['04', 'Delivery', 'Releases, documentation, and measurable outcomes.'],
@@ -101,7 +101,7 @@ $services = array_values($servicesCatalog);
                 @foreach([
                 ['Rigorous vetting', 'Live technical interviews and production reference checks.'],
                 ['Transparent delivery', 'Weekly status, shared backlogs, and no surprise scope.'],
-                ['Flexible engagement', 'Hourly, dedicated, or fixed-scope—same quality bar.'],
+                ['Flexible engagement', 'Hourly, dedicated, or fixed-scope, with the same quality bar.'],
                 ['IP & security', 'NDAs, access controls, and audit-friendly practices.'],
                 ] as [$title, $text])
                 <li class="flex gap-4 card-premium p-5">
@@ -121,6 +121,6 @@ $services = array_values($servicesCatalog);
 
 <x-cta-banner
     title="Not sure which service fits?"
-    description="Tell us about your project on the contact page—we will route you to the right practice lead."
+    description="Tell us about your project on the contact page and we will route you to the right practice lead."
     primaryHref="/contact" />
 @endsection

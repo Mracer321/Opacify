@@ -2,7 +2,7 @@
 
 @php $isPreview = $isPreview ?? false; @endphp
 
-@section('title', $post->effectiveSeoTitle() . ' — OpacifyWeb Blog')
+@section('title', $post->effectiveSeoTitle() . ' | OpacifyWeb Blog')
 @section('meta_description', $post->effectiveMetaDescription())
 @section('canonical', $post->effectiveCanonical())
 @section('og_type', 'article')
@@ -22,7 +22,7 @@
 
     @if($isPreview)
         <div class="bg-amber-500 px-4 py-2 text-center text-sm font-semibold text-amber-950">
-            Admin preview — status: {{ ucfirst($post->status) }}@if($post->published_at) · publish time: {{ $post->published_at->format('M j, Y g:i A') }}@endif. This page is not publicly indexable.
+            Admin preview. Status: {{ ucfirst($post->status) }}@if($post->published_at) · publish time: {{ $post->published_at->format('M j, Y g:i A') }}@endif. This page is not publicly indexable.
         </div>
     @endif
 
