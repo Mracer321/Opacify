@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
+use App\Http\Controllers\Admin\BlogPostController as AdminBlogPostController;
 use App\Http\Controllers\Admin\EnquiryController as AdminEnquiryController;
 use App\Http\Controllers\Admin\ProjectController as AdminProjectController;
 use App\Http\Controllers\BlogController;
@@ -32,6 +33,15 @@ Route::middleware('auth')->group(function () {
     Route::resource('admin/projects', AdminProjectController::class)
         ->except(['show'])
         ->names('admin.projects');
+
+    // Blog management. Preview/toggle/image-upload sit alongside the resource CRUD.
+    Route::post('admin/blog/image', [AdminBlogPostController::class, 'uploadImage'])->name('admin.blog.image');
+    Route::get('admin/blog/{blogPost}/preview', [AdminBlogPostController::class, 'preview'])->name('admin.blog.preview');
+    Route::post('admin/blog/{blogPost}/toggle', [AdminBlogPostController::class, 'togglePublish'])->name('admin.blog.toggle');
+    Route::resource('admin/blog', AdminBlogPostController::class)
+        ->parameters(['blog' => 'blogPost'])
+        ->except(['show'])
+        ->names('admin.blog');
 });
 
 Route::get('/sitemap.xml', [SitemapController::class, 'show'])->name('sitemap');

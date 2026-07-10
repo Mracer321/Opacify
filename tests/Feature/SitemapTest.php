@@ -2,7 +2,9 @@
 
 namespace Tests\Feature;
 
+use App\Models\BlogPost;
 use App\Models\Project;
+use Database\Seeders\BlogPostSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -15,6 +17,8 @@ class SitemapTest extends TestCase
         parent::setUp();
 
         config(['app.url' => 'https://opacify.in']);
+
+        $this->seed(BlogPostSeeder::class);
     }
 
     public function test_sitemap_returns_valid_xml_with_correct_content_type(): void
@@ -77,5 +81,18 @@ class SitemapTest extends TestCase
         ] as $url) {
             $response->assertDontSee('<loc>'.$url.'</loc>', false);
         }
+    }
+
+    public function test_sitemap_includes_published_posts_and_excludes_draft_and_scheduled(): void
+    {
+        BlogPost::factory()->published()->create(['slug' => 'live-post']);
+        BlogPost::factory()->draft()->create(['slug' => 'draft-post']);
+        BlogPost::factory()->scheduled()->create(['slug' => 'scheduled-post']);
+
+        $response = $this->get('/sitemap.xml')->assertOk();
+
+        $response->assertSee('<loc>https://opacify.in/blog/live-post</loc>', false);
+        $response->assertDontSee('<loc>https://opacify.in/blog/draft-post</loc>', false);
+        $response->assertDontSee('<loc>https://opacify.in/blog/scheduled-post</loc>', false);
     }
 }

@@ -21,6 +21,7 @@
                 <nav class="flex items-center gap-4 text-sm">
                     <a href="{{ route('admin.enquiries.index') }}" class="font-medium {{ request()->routeIs('admin.enquiries.*') ? 'text-brand-700' : 'text-slate-600' }} hover:text-brand-700">Enquiries</a>
                     <a href="{{ route('admin.projects.index') }}" class="font-medium {{ request()->routeIs('admin.projects.*') ? 'text-brand-700' : 'text-slate-600' }} hover:text-brand-700">Projects</a>
+                    <a href="{{ route('admin.blog.index') }}" class="font-medium {{ request()->routeIs('admin.blog.*') ? 'text-brand-700' : 'text-slate-600' }} hover:text-brand-700">Blog</a>
                     <form method="post" action="{{ route('admin.logout') }}">
                         @csrf
                         <button type="submit" class="font-medium text-slate-600 hover:text-brand-700">Logout</button>

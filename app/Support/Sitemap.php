@@ -2,6 +2,7 @@
 
 namespace App\Support;
 
+use App\Models\BlogPost;
 use App\Models\Project;
 use Illuminate\Support\Carbon;
 
@@ -59,11 +60,15 @@ class Sitemap
             $urls[] = $this->entry($this->routeUrl('technologies.show', $slug), $technologiesDate);
         }
 
-        $blogPostsDate = $this->fileDate(resource_path('data/blog-posts.php'));
-        $blogPosts = require resource_path('data/blog-posts.php');
-        foreach (array_keys($blogPosts) as $slug) {
-            $urls[] = $this->entry($this->siteUrl('blog/'.$slug), $blogPostsDate);
-        }
+        // Only currently-publishable blog posts belong in the sitemap; drafts
+        // and future-scheduled posts are excluded until their publish time.
+        BlogPost::query()
+            ->publishable()
+            ->latest('published_at')
+            ->get(['slug', 'updated_at'])
+            ->each(function (BlogPost $post) use (&$urls): void {
+                $urls[] = $this->entry($this->siteUrl('blog/'.$post->slug), $post->updated_at);
+            });
 
         Project::query()
             ->published()

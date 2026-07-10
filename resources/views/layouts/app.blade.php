@@ -8,6 +8,7 @@
     <title>@yield('title', 'OpacifyWeb — Hire Skilled Remote Developers For Your Project')</title>
     <meta name="description" content="@yield('meta_description', 'Hire experienced Laravel, React, Node.js, and full-stack developers. A developer hiring platform for hourly, dedicated, and project-based engagements.')">
     <link rel="canonical" href="@yield('canonical', 'https://opacify.in')">
+    <meta name="robots" content="@yield('robots', 'index, follow')">
     <link rel="icon" type="image/png" href="/images/favicon.png">
 
     {{-- Open Graph (falls back to the existing title/description/canonical sections) --}}

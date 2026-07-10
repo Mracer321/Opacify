@@ -4,29 +4,25 @@
     Emits BlogPosting JSON-LD (with an author Person for E-E-A-T) into the
     global schema stack. publisher references the Organization node.
     JSON is assembled in PHP so the schema.org context/type keys are not
-    parsed as Blade directives.
+    parsed as Blade directives. Reads from the BlogPost model so structured
+    data always matches the rendered post + SEO fallbacks.
 --}}
 @php
-    $datePublished = rescue(
-        fn () => \Illuminate\Support\Carbon::parse($post['date'])->toIso8601String(),
-        null,
-        false,
-    );
-
     $schemaBlogPosting = json_encode(array_filter([
         '@context' => 'https://schema.org',
         '@type' => 'BlogPosting',
-        'headline' => $post['title'],
-        'description' => $post['excerpt'] ?? null,
-        'datePublished' => $datePublished,
+        'headline' => $post->title,
+        'description' => $post->effectiveMetaDescription(),
+        'datePublished' => $post->publishedAtIso(),
+        'dateModified' => optional($post->updated_at)->toIso8601String(),
         'author' => array_filter([
             '@type' => 'Person',
-            'name' => $post['author'] ?? null,
-            'jobTitle' => $post['role'] ?? null,
+            'name' => $post->author,
+            'jobTitle' => $post->author_role,
         ], fn ($v) => $v !== null && $v !== ''),
         'publisher' => ['@id' => 'https://opacify.in/#org'],
-        'mainEntityOfPage' => 'https://opacify.in/blog/'.$post['slug'],
-        'image' => 'https://opacify.in/images/og-default.png',
+        'mainEntityOfPage' => $post->effectiveCanonical(),
+        'image' => $post->effectiveOgImageUrl(),
     ], fn ($v) => $v !== null && $v !== ''), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
 @endphp
 @push('schema')

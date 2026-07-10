@@ -107,6 +107,92 @@ Alpine.data('mobileCarousel', (options = {}) => ({
     },
 }));
 
+// Admin-only: block-based blog content editor. Registered before Alpine.start().
+Alpine.data('blogEditor', (options = {}) => ({
+    blocks: (options.blocks ?? []).map((b) => ({ ...b, _uploading: false })),
+    uploadUrl: options.uploadUrl,
+    csrf: options.csrf,
+    blockTypes: [
+        { type: 'paragraph', label: 'Paragraph' },
+        { type: 'heading', label: 'Heading' },
+        { type: 'list', label: 'List' },
+        { type: 'quote', label: 'Quote' },
+        { type: 'code', label: 'Code' },
+        { type: 'command', label: 'Command' },
+        { type: 'image', label: 'Image' },
+    ],
+
+    blockLabel(type) {
+        return (this.blockTypes.find((t) => t.type === type) || { label: type }).label;
+    },
+
+    add(type) {
+        this.blocks.push({
+            type,
+            text: '',
+            level: 2,
+            style: 'bulleted',
+            items: type === 'list' ? [''] : [],
+            language: '',
+            code: '',
+            path: '',
+            url: '',
+            alt: '',
+            title: '',
+            caption: '',
+            _uploading: false,
+        });
+    },
+
+    remove(index) {
+        this.blocks.splice(index, 1);
+    },
+
+    move(index, delta) {
+        const target = index + delta;
+        if (target < 0 || target >= this.blocks.length) {
+            return;
+        }
+        const [item] = this.blocks.splice(index, 1);
+        this.blocks.splice(target, 0, item);
+    },
+
+    async uploadImage(event, block) {
+        const file = event.target.files?.[0];
+        if (!file) {
+            return;
+        }
+
+        const body = new FormData();
+        body.append('image', file);
+        body.append('topic', document.getElementById('title')?.value || '');
+
+        block._uploading = true;
+        try {
+            const response = await fetch(this.uploadUrl, {
+                method: 'POST',
+                headers: { 'X-CSRF-TOKEN': this.csrf, Accept: 'application/json' },
+                body,
+            });
+            if (!response.ok) {
+                throw new Error('Upload failed');
+            }
+            const data = await response.json();
+            block.path = data.path;
+            block.url = data.url;
+            // Only fill blank metadata — never overwrite what the admin typed.
+            const d = data.defaults || {};
+            if (!block.alt) block.alt = d.alt || '';
+            if (!block.title) block.title = d.title || '';
+            if (!block.caption) block.caption = d.caption || '';
+        } catch (error) {
+            window.alert('Image upload failed. Please try again.');
+        } finally {
+            block._uploading = false;
+        }
+    },
+}));
+
 Alpine.start();
 
 function initRevealAnimations() {
