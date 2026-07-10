@@ -23,7 +23,7 @@
                 <x-section-header align="left" eyebrow="Our story" title="Agency discipline. Staff augmentation speed." description="We started because founders kept telling us the same story: great developers exist, but vetting, contracts, and timezone alignment take too long. We built a process that respects your roadmap and your standards." />
             </div>
             <div class="reveal-on-scroll" data-reveal-delay="100">
-                <x-ui-mockup variant="crm" title="Client delivery hub" subtitle="Sprints · Reviews · Releases" class="shadow-card ring-1 ring-slate-200/80" />
+                <x-ui-mockup variant="crm" title="Client delivery hub" subtitle="Sprints, reviews, releases" class="shadow-card ring-1 ring-slate-200/80" />
             </div>
         </div>
     </div>

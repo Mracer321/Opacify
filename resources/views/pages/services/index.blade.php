@@ -21,7 +21,7 @@ $services = array_values($servicesCatalog);
             Enterprise software services
         </h1>
         <p class="mt-6 max-w-2xl text-lg text-slate-300">
-            Six practice areas. One delivery standard. Find the capability that matches your roadmap. Each service has its own overview with process, technology, and engagement detail.
+            We work across six practice areas with one delivery standard. Find the capability that matches your roadmap, then open its overview for process, technology, and engagement detail.
         </p>
     </div>
 </section>
@@ -42,7 +42,7 @@ $services = array_values($servicesCatalog);
 
 <section class="section-padding bg-surface-soft">
     <div class="container-narrow">
-        <x-section-header eyebrow="Delivery methodology" title="How we deliver across every practice" description="The same governance applies whether you hire developers or commission a full project." />
+        <x-section-header eyebrow="Delivery methodology" title="How we deliver across every practice" description="We follow the same delivery process for a single hire or a full project." />
         <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
             @foreach([
             ['workflow', 'Discover', 'Workshops, scope definition, and risk identification before build.'],
@@ -75,7 +75,7 @@ $services = array_values($servicesCatalog);
 
 <section class="section-padding bg-surface-soft">
     <div class="container-narrow">
-        <x-section-header eyebrow="Process" title="From first call to production delivery" />
+        <x-section-header eyebrow="Process" title="Our delivery process, step by step" />
         <ol class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             @foreach([
             ['01', 'Consultation', 'Share goals, constraints, and timeline. We respond within one business day.'],
@@ -96,7 +96,7 @@ $services = array_values($servicesCatalog);
 <section class="section-padding bg-white">
     <div class="container-narrow">
         <div class="grid items-center gap-12 lg:grid-cols-2">
-            <x-section-header align="left" eyebrow="Why OpacifyWeb" title="Built for teams that need agency quality without agency friction" description="Vetted engineers, documented delivery, and account management that stays technical." />
+            <x-section-header align="left" eyebrow="Why OpacifyWeb" title="Built for teams that need agency quality without agency friction" description="Experienced engineers, documented delivery, and account management that stays technical." />
             <ul class="space-y-4">
                 @foreach([
                 ['Rigorous vetting', 'Live technical interviews and production reference checks.'],

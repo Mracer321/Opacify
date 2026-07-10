@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() ?? '' }}">
-    <title>@yield('title', 'OpacifyWeb — Hire Skilled Remote Developers For Your Project')</title>
+    <title>@yield('title', 'OpacifyWeb | Hire Skilled Remote Developers For Your Project')</title>
     <meta name="description" content="@yield('meta_description', 'Hire experienced Laravel, React, Node.js, and full-stack developers. A developer hiring platform for hourly, dedicated, and project-based engagements.')">
     <link rel="canonical" href="@yield('canonical', 'https://opacify.in')">
     <meta name="robots" content="@yield('robots', 'index, follow')">
@@ -14,7 +14,7 @@
     {{-- Open Graph (falls back to the existing title/description/canonical sections) --}}
     <meta property="og:site_name" content="OpacifyWeb">
     <meta property="og:type" content="@yield('og_type', 'website')">
-    <meta property="og:title" content="@yield('og_title', View::yieldContent('title', 'OpacifyWeb — Hire Skilled Remote Developers For Your Project'))">
+    <meta property="og:title" content="@yield('og_title', View::yieldContent('title', 'OpacifyWeb | Hire Skilled Remote Developers For Your Project'))">
     <meta property="og:description" content="@yield('og_description', View::yieldContent('meta_description', 'Hire experienced Laravel, React, Node.js, and full-stack developers.'))">
     <meta property="og:url" content="@yield('canonical', 'https://opacify.in')">
     <meta property="og:image" content="@yield('og_image', 'https://opacify.in/images/og-default.png')">

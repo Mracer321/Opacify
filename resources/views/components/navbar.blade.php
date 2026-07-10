@@ -4,7 +4,7 @@ $servicesMenu = [
     ['label' => 'Mobile App Development', 'href' => '/services/mobile-app-development', 'desc' => 'iOS, Android, and cross-platform'],
     ['label' => 'ERP Solutions', 'href' => '/services/erp-solutions', 'desc' => 'Business process automation'],
     ['label' => 'Software Development', 'href' => '/services/software-development', 'desc' => 'Custom enterprise software'],
-    ['label' => 'Digital Marketing', 'href' => '/services/digital-marketing', 'desc' => 'Growth-focused campaigns'],
+    ['label' => 'Digital Marketing', 'href' => '/services/digital-marketing', 'desc' => 'SEO, paid media, and conversion'],
     ['label' => 'AI & Automation', 'href' => '/services/ai-automation', 'desc' => 'Intelligent workflows'],
 ];
 

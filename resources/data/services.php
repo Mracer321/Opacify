@@ -30,7 +30,7 @@ return [
         'faqs' => [
             ['question' => 'Do you work with existing codebases?', 'answer' => 'Yes. We audit legacy apps, propose a stabilization plan, and incrementally modernize without halting operations.'],
             ['question' => 'Which stacks do you prefer?', 'answer' => 'Laravel or Node for APIs, React or Vue for frontends, chosen based on your team and roadmap.'],
-            ['question' => 'How long does a typical web MVP take?', 'answer' => 'Most MVPs ship in 10–16 weeks depending on scope, integrations, and design readiness.'],
+            ['question' => 'How long does a typical web MVP take?', 'answer' => 'Most MVPs ship in 10 to 16 weeks depending on scope, integrations, and design readiness.'],
         ],
         'preview' => 'dashboard',
     ],
@@ -107,7 +107,7 @@ return [
         'slug' => 'software-development',
         'title' => 'Software Development',
         'icon' => 'software',
-        'summary' => 'End-to-end product engineering, from MVP to enterprise scale, with architecture, QA, and handover.',
+        'summary' => 'Product engineering that covers MVP through enterprise scale, with architecture, QA, and handover.',
         'meta_description' => 'Custom software development, modernization, and dedicated engineering teams for enterprises.',
         'hero_title' => 'Software products engineered for longevity',
         'hero_text' => 'Greenfield builds, monolith modernization, and blended squads with the documentation your internal team needs to operate confidently.',
@@ -165,7 +165,7 @@ return [
         ],
         'faqs' => [
             ['question' => 'Do you only work with SaaS companies?', 'answer' => 'We specialize in B2B software and IT services but support other professional services with similar funnels.'],
-            ['question' => 'How soon will we see SEO results?', 'answer' => 'Technical fixes show in 4–8 weeks; content compounding typically needs 3–6 months.'],
+            ['question' => 'How soon will we see SEO results?', 'answer' => 'Technical fixes show in 4 to 8 weeks; content compounding typically needs 3 to 6 months.'],
             ['question' => 'Can you work alongside our in-house marketer?', 'answer' => 'Yes. We often pair with internal leads on strategy while we handle execution bandwidth.'],
         ],
         'preview' => 'analytics',
@@ -193,7 +193,7 @@ return [
         ],
         'technologies' => ['Python', 'OpenAI API', 'Power BI', 'Zapier', 'PostgreSQL'],
         'delivery' => [
-            ['Automation sprint', '2–4 week pilots with fixed deliverables.'],
+            ['Automation sprint', '2 to 4 week pilots with fixed deliverables.'],
             ['Retained automation team', 'Ongoing integrations and model updates.'],
             ['Advisory & audit', 'Review existing AI initiatives for risk and cost.'],
         ],

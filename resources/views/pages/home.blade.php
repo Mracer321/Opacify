@@ -13,7 +13,7 @@
                 <div class="reveal-on-scroll relative z-10">
                     <p class="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-slate-300 backdrop-blur-sm">
                         <span class="h-2 w-2 rounded-full bg-brand-500 ring-2 ring-brand-500/30"></span>
-                        Experienced developers · NDA-backed engagements
+                        Experienced developers. NDA available for client projects.
                     </p>
                     <h1 class="mt-6 font-display text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl lg:text-[3.25rem] text-balance">
                         Hire Top Remote Developers For Your Projects
@@ -106,7 +106,7 @@
 <section class="section-padding bg-surface-soft">
     <div class="container-narrow">
         <div class="reveal-on-scroll">
-            <x-section-header eyebrow="Technologies" title="Hire developers across your entire stack" description="From backend APIs to mobile apps, we place engineers who have shipped production systems in the technologies you rely on." />
+            <x-section-header eyebrow="Technologies" title="Hire developers across your entire stack" description="We place engineers who have shipped production systems in the technologies you rely on: backend APIs, web frontends, and mobile apps." />
         </div>
         <div class="mt-12 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
             @foreach([
@@ -170,7 +170,7 @@
 <section class="section-padding bg-white">
     <div class="container-narrow">
         <div class="reveal-on-scroll">
-            <x-section-header eyebrow="Services" title="End-to-end software delivery" description="Need a single senior engineer or a full product squad? We align talent to your roadmap and delivery model." />
+            <x-section-header eyebrow="Services" title="Full-service software delivery" description="Need a single senior engineer or a full product squad? We align talent to your roadmap and delivery model." />
         </div>
         <div class="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3" data-reveal-stagger>
             @foreach([
@@ -287,7 +287,7 @@
 <section class="section-padding bg-white">
     <div class="container-narrow">
         <div class="reveal-on-scroll">
-            <x-section-header eyebrow="How it works" title="From brief to onboarded developer in days" />
+            <x-section-header eyebrow="How it works" title="Onboard a developer in days" />
         </div>
         <ol class="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-4" data-reveal-stagger>
             @foreach([
@@ -402,9 +402,9 @@ $featuredProjects = $featuredProjects ?? collect();
         <x-section-header eyebrow="FAQs" title="Common questions about hiring developers" />
         <div class="mt-10">
             <x-faq-accordion :items="[
-                    ['question' => 'How quickly can you provide developers?', 'answer' => 'For common stacks like Laravel, React, and Node.js, we typically share profiles within 48 hours. Niche or principal-level roles may take 3–5 business days.'],
+                    ['question' => 'How quickly can you provide developers?', 'answer' => 'For common stacks like Laravel, React, and Node.js, we typically share profiles within 48 hours. Niche or principal-level roles may take 3 to 5 business days.'],
                     ['question' => 'What is your minimum engagement?', 'answer' => 'Hourly engagements start at 20 hours per month. Dedicated developers work on a monthly retainer with a 30-day notice period for changes.'],
-                    ['question' => 'Do developers work in our timezone?', 'answer' => 'Yes. We align overlap with your core hours. That usually means 4–6 hours with US Eastern and full UK business hours for European clients.'],
+                    ['question' => 'Do developers work in our timezone?', 'answer' => 'Yes. We align overlap with your core hours. That usually means 4 to 6 hours with US Eastern and full UK business hours for European clients.'],
                     ['question' => 'How do you ensure code quality?', 'answer' => 'Developers follow your branching strategy, participate in reviews, and can include QA engineers. We also offer technical leads for architecture oversight.'],
                     ['question' => 'Can we hire a full project team?', 'answer' => 'Absolutely. We staff blended squads with a tech lead, developers, QA, and DevOps based on a fixed statement of work after a discovery workshop.'],
                 ]" />

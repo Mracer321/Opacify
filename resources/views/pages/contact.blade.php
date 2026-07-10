@@ -53,7 +53,7 @@
                                 <x-icon-box icon="clock" variant="soft" class="!h-9 !w-9 shrink-0" />
                                 <div>
                                     <span class="font-medium text-slate-500">Office hours</span>
-                                    <p class="mt-1 text-slate-600">Mon–Fri, 9:00 AM – 7:00 PM IST</p>
+                                    <p class="mt-1 text-slate-600">Mon to Fri, 9:00 AM to 7:00 PM IST</p>
                                 </div>
                             </li>
                         </ul>
@@ -67,7 +67,7 @@
                             <h3 class="font-semibold text-white">What happens next?</h3>
                         </div>
                         <ol class="mt-4 space-y-4 text-sm">
-                            @foreach(['We review your stack and timeline', 'You receive 2–3 developer profiles', 'Optional intro calls with shortlisted talent', 'Contract and onboarding within days'] as $i => $step)
+                            @foreach(['We review your stack and timeline', 'You receive 2 to 3 developer profiles', 'Optional intro calls with shortlisted talent', 'Contract and onboarding within days'] as $i => $step)
                                 <li class="flex gap-3">
                                     <span class="flex h-6 w-6 shrink-0 items-center justify-center rounded-md bg-white/10 text-xs font-bold text-white">{{ $i + 1 }}</span>
                                     <span class="pt-0.5">{{ $step }}</span>

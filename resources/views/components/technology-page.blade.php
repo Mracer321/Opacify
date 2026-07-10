@@ -102,7 +102,7 @@
                 <ol class="mt-8 space-y-4">
                     @foreach([
                     ['Technical brief', 'Stack versions, repos, ceremonies, and definition of done.', 'document'],
-                    ['Profile shortlist', 'Vetted engineers with relevant production experience.', 'users'],
+                    ['Profile shortlist', 'Engineers with relevant production experience.', 'users'],
                     ['Interview & trial', 'You meet finalists; optional paid trial sprint.', 'chat'],
                     ['Embedded delivery', 'Daily standups, PR reviews, and shared documentation.', 'workflow'],
                     ] as $i => [$title, $desc, $icon])

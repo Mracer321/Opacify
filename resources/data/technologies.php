@@ -131,7 +131,7 @@ $tech = [
         'rate' => '$16–$40/hour',
         'skills' => ['PHP 8.x & OOP', 'Laravel / Symfony', 'REST APIs & auth', 'MySQL & query tuning', 'Composer & PSR standards', 'Legacy modernization'],
         'benefits' => [
-            ['Broad ecosystem', 'From WordPress to Laravel, our developers work across the full PHP stack.'],
+            ['Broad ecosystem', 'Our developers work across the full PHP stack, including WordPress and Laravel.'],
             ['Security-minded', 'Input validation, prepared statements, and safe file handling by default.'],
             ['Flexible engagement', 'Hourly fixes, dedicated build, or legacy rescue.'],
         ],

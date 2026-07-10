@@ -1,7 +1,7 @@
 @extends('layouts.landing')
 
 @section('title', 'Hire Remote Developers | Free Quote in 24 Hours | OpacifyWeb')
-@section('meta_description', 'Hire vetted Laravel, React, Node.js, and Flutter developers. Starting $15/hour. Get matched within 48 hours. Free quote.')
+@section('meta_description', 'Hire experienced Laravel, React, Node.js, and Flutter developers. Starting $15/hour. Get matched within 48 hours. Free quote.')
 @section('canonical', 'https://opacify.in/lp/hire-developers')
 
 @section('content')
@@ -62,7 +62,7 @@
             <x-section-header title="Why founders choose us over job boards" />
             <div class="mt-10 grid gap-6 sm:grid-cols-3" data-reveal-stagger>
                 @foreach([
-                    ['Vetted in 5 stages', 'Live coding, architecture discussion, and reference checks.', 'shield'],
+                    ['Screened in 5 stages', 'Live coding, architecture discussion, and reference checks.', 'shield'],
                     ['Start within days', 'Profiles in 48 hours. Onboarding in under a week.', 'clock'],
                     ['Swap if not a fit', 'Replacement support during the trial period.', 'users'],
                 ] as [$t, $d, $icon])
@@ -102,7 +102,7 @@
             <x-section-header title="Quick answers" />
             <div class="mt-8">
                 <x-faq-accordion :items="[
-                    ['question' => 'How fast can I start?', 'answer' => 'Most clients receive developer profiles within 48 hours and start within 5–7 business days after selection.'],
+                    ['question' => 'How fast can I start?', 'answer' => 'Most clients receive developer profiles within 48 hours and start within 5 to 7 business days after selection.'],
                     ['question' => 'What are your rates?', 'answer' => 'Hourly engagements start at $15/hour depending on stack and seniority. Dedicated and project pricing is quoted after your brief.'],
                     ['question' => 'Is there a long-term contract?', 'answer' => 'Dedicated developers use monthly retainers with 30-day notice. Hourly work has no long-term lock-in.'],
                 ]" id="landing-faq" />

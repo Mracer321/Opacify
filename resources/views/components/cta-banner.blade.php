@@ -1,6 +1,6 @@
 @props([
 'title' => 'Ready to hire developers who deliver?',
-'description' => 'Tell us about your project. We will match you with vetted engineers and send a proposal within 24 hours.',
+'description' => 'Tell us about your project. We will match you with experienced engineers and send a proposal within 24 hours.',
 'primaryLabel' => 'Get Free Quote',
 'primaryHref' => '/contact',
 ])
@@ -14,7 +14,7 @@
                 <div class="max-w-2xl">
                     <div class="mb-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-brand-300">
                         <x-icon name="sparkles" class="h-3.5 w-3.5 text-brand-400" />
-                        Enterprise delivery · Vetted talent
+                        Enterprise delivery with experienced developers
                     </div>
                     <h2 class="font-display text-2xl font-semibold tracking-tight text-white sm:text-3xl">{{ $title }}</h2>
                     <p class="mt-4 text-lg leading-relaxed text-slate-300">{{ $description }}</p>
