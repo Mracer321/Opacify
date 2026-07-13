@@ -1,44 +1,44 @@
 @php
-    $isEdit = $post->exists;
-    $action = $isEdit ? route('admin.blog.update', $post) : route('admin.blog.store');
+$isEdit = $post->exists;
+$action = $isEdit ? route('admin.blog.update', $post) : route('admin.blog.store');
 
-    $tags = old('tags', $post->tags ?? []);
-    $tagsValue = is_array($tags) ? implode(', ', $tags) : $tags;
+$tags = old('tags', $post->tags ?? []);
+$tagsValue = is_array($tags) ? implode(', ', $tags) : $tags;
 
-    $blocks = old('content_blocks', $post->content_blocks ?? []);
+$blocks = old('content_blocks', $post->content_blocks ?? []);
 
-    $sectionClass = 'rounded-2xl border border-slate-200 bg-white p-6 shadow-soft';
-    $headingClass = 'font-display text-lg font-semibold text-navy';
-    $addBtnClass = 'inline-flex items-center gap-1.5 rounded-lg border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-slate-50';
-    $removeBtnClass = 'shrink-0 rounded-lg border border-slate-200 px-3 text-slate-400 hover:border-red-200 hover:bg-red-50 hover:text-red-600';
+$sectionClass = 'rounded-2xl border border-slate-200 bg-white p-6 shadow-soft';
+$headingClass = 'font-display text-lg font-semibold text-navy';
+$addBtnClass = 'inline-flex items-center gap-1.5 rounded-lg border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-slate-50';
+$removeBtnClass = 'shrink-0 rounded-lg border border-slate-200 px-3 text-slate-400 hover:border-red-200 hover:bg-red-50 hover:text-red-600';
 @endphp
 
 @if(session('quality_warnings') && count(session('quality_warnings')))
-    <div class="mb-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
-        <p class="font-semibold">Saved with suggestions:</p>
-        <ul class="mt-2 list-disc space-y-1 pl-5">
-            @foreach(session('quality_warnings') as $warning)
-                <li>{{ $warning }}</li>
-            @endforeach
-        </ul>
-    </div>
+<div class="mb-6 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-800">
+    <p class="font-semibold">Saved with suggestions:</p>
+    <ul class="mt-2 list-disc space-y-1 pl-5">
+        @foreach(session('quality_warnings') as $warning)
+        <li>{{ $warning }}</li>
+        @endforeach
+    </ul>
+</div>
 @endif
 
 @if($errors->any())
-    <div class="mb-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
-        <p class="font-semibold">Please fix the following:</p>
-        <ul class="mt-2 list-disc space-y-1 pl-5">
-            @foreach($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
+<div class="mb-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
+    <p class="font-semibold">Please fix the following:</p>
+    <ul class="mt-2 list-disc space-y-1 pl-5">
+        @foreach($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
 @endif
 
 <form method="post" action="{{ $action }}" enctype="multipart/form-data" class="space-y-6">
     @csrf
     @if($isEdit)
-        @method('PUT')
+    @method('PUT')
     @endif
 
     {{-- BASIC INFORMATION --}}
@@ -68,7 +68,7 @@
             </div>
             <div>
                 <label for="author" class="label-field">Author <span class="text-red-500">*</span></label>
-                <input id="author" type="text" name="author" value="{{ old('author', $post->author ?? 'Neha Kapoor') }}" required class="input-field @error('author') border-red-300 @enderror">
+                <input id="author" type="text" name="author" value="{{ old('author', $post->author ?? 'Masood') }}" required class="input-field @error('author') border-red-300 @enderror">
                 @error('author')<p class="mt-1 text-xs font-medium text-red-600">{{ $message }}</p>@enderror
             </div>
             <div>
@@ -99,7 +99,7 @@
         <div class="mt-4 grid gap-4 sm:grid-cols-2">
             <div>
                 @if($post->featuredImageUrl())
-                    <img src="{{ $post->featuredImageUrl() }}" alt="Current featured image" class="mb-2 h-32 w-full rounded-lg border border-slate-200 object-cover">
+                <img src="{{ $post->featuredImageUrl() }}" alt="Current featured image" class="mb-2 h-32 w-full rounded-lg border border-slate-200 object-cover">
                 @endif
                 <input id="featured_image" type="file" name="featured_image" accept="image/png,image/jpeg,image/webp" class="block w-full text-sm text-slate-500 file:mr-3 file:rounded-lg file:border-0 file:bg-slate-100 file:px-3 file:py-2 file:text-sm file:font-medium file:text-slate-700 hover:file:bg-slate-200">
                 @error('featured_image')<p class="mt-1 text-xs font-medium text-red-600">{{ $message }}</p>@enderror
@@ -121,7 +121,7 @@
                     <label for="status" class="label-field">Status <span class="text-red-500">*</span></label>
                     <select id="status" name="status" required class="input-field @error('status') border-red-300 @enderror">
                         @foreach(['draft' => 'Draft', 'scheduled' => 'Scheduled', 'published' => 'Published'] as $value => $label)
-                            <option value="{{ $value }}" @selected(old('status', $post->status ?? 'draft') === $value)>{{ $label }}</option>
+                        <option value="{{ $value }}" @selected(old('status', $post->status ?? 'draft') === $value)>{{ $label }}</option>
                         @endforeach
                     </select>
                     <p class="mt-1 text-xs text-slate-400">Drafts and future-dated scheduled posts are never public. Scheduled posts go live automatically at the publish time.</p>
@@ -130,8 +130,8 @@
                 <div>
                     <label for="published_at" class="label-field">Publish date &amp; time</label>
                     <input id="published_at" type="datetime-local" name="published_at"
-                           value="{{ old('published_at', optional($post->published_at)->format('Y-m-d\TH:i')) }}"
-                           class="input-field @error('published_at') border-red-300 @enderror">
+                        value="{{ old('published_at', optional($post->published_at)->format('Y-m-d\TH:i')) }}"
+                        class="input-field @error('published_at') border-red-300 @enderror">
                     <p class="mt-1 text-xs text-slate-400">Set a future time with status “Scheduled” to auto-publish later.</p>
                     @error('published_at')<p class="mt-1 text-xs font-medium text-red-600">{{ $message }}</p>@enderror
                 </div>
@@ -174,7 +174,7 @@
                 <div>
                     <label for="og_image" class="label-field">Open Graph image</label>
                     @if($post->og_image)
-                        <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($post->og_image) }}" alt="Current OG image" class="mb-2 h-24 w-full rounded-lg border border-slate-200 object-cover">
+                    <img src="{{ \Illuminate\Support\Facades\Storage::disk('public')->url($post->og_image) }}" alt="Current OG image" class="mb-2 h-24 w-full rounded-lg border border-slate-200 object-cover">
                     @endif
                     <input id="og_image" type="file" name="og_image" accept="image/png,image/jpeg,image/webp" class="block w-full text-sm text-slate-500 file:mr-3 file:rounded-lg file:border-0 file:bg-slate-100 file:px-3 file:py-2 file:text-sm file:font-medium file:text-slate-700 hover:file:bg-slate-200">
                     <p class="mt-1 text-xs text-slate-400">Falls back to the featured image, then the site default OG image.</p>

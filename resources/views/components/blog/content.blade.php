@@ -29,7 +29,7 @@
     @foreach(($blocks ?? []) as $block)
         @switch($block['type'] ?? '')
             @case('paragraph')
-                <p class="mt-5 leading-relaxed text-slate-600">{!! BlogContent::inline($block['text'] ?? '') !!}</p>
+                <div class="blog-prose">{!! BlogContent::render($block['text'] ?? '') !!}</div>
                 @break
 
             @case('heading')

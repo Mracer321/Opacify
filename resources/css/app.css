@@ -282,6 +282,41 @@
   .legal-prose a {
     @apply font-medium text-brand-700 hover:text-brand-800;
   }
+
+  /* Rendered Markdown for free-text blog paragraphs. Mirrors the spacing of
+     the surrounding blog blocks so pasted multi-paragraph content keeps its
+     structure. */
+  .blog-prose {
+    @apply mt-5 leading-relaxed text-slate-600;
+  }
+
+  .blog-prose > :first-child {
+    @apply mt-0;
+  }
+
+  .blog-prose p {
+    @apply mt-5 leading-relaxed text-slate-600;
+  }
+
+  .blog-prose ul {
+    @apply mt-5 list-disc space-y-2 pl-6;
+  }
+
+  .blog-prose ol {
+    @apply mt-5 list-decimal space-y-2 pl-6;
+  }
+
+  .blog-prose blockquote {
+    @apply mt-6 border-l-4 border-brand-600 pl-4 italic text-slate-700;
+  }
+
+  .blog-prose a {
+    @apply text-brand-700 underline hover:text-brand-800;
+  }
+
+  .blog-prose code {
+    @apply rounded bg-slate-100 px-1.5 py-0.5 text-[0.85em] text-slate-800;
+  }
 }
 
 @layer utilities {
