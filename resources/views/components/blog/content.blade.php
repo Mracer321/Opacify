@@ -8,6 +8,23 @@
 --}}
 @use('App\Support\BlogContent')
 
+@php
+    // Precompute stable heading anchors, reused by the heading render and the
+    // auto-generated table of contents. Keyed by the block's position.
+    $anchors = [];
+    $tocHeadings = [];
+    foreach (($blocks ?? []) as $idx => $b) {
+        if (($b['type'] ?? '') !== 'heading') {
+            continue;
+        }
+        $level = (int) ($b['level'] ?? 2) === 3 ? 3 : 2;
+        $anchor = (\Illuminate\Support\Str::slug($b['text'] ?? '') ?: 'section').'-'.$idx;
+        $anchors[$idx] = $anchor;
+        $tocHeadings[] = ['level' => $level, 'text' => $b['text'] ?? '', 'anchor' => $anchor];
+    }
+    $hasToc = count($tocHeadings) >= 2;
+@endphp
+
 <div class="blog-content">
     @foreach(($blocks ?? []) as $block)
         @switch($block['type'] ?? '')
@@ -16,11 +33,11 @@
                 @break
 
             @case('heading')
-                @php $level = (int) ($block['level'] ?? 2); @endphp
+                @php $level = (int) ($block['level'] ?? 2); $hid = $anchors[$loop->index] ?? null; @endphp
                 @if($level === 3)
-                    <h3 class="mt-8 font-display text-xl font-semibold text-navy">{{ $block['text'] ?? '' }}</h3>
+                    <h3 @if($hid) id="{{ $hid }}" @endif class="mt-8 scroll-mt-24 font-display text-xl font-semibold text-navy">{{ $block['text'] ?? '' }}</h3>
                 @else
-                    <h2 class="mt-10 font-display text-2xl font-semibold text-navy">{{ $block['text'] ?? '' }}</h2>
+                    <h2 @if($hid) id="{{ $hid }}" @endif class="mt-10 scroll-mt-24 font-display text-2xl font-semibold text-navy">{{ $block['text'] ?? '' }}</h2>
                 @endif
                 @break
 
@@ -77,6 +94,134 @@
                     </div>
                     <pre class="overflow-x-auto p-4 text-sm leading-relaxed text-emerald-300"><code x-ref="src">{{ $block['code'] ?? '' }}</code></pre>
                 </div>
+                @break
+
+            @case('toc')
+                @if($hasToc)
+                    <nav class="mt-8 rounded-xl border border-slate-200 bg-slate-50/70 p-5" aria-label="Table of contents">
+                        <p class="text-xs font-semibold uppercase tracking-wider text-slate-500">On this page</p>
+                        <ul class="mt-3 space-y-1.5 text-sm">
+                            @foreach($tocHeadings as $h)
+                                <li class="{{ $h['level'] === 3 ? 'pl-4' : '' }}">
+                                    <a href="#{{ $h['anchor'] }}" class="hover:text-brand-700 {{ $h['level'] === 2 ? 'font-medium text-navy' : 'text-slate-600' }}">{{ $h['text'] }}</a>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </nav>
+                @endif
+                @break
+
+            @case('table')
+                @php
+                    $align = $block['align'] ?? 'left';
+                    $align = in_array($align, ['left', 'center', 'right'], true) ? $align : 'left';
+                    $rows = $block['rows'] ?? [];
+                    $header = ! empty($block['header']);
+                @endphp
+                @if(! empty($rows))
+                    <div class="mt-6 overflow-x-auto">
+                        <table class="w-full border-collapse text-sm text-slate-600 text-{{ $align }}">
+                            @if($header && isset($rows[0]))
+                                <thead>
+                                    <tr class="border-b border-slate-300 bg-slate-50">
+                                        @foreach((array) ($rows[0] ?? []) as $cell)
+                                            <th class="px-4 py-2.5 font-semibold text-navy text-{{ $align }}">{!! BlogContent::inline((string) $cell) !!}</th>
+                                        @endforeach
+                                    </tr>
+                                </thead>
+                            @endif
+                            <tbody>
+                                @foreach($rows as $r => $row)
+                                    @continue($header && $r === 0)
+                                    <tr class="border-b border-slate-200">
+                                        @foreach((array) $row as $cell)
+                                            <td class="px-4 py-2.5 align-top">{!! BlogContent::inline((string) $cell) !!}</td>
+                                        @endforeach
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                @endif
+                @break
+
+            @case('faq')
+                @php
+                    $faqItems = collect($block['items'] ?? [])
+                        ->filter(fn ($it) => filled($it['q'] ?? null) && filled($it['a'] ?? null))
+                        ->values();
+                @endphp
+                @if($faqItems->isNotEmpty())
+                    <div class="mt-8 space-y-3">
+                        @foreach($faqItems as $item)
+                            <details class="group rounded-xl border border-slate-200 bg-white [&_summary::-webkit-details-marker]:hidden">
+                                <summary class="flex cursor-pointer items-center justify-between gap-4 px-5 py-4 font-medium text-navy">
+                                    <span>{{ $item['q'] ?? '' }}</span>
+                                    <x-icon name="chevron-down" class="h-4 w-4 shrink-0 text-slate-400 transition-transform group-open:rotate-180" />
+                                </summary>
+                                <div class="px-5 pb-4 leading-relaxed text-slate-600">{!! BlogContent::inline($item['a'] ?? '') !!}</div>
+                            </details>
+                        @endforeach
+                    </div>
+                    <script type="application/ld+json">
+                        {!! json_encode([
+                            '@context' => 'https://schema.org',
+                            '@type' => 'FAQPage',
+                            'mainEntity' => $faqItems->map(fn ($it) => [
+                                '@type' => 'Question',
+                                'name' => $it['q'] ?? '',
+                                'acceptedAnswer' => ['@type' => 'Answer', 'text' => $it['a'] ?? ''],
+                            ])->all(),
+                        ], JSON_UNESCAPED_UNICODE) !!}
+                    </script>
+                @endif
+                @break
+
+            @case('divider')
+                <hr class="my-10 border-t border-slate-200">
+                @break
+
+            @case('callout')
+                @php
+                    $variant = $block['variant'] ?? 'info';
+                    $variant = in_array($variant, ['info', 'tip', 'warning', 'success'], true) ? $variant : 'info';
+                    $style = [
+                        'info' => ['box' => 'border-brand-200 bg-brand-50', 'icon' => 'text-brand-600', 'title' => 'text-brand-900', 'name' => 'info'],
+                        'tip' => ['box' => 'border-amber-200 bg-amber-50', 'icon' => 'text-amber-600', 'title' => 'text-amber-900', 'name' => 'lightbulb'],
+                        'warning' => ['box' => 'border-red-200 bg-red-50', 'icon' => 'text-red-600', 'title' => 'text-red-900', 'name' => 'triangle-alert'],
+                        'success' => ['box' => 'border-emerald-200 bg-emerald-50', 'icon' => 'text-emerald-600', 'title' => 'text-emerald-900', 'name' => 'circle-check'],
+                    ][$variant];
+                @endphp
+                @if(filled($block['title'] ?? null) || filled($block['text'] ?? null))
+                    <div class="mt-6 flex gap-3 rounded-xl border {{ $style['box'] }} p-4">
+                        <x-icon :name="$style['name']" class="mt-0.5 h-5 w-5 shrink-0 {{ $style['icon'] }}" />
+                        <div>
+                            @if(filled($block['title'] ?? null))
+                                <p class="font-semibold {{ $style['title'] }}">{{ $block['title'] ?? '' }}</p>
+                            @endif
+                            @if(filled($block['text'] ?? null))
+                                <div class="mt-1 leading-relaxed text-slate-700">{!! BlogContent::inline($block['text'] ?? '') !!}</div>
+                            @endif
+                        </div>
+                    </div>
+                @endif
+                @break
+
+            @case('cta')
+                @php $ctaUrl = $block['url'] ?? ''; $newTab = ! empty($block['newTab']); @endphp
+                @if(filled($ctaUrl) && filled($block['buttonText'] ?? null))
+                    <div class="mt-8 rounded-2xl border border-slate-200 bg-slate-50 p-6 text-center sm:p-8">
+                        @if(filled($block['title'] ?? null))
+                            <h3 class="font-display text-xl font-semibold text-navy">{{ $block['title'] ?? '' }}</h3>
+                        @endif
+                        @if(filled($block['text'] ?? null))
+                            <p class="mx-auto mt-2 max-w-xl leading-relaxed text-slate-600">{{ $block['text'] ?? '' }}</p>
+                        @endif
+                        <div class="mt-5">
+                            <x-button :href="$ctaUrl" variant="primary" size="lg" :target="$newTab ? '_blank' : false" :rel="$newTab ? 'noopener noreferrer' : false">{{ $block['buttonText'] ?? '' }}</x-button>
+                        </div>
+                    </div>
+                @endif
                 @break
         @endswitch
     @endforeach

@@ -14,6 +14,12 @@
             'alt' => $b['alt'] ?? '',
             'title' => $b['title'] ?? '',
             'caption' => $b['caption'] ?? '',
+            'variant' => $b['variant'] ?? 'info',
+            'header' => $b['header'] ?? true,
+            'align' => $b['align'] ?? 'left',
+            'rows' => $b['rows'] ?? [],
+            'buttonText' => $b['buttonText'] ?? '',
+            'newTab' => $b['newTab'] ?? false,
         ];
     })->values()->all();
 @endphp
@@ -112,6 +118,105 @@
                             <input type="text" :name="`content_blocks[${i}][title]`" x-model="block.title" class="input-field" placeholder="Title">
                             <input type="text" :name="`content_blocks[${i}][caption]`" x-model="block.caption" class="input-field" placeholder="Caption (optional)">
                         </div>
+                    </div>
+                </template>
+
+                {{-- table of contents (auto-generated from headings) --}}
+                <template x-if="block.type === 'toc'">
+                    <p class="mt-3 text-xs text-slate-500">A contents list is generated automatically from the H2 and H3 headings in this article. It is hidden when there are fewer than two headings.</p>
+                </template>
+
+                {{-- divider --}}
+                <template x-if="block.type === 'divider'">
+                    <p class="mt-3 text-xs text-slate-500">A horizontal divider will be shown here.</p>
+                </template>
+
+                {{-- table --}}
+                <template x-if="block.type === 'table'">
+                    <div class="mt-3 space-y-3">
+                        <div class="flex flex-wrap items-center gap-4">
+                            <label class="inline-flex items-center gap-2 text-sm text-slate-600">
+                                <input type="checkbox" :name="`content_blocks[${i}][header]`" x-model="block.header" value="1"> Header row
+                            </label>
+                            <select :name="`content_blocks[${i}][align]`" x-model="block.align" class="input-field w-40">
+                                <option value="left">Align left</option>
+                                <option value="center">Align center</option>
+                                <option value="right">Align right</option>
+                            </select>
+                        </div>
+                        <div class="overflow-x-auto">
+                            <table class="border-collapse">
+                                <tbody>
+                                    <template x-for="(row, r) in block.rows" :key="r">
+                                        <tr>
+                                            <template x-for="(cell, c) in row" :key="c">
+                                                <td class="p-1 align-top">
+                                                    <input type="text" :name="`content_blocks[${i}][rows][${r}][${c}]`" x-model="block.rows[r][c]" class="input-field min-w-[9rem]" :placeholder="block.header && r === 0 ? 'Header' : 'Cell'">
+                                                </td>
+                                            </template>
+                                            <td class="p-1 align-middle">
+                                                <button type="button" class="rounded-lg border border-slate-200 px-2 py-1 text-slate-400 hover:border-red-200 hover:bg-red-50 hover:text-red-600" @click="tableRemoveRow(block, r)" aria-label="Remove row">&times;</button>
+                                            </td>
+                                        </tr>
+                                    </template>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="flex flex-wrap gap-2">
+                            <button type="button" class="rounded-lg border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-white" @click="tableAddRow(block)">+ Row</button>
+                            <button type="button" class="rounded-lg border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-white" @click="tableAddCol(block)">+ Column</button>
+                            <button type="button" class="rounded-lg border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-white" @click="tableRemoveCol(block, (block.rows[0] || []).length - 1)">&minus; Column</button>
+                        </div>
+                    </div>
+                </template>
+
+                {{-- faq --}}
+                <template x-if="block.type === 'faq'">
+                    <div class="mt-3 space-y-3">
+                        <template x-for="(item, j) in block.items" :key="j">
+                            <div class="rounded-lg border border-slate-200 bg-white p-3">
+                                <div class="flex items-center justify-between">
+                                    <span class="text-xs font-medium text-slate-500">Q<span x-text="j + 1"></span></span>
+                                    <div class="flex items-center gap-1">
+                                        <button type="button" class="rounded px-2 py-1 text-slate-400 hover:bg-slate-50" @click="faqMove(block, j, -1)" :disabled="j === 0" aria-label="Move up">&uarr;</button>
+                                        <button type="button" class="rounded px-2 py-1 text-slate-400 hover:bg-slate-50" @click="faqMove(block, j, 1)" :disabled="j === block.items.length - 1" aria-label="Move down">&darr;</button>
+                                        <button type="button" class="rounded px-2 py-1 text-slate-400 hover:bg-red-50 hover:text-red-600" @click="faqRemove(block, j)" aria-label="Remove question">&times;</button>
+                                    </div>
+                                </div>
+                                <input type="text" :name="`content_blocks[${i}][items][${j}][q]`" x-model="item.q" class="input-field mt-2" placeholder="Question">
+                                <textarea :name="`content_blocks[${i}][items][${j}][a]`" x-model="item.a" rows="2" class="input-field mt-2 resize-y" placeholder="Answer"></textarea>
+                            </div>
+                        </template>
+                        <button type="button" class="rounded-lg border border-slate-200 px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-white" @click="faqAdd(block)">+ Add question</button>
+                    </div>
+                </template>
+
+                {{-- callout --}}
+                <template x-if="block.type === 'callout'">
+                    <div class="mt-3 space-y-2">
+                        <select :name="`content_blocks[${i}][variant]`" x-model="block.variant" class="input-field w-40">
+                            <option value="info">Info</option>
+                            <option value="tip">Tip</option>
+                            <option value="warning">Warning</option>
+                            <option value="success">Success</option>
+                        </select>
+                        <input type="text" :name="`content_blocks[${i}][title]`" x-model="block.title" class="input-field" placeholder="Title (optional)">
+                        <textarea :name="`content_blocks[${i}][text]`" x-model="block.text" rows="3" class="input-field resize-y" placeholder="Callout text…"></textarea>
+                    </div>
+                </template>
+
+                {{-- cta button --}}
+                <template x-if="block.type === 'cta'">
+                    <div class="mt-3 space-y-2">
+                        <input type="text" :name="`content_blocks[${i}][title]`" x-model="block.title" class="input-field" placeholder="Heading (optional)">
+                        <textarea :name="`content_blocks[${i}][text]`" x-model="block.text" rows="2" class="input-field resize-y" placeholder="Description (optional)"></textarea>
+                        <div class="grid gap-2 sm:grid-cols-2">
+                            <input type="text" :name="`content_blocks[${i}][buttonText]`" x-model="block.buttonText" class="input-field" placeholder="Button text">
+                            <input type="text" :name="`content_blocks[${i}][url]`" x-model="block.url" class="input-field" placeholder="Button URL (/contact or https://…)">
+                        </div>
+                        <label class="inline-flex items-center gap-2 text-sm text-slate-600">
+                            <input type="checkbox" :name="`content_blocks[${i}][newTab]`" x-model="block.newTab" value="1"> Open in new tab
+                        </label>
                     </div>
                 </template>
             </div>

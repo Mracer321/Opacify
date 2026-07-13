@@ -85,8 +85,78 @@ class BlogPostRequest extends FormRequest
                     'caption' => trim((string) ($block['caption'] ?? '')),
                 ], fn ($v) => $v !== null && $v !== '')
                 : null,
+            'toc', 'divider' => ['type' => $type],
+            'table' => ($rows = $this->cleanTable($block['rows'] ?? [])) !== []
+                ? [
+                    'type' => 'table',
+                    'header' => (bool) ($block['header'] ?? false),
+                    'align' => in_array($block['align'] ?? 'left', ['left', 'center', 'right'], true) ? $block['align'] : 'left',
+                    'rows' => $rows,
+                ]
+                : null,
+            'faq' => ($items = $this->cleanFaq($block['items'] ?? [])) !== []
+                ? ['type' => 'faq', 'items' => $items]
+                : null,
+            'callout' => (filled($block['title'] ?? null) || filled($block['text'] ?? null))
+                ? array_filter([
+                    'type' => 'callout',
+                    'variant' => in_array($block['variant'] ?? 'info', ['info', 'tip', 'warning', 'success'], true) ? $block['variant'] : 'info',
+                    'title' => trim((string) ($block['title'] ?? '')),
+                    'text' => trim((string) ($block['text'] ?? '')),
+                ], fn ($v) => $v !== '')
+                : null,
+            'cta' => (filled($block['url'] ?? null) && filled($block['buttonText'] ?? null))
+                ? [
+                    'type' => 'cta',
+                    'title' => trim((string) ($block['title'] ?? '')),
+                    'text' => trim((string) ($block['text'] ?? '')),
+                    'buttonText' => trim((string) ($block['buttonText'] ?? '')),
+                    'url' => trim((string) ($block['url'] ?? '')),
+                    'newTab' => (bool) ($block['newTab'] ?? false),
+                ]
+                : null,
             default => null,
         };
+    }
+
+    /**
+     * Normalize a table's 2D cell grid to a re-indexed array of string rows.
+     * Returns [] when every cell is empty so hollow tables are dropped.
+     *
+     * @param  mixed  $rows
+     * @return array<int, array<int, string>>
+     */
+    private function cleanTable($rows): array
+    {
+        $rows = collect(Arr::wrap($rows))
+            ->map(fn ($row) => collect(Arr::wrap($row))
+                ->map(fn ($c) => is_string($c) ? trim($c) : '')
+                ->values()
+                ->all())
+            ->filter(fn ($row) => count($row) > 0)
+            ->values()
+            ->all();
+
+        $hasContent = collect($rows)->flatten()->contains(fn ($c) => $c !== '');
+
+        return $hasContent ? $rows : [];
+    }
+
+    /**
+     * Keep only FAQ items that have both a question and an answer.
+     *
+     * @param  mixed  $items
+     * @return array<int, array{q: string, a: string}>
+     */
+    private function cleanFaq($items): array
+    {
+        return collect(Arr::wrap($items))
+            ->map(fn ($it) => is_array($it)
+                ? ['q' => trim((string) ($it['q'] ?? '')), 'a' => trim((string) ($it['a'] ?? ''))]
+                : null)
+            ->filter(fn ($it) => $it !== null && $it['q'] !== '' && $it['a'] !== '')
+            ->values()
+            ->all();
     }
 
     /**
@@ -123,7 +193,7 @@ class BlogPostRequest extends FormRequest
             'read_minutes' => ['nullable', 'integer', 'min:1', 'max:120'],
 
             'content_blocks' => ['nullable', 'array'],
-            'content_blocks.*.type' => ['required', Rule::in(['paragraph', 'heading', 'list', 'quote', 'code', 'command', 'image'])],
+            'content_blocks.*.type' => ['required', Rule::in(['paragraph', 'heading', 'list', 'quote', 'code', 'command', 'image', 'toc', 'table', 'faq', 'divider', 'callout', 'cta'])],
 
             'featured_image' => ['nullable', 'image', 'mimes:jpg,jpeg,png,webp', 'max:8192'],
             'featured_image_alt' => ['nullable', 'string', 'max:300'],
@@ -151,6 +221,25 @@ class BlogPostRequest extends FormRequest
         return [
             'slug.regex' => 'The slug may only contain lowercase letters, numbers, and hyphens.',
         ];
+    }
+
+    /**
+     * Restore the fully-normalized content blocks in the validated payload.
+     *
+     * Laravel's excludeUnvalidatedArrayKeys (on by default) strips every array
+     * key that lacks an explicit rule. Blocks carry type-specific fields, so
+     * only `content_blocks.*.type` is ruled and the parent array would be
+     * reduced to bare `['type' => ...]` entries — silently discarding text,
+     * rows, items, links and every other field. The blocks are already
+     * sanitized and whitelisted per type in prepareForValidation(), so we hand
+     * back that complete structure here.
+     */
+    public function validated($key = null, $default = null)
+    {
+        $validated = parent::validated();
+        $validated['content_blocks'] = $this->input('content_blocks', []);
+
+        return data_get($validated, $key, $default);
     }
 
     /**

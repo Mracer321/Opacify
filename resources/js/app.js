@@ -120,6 +120,12 @@ Alpine.data('blogEditor', (options = {}) => ({
         { type: 'code', label: 'Code' },
         { type: 'command', label: 'Command' },
         { type: 'image', label: 'Image' },
+        { type: 'toc', label: 'Table of Contents' },
+        { type: 'table', label: 'Table' },
+        { type: 'faq', label: 'FAQ' },
+        { type: 'divider', label: 'Divider' },
+        { type: 'callout', label: 'Callout' },
+        { type: 'cta', label: 'CTA Button' },
     ],
 
     blockLabel(type) {
@@ -132,7 +138,7 @@ Alpine.data('blogEditor', (options = {}) => ({
             text: '',
             level: 2,
             style: 'bulleted',
-            items: type === 'list' ? [''] : [],
+            items: type === 'list' ? [''] : type === 'faq' ? [{ q: '', a: '' }] : [],
             language: '',
             code: '',
             path: '',
@@ -140,6 +146,12 @@ Alpine.data('blogEditor', (options = {}) => ({
             alt: '',
             title: '',
             caption: '',
+            variant: 'info',
+            header: true,
+            align: 'left',
+            rows: type === 'table' ? [['', ''], ['', '']] : [],
+            buttonText: '',
+            newTab: false,
             _uploading: false,
         });
     },
@@ -155,6 +167,35 @@ Alpine.data('blogEditor', (options = {}) => ({
         }
         const [item] = this.blocks.splice(index, 1);
         this.blocks.splice(target, 0, item);
+    },
+
+    // Table helpers (2D cell grid).
+    tableAddRow(block) {
+        const cols = (block.rows[0] || []).length || 1;
+        block.rows.push(Array.from({ length: cols }, () => ''));
+    },
+    tableRemoveRow(block, r) {
+        if (block.rows.length > 1) block.rows.splice(r, 1);
+    },
+    tableAddCol(block) {
+        block.rows.forEach((row) => row.push(''));
+    },
+    tableRemoveCol(block, c) {
+        if ((block.rows[0] || []).length > 1) block.rows.forEach((row) => row.splice(c, 1));
+    },
+
+    // FAQ item helpers.
+    faqAdd(block) {
+        block.items.push({ q: '', a: '' });
+    },
+    faqRemove(block, j) {
+        block.items.splice(j, 1);
+    },
+    faqMove(block, j, delta) {
+        const target = j + delta;
+        if (target < 0 || target >= block.items.length) return;
+        const [item] = block.items.splice(j, 1);
+        block.items.splice(target, 0, item);
     },
 
     async uploadImage(event, block) {
